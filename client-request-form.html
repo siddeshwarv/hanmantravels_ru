@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanman Travels — Client Request Form (EN/RU)</title>
+<style>
+  :root { --bg:#0e1626; --card:#16213a; --card2:#1b2947; --line:#2a3a5c; --text:#e8eef7; --muted:#93a3bd; --gold:#e6b34d; --cyan:#4dd6e6; --green:#34d399; --red:#f87171; --radius:14px; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI', Arial, sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+  .topbar { position:sticky; top:0; z-index:50; background:rgba(14,22,38,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); padding:10px 16px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:10px; }
+  .brand .logo { width:38px; height:38px; border-radius:10px; background:linear-gradient(135deg,var(--gold),#b8860b); display:flex; align-items:center; justify-content:center; font-weight:900; color:#0e1626; font-size:18px; }
+  .brand .name { font-weight:800; letter-spacing:1px; font-size:14px; }
+  .brand .lic { font-size:10px; color:var(--muted); letter-spacing:.4px; }
+  .topbar .spacer { flex:1; }
+  .btn { background:var(--gold); color:#0e1626; border:0; padding:9px 16px; border-radius:10px; font-weight:800; font-size:13px; cursor:pointer; }
+  .btn:hover { filter:brightness(1.1); }
+  .btn.ghost { background:transparent; border:1px solid var(--line); color:var(--text); }
+  .wrap { max-width:1180px; margin:0 auto; padding:20px 16px 60px; display:grid; grid-template-columns: 1fr 380px; gap:20px; }
+  @media (max-width:960px){ .wrap { grid-template-columns:1fr; } }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px; margin-bottom:18px; }
+  .card h2 { font-size:15px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; display:flex; align-items:center; gap:10px; }
+  .card h2 .n { background:var(--gold); color:#0e1626; width:24px; height:24px; border-radius:7px; display:inline-flex; align-items:center; justify-content:center; font-size:12px; }
+  .card .sub { font-size:12px; color:var(--muted); margin-bottom:16px; }
+  .q { margin-bottom:16px; }
+  .q label.ql { display:block; font-size:14px; font-weight:700; margin-bottom:6px; }
+  .q .qh { font-size:11.5px; color:var(--muted); margin-bottom:8px; }
+  input[type=text], input[type=tel], input[type=email], input[type=number], select, textarea {
+    width:100%; background:var(--card2); border:1px solid var(--line); color:var(--text);
+    border-radius:10px; padding:10px 12px; font-size:14px; font-family:inherit;
+  }
+  input:focus, select:focus, textarea:focus { outline:2px solid var(--gold); border-color:transparent; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:640px){ .row { grid-template-columns:1fr; } }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .chip { background:var(--card2); border:1px solid var(--line); color:var(--text); border-radius:999px; padding:8px 14px; font-size:13px; cursor:pointer; user-select:none; transition:all .15s; }
+  .chip.sel { background:var(--gold); border-color:var(--gold); color:#0e1626; font-weight:700; }
+  .chip .add { font-size:10px; opacity:.7; font-weight:400; }
+  .radio-row { display:flex; flex-wrap:wrap; gap:8px; }
+  .radio-row .ro { background:var(--card2); border:1px solid var(--line); border-radius:10px; padding:9px 14px; font-size:13px; cursor:pointer; }
+  .radio-row .ro.sel { background:var(--cyan); border-color:var(--cyan); color:#0e1626; font-weight:700; }
+  .radio-row input { display:none; }
+  .checkbox-item { display:flex; align-items:flex-start; gap:10px; background:var(--card2); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:8px; cursor:pointer; }
+  .checkbox-item.sel { border-color:var(--green); background:rgba(52,211,153,.08); }
+  .checkbox-item input { margin-top:3px; width:16px; height:16px; accent-color:var(--green); }
+  .checkbox-item b { display:block; font-size:13.5px; margin-bottom:2px; }
+  .checkbox-item span { font-size:12px; color:var(--muted); }
+  .other-input { display:none; margin-top:8px; }
+  .other-input.show { display:block; }
+  .other-input input { font-size:12.5px; padding:8px 10px; }
+  .summary { position:sticky; top:70px; align-self:start; }
+  .summary .card { background:linear-gradient(180deg,var(--card),#101b30); }
+  .summary h3 { font-size:13px; text-transform:uppercase; letter-spacing:1px; color:var(--gold); margin-bottom:12px; }
+  .summary .srow { font-size:12.5px; padding:7px 0; border-bottom:1px dashed var(--line); display:flex; justify-content:space-between; gap:10px; }
+  .summary .srow b { color:var(--muted); font-weight:600; flex-shrink:0; }
+  .summary .srow span { text-align:right; color:var(--text); }
+  .summary .empty { color:var(--muted); font-size:12.5px; }
+  .summary .actions { display:flex; gap:8px; margin-top:14px; }
+  .summary .actions .btn { flex:1; font-size:12.5px; }
+  .hint { font-size:11px; color:var(--muted); margin-top:10px; line-height:1.5; }
+  .agree-box { background:rgba(230,179,77,.06); border:1px solid rgba(230,179,77,.35); border-radius:12px; padding:14px; margin-top:10px; font-size:12.5px; line-height:1.65; }
+  .agree-box b { color:var(--gold); }
+  .print-area { display:none; }
+  @media print {
+    body { background:#fff; color:#111; }
+    .topbar, .summary { display:none !important; }
+    .wrap { display:block; max-width:none; padding:0; }
+    .card { border:1px solid #ccc; background:#fff; color:#111; break-inside:avoid; }
+    .print-area { display:block; margin-top:24px; font-size:11px; color:#555; }
+    input, select, textarea { background:#fff; border:1px solid #bbb; color:#111; }
+  }
+</style>
+</head>
+<body data-lang="en">
+
+<div class="topbar">
+  <div class="brand">
+    <div class="logo">H</div>
+    <div>
+      <div class="name">HANMAN TRAVELS</div>
+      <div class="lic">RA B-1857/TEL/PER/1000+/5/10271/2023 · ITB '26 St. Petersburg</div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <button class="btn ghost" id="lang-btn" onclick="toggleLang()">🇷🇺 RU / EN</button>
+  <button class="btn" onclick="window.print()">🖨 Print</button>
+</div>
+
+<div class="wrap">
+  <div class="col-form">
+
+    <!-- ============ 1. COMPANY ============ -->
+    <div class="card">
+      <h2><span class="n">1</span><span data-i18n="sec1">Company information</span></h2>
+      <div class="sub" data-i18n="sec1sub">Who are we dealing with?</div>
+
+      <div class="row">
+        <div class="q"><label class="ql" data-i18n="cname">Company name</label><input type="text" name="cname" data-s="Company"></div>
+        <div class="q"><label class="ql">INN / TIN</label><input type="text" name="inn" data-s="INN"></div>
+      </div>
+      <div class="row">
+        <div class="q"><label class="ql" data-i18n="region">Region / city of operation</label><input type="text" name="region" data-s="Region"></div>
+        <div class="q"><label class="ql">Website</label><input type="text" name="website" data-s="Website"></div>
+      </div>
+      <div class="q">
+        <label class="ql" data-i18n="size">Company size</label>
+        <select name="size" data-s="Size">
+          <option value="">—</option>
+          <option data-i18n-o="s1">Under 100 employees</option>
+          <option data-i18n-o="s2">100–500 employees</option>
+          <option data-i18n-o="s3">500–2000 employees</option>
+          <option data-i18n-o="s4">2000+ employees</option>
+        </select>
+      </div>
+      <div class="q">
+        <label class="ql" data-i18n="foreign">Have you hired foreign workers before?</label>
+        <div class="radio-row">
+          <label class="ro"><input type="radio" name="foreign" value="Yes"><span data-i18n-o="yes">Yes</span></label>
+          <label class="ro"><input type="radio" name="foreign" value="No"><span data-i18n-o="no">No</span></label>
+          <label class="ro"><input type="radio" name="foreign" value="Not from India"><span data-i18n-o="notindia">Yes, but not from India</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <label class="ql" data-i18n="decision">Who makes the hiring decision?</label>
+        <input type="text" name="decision" placeholder="e.g. General Director + HR Director" data-s="Decision maker">
+      </div>
+      <div class="row">
+        <div class="q"><label class="ql" data-i18n="contact">Contact person</label><input type="text" name="contact" data-s="Contact"></div>
+        <div class="q"><label class="ql" data-i18n="role">Role / title</label><input type="text" name="role" data-s="Role"></div>
+      </div>
+      <div class="row">
+        <div class="q"><label class="ql" data-i18n="phone">Phone / WhatsApp / Telegram</label><input type="tel" name="phone" data-s="Phone"></div>
+        <div class="q"><label class="ql">E-mail</label><input type="email" name="email" data-s="Email"></div>
+      </div>
+    </div>
+
+    <!-- ============ 2. REQUIREMENT ============ -->
+    <div class="card">
+      <h2><span class="n">2</span><span data-i18n="sec2">The requirement</span></h2>
+      <div class="sub" data-i18n="sec2sub">Tell us exactly what you need — we price and plan from this</div>
+
+      <div class="q">
+        <label class="ql" data-i18n="trades">Trades needed (select all)</label>
+        <div class="chips" id="trade-chips">
+          <span class="chip" data-v="Welders 6G/TIG/SMAW" data-i18n-o="t1">Welders 6G/TIG/SMAW</span>
+          <span class="chip" data-v="Steel fixers / assemblers" data-i18n-o="t2">Steel fixers / assemblers</span>
+          <span class="chip" data-v="Masons / plasterers" data-i18n-o="t3">Masons / plasterers</span>
+          <span class="chip" data-v="CNC operators / lathe" data-i18n-o="t4">CNC operators / lathe</span>
+          <span class="chip" data-v="Fitters / maintenance" data-i18n-o="t5">Fitters / maintenance</span>
+          <span class="chip" data-v="Forklift drivers" data-i18n-o="t6">Forklift drivers</span>
+          <span class="chip" data-v="Truck drivers Cat C/E" data-i18n-o="t7">Truck drivers Cat C/E</span>
+          <span class="chip" data-v="Warehouse loaders / packers" data-i18n-o="t8">Warehouse loaders / packers</span>
+          <span class="chip" data-v="Greenhouse / farm workers" data-i18n-o="t9">Greenhouse / farm workers</span>
+          <span class="chip" data-v="General factory workers" data-i18n-o="t10">General factory workers</span>
+          <span class="chip" data-v="OTHER" data-i18n-o="other">Other…</span>
+        </div>
+        <div class="other-input" id="trade-other"><input type="text" name="tother" placeholder="Describe: trades + quantities" data-i18n-ph="tother"></div>
+      </div>
+
+      <div class="row">
+        <div class="q"><label class="ql" data-i18n="qty">Total number of workers needed</label><input type="number" name="qty" min="1" max="2000" data-s="Quantity"></div>
+        <div class="q"><label class="ql" data-i18n="deadline">By when must the first group arrive?</label>
+          <select name="deadline" data-s="Deadline">
+            <option value="">—</option>
+            <option data-i18n-o="d1">As soon as possible (under 45 days)</option>
+            <option data-i18n-o="d2">Within 1–2 months</option>
+            <option data-i18n-o="d3">Within 3–6 months</option>
+            <option data-i18n-o="d4">Planning stage, no fixed date</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="ql" data-i18n="recur">Is this one-time or an ongoing need?</label>
+        <div class="radio-row">
+          <label class="ro"><input type="radio" name="recur" value="One-time batch"><span data-i18n-o="once">One-time batch</span></label>
+          <label class="ro"><input type="radio" name="recur" value="Ongoing / framework"><span data-i18n-o="ongoing">Ongoing / framework partnership</span></label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="q"><label class="ql" data-i18n="shifts">Shift pattern</label>
+          <select name="shifts" data-s="Shifts">
+            <option value="">—</option>
+            <option data-i18n-o="sh1">8h, 5 days/week</option>
+            <option data-i18n-o="sh2">12h shifts (rotating)</option>
+            <option data-i18n-o="sh3">Shift work 2/2 or 3/3</option>
+            <option data-i18n-o="sh4">6 days/week</option>
+          </select>
+        </div>
+        <div class="q"><label class="ql" data-i18n="salary">Gross monthly salary (RUB) per worker</label><input type="text" name="salary" placeholder="e.g. 70,000–90,000" data-s="Salary"></div>
+      </div>
+
+      <div class="row">
+        <div class="q">
+          <label class="ql" data-i18n="housing">Will you provide housing?</label>
+          <div class="radio-row">
+            <label class="ro"><input type="radio" name="housing" value="Yes + meals"><span data-i18n-o="hm">Yes, with meals</span></label>
+            <label class="ro"><input type="radio" name="housing" value="Yes, housing only"><span data-i18n-o="ho">Yes, housing only</span></label>
+            <label class="ro"><input type="radio" name="housing" value="No"><span data-i18n-o="no">No</span></label>
+          </div>
+        </div>
+        <div class="q">
+          <label class="ql" data-i18n="supervisor">Russian-speaking supervisor available?</label>
+          <div class="radio-row">
+            <label class="ro"><input type="radio" name="supervisor" value="Yes"><span data-i18n-o="yes">Yes</span></label>
+            <label class="ro"><input type="radio" name="supervisor" value="No"><span data-i18n-o="no">No</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="ql" data-i18n="accept">How do you want to verify candidates?</label>
+        <div class="radio-row">
+          <label class="ro"><input type="radio" name="accept" value="Video trade tests"><span data-i18n-o="video">Video trade tests</span></label>
+          <label class="ro"><input type="radio" name="accept" value="Live video interviews"><span data-i18n-o="live">Live video interviews</span></label>
+          <label class="ro"><input type="radio" name="accept" value="Both"><span data-i18n-o="both">Both</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="ql" data-i18n="details">Anything else about the role or site?</label>
+        <textarea name="details" rows="3" placeholder="Location, weather, special requirements…" data-i18n-ph="tdetails" data-s="Details"></textarea>
+      </div>
+    </div>
+
+    <!-- ============ 3. MONEY & PROCESS ============ -->
+    <div class="card">
+      <h2><span class="n">3</span><span data-i18n="sec3">Money &amp; process</span></h2>
+      <div class="sub" data-i18n="sec3sub">Standard, transparent — no surprises for either side</div>
+
+      <div class="q">
+        <label class="ql" data-i18n="paywho">Who pays for flights, visa and medical?</label>
+        <div class="radio-row">
+          <label class="ro"><input type="radio" name="paywho" value="Employer (zero-cost model)"><span data-i18n-o="employer">Employer (zero-cost model)</span></label>
+          <label class="ro"><input type="radio" name="paywho" value="Worker pays"><span data-i18n-o="worker">Worker pays</span></label>
+          <label class="ro"><input type="radio" name="paywho" value="Shared / to discuss"><span data-i18n-o="shared">Shared / to discuss</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="ql" data-i18n="emigrate">Ready to issue the eMigrate Demand Letter + Power of Attorney to us?</label>
+        <div class="radio-row">
+          <label class="ro"><input type="radio" name="emigrate" value="Yes, ready"><span data-i18n-o="ready">Yes, ready</span></label>
+          <label class="ro"><input type="radio" name="emigrate" value="Need guidance"><span data-i18n-o="guidance">Yes, need your guidance</span></label>
+          <label class="ro"><input type="radio" name="emigrate" value="Later"><span data-i18n-o="later">Later</span></label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="q"><label class="ql" data-i18n="currency">Preferred payment currency</label>
+          <select name="currency" data-s="Currency">
+            <option value="">—</option>
+            <option>EUR</option><option>USD</option><option>INR</option><option>RUB</option>
+          </select>
+        </div>
+        <div class="q"><label class="ql" data-i18n="compare">Comparing other agencies?</label>
+          <div class="radio-row">
+            <label class="ro"><input type="radio" name="compare" value="Yes"><span data-i18n-o="yes">Yes</span></label>
+            <label class="ro"><input type="radio" name="compare" value="No"><span data-i18n-o="no">No</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="ql" data-i18n="mvd">Who will handle migration registration &amp; MVD notifications?</label>
+        <input type="text" name="mvd" placeholder="e.g. our HR department / we need advice" data-s="MVD handling">
+      </div>
+    </div>
+
+    <!-- ============ 4. SERVICES ============ -->
+    <div class="card">
+      <h2><span class="n">4</span><span data-i18n="sec4">Our services — what do you need from us?</span></h2>
+      <div class="sub" data-i18n="sec4sub">All included in the 0 ₽ model unless marked</div>
+
+      <div class="checkbox-item"><label><input type="checkbox" name="svc" value="Full-cycle recruitment (sourcing + testing + documentation)" checked><b data-i18n-o="sv1">Full-cycle recruitment</b><span data-i18n-o="sv1d">Sourcing, screening, trade testing with video evidence</span></label></div>
+      <div class="checkbox-item"><label><input type="checkbox" name="svc" value="eMigrate / MEA processing"><b data-i18n-o="sv2">eMigrate / MEA processing</b><span data-i18n-o="sv2d">Demand acknowledgement, POA, emigration clearance</span></label></div>
+      <div class="checkbox-item"><label><input type="checkbox" name="svc" value="Visa / MVD coordination"><b data-i18n-o="sv3">Visa / MVD coordination</b><span data-i18n-o="sv3d">Work invitation &amp; visa process support</span></label></div>
+      <div class="checkbox-item"><label><input type="checkbox" name="svc" value="Pre-departure orientation (incl. Russian basics)"><b data-i18n-o="sv4">Pre-departure orientation</b><span data-i18n-o="sv4d">Workplace discipline, housing rules, basic Russian vocabulary</span></label></div>
+      <div class="checkbox-item"><label><input type="checkbox" name="svc" value="Post-arrival onboarding support"><b data-i18n-o="sv5">Post-arrival onboarding support</b><span data-i18n-o="sv5d">Migration registration advice, first weeks coordination</span></label></div>
+      <div class="checkbox-item"><label><input type="checkbox" name="svc" value="Interpreters / supervisor package (add-on)"><b data-i18n-o="sv6">Interpreters / supervisor package</b><span data-i18n-o="sv6d">Paid add-on — we arrange Russian-speaking support</span></label></div>
+      <div class="checkbox-item"><label><input type="checkbox" name="svc" value="90-day replacement warranty"><b data-i18n-o="sv7">90-day replacement warranty</b><span data-i18n-o="sv7d">Free replacement worker, we cover airfare</span></label></div>
+    </div>
+
+    <!-- ============ 5. AGREEMENT EXPECTATIONS ============ -->
+    <div class="card">
+      <h2><span class="n">5</span><span data-i18n="sec5">The partnership agreement — who we are &amp; what we expect</span></h2>
+      <div class="sub" data-i18n="sec5sub">Please read and confirm — this is the heart of the contract</div>
+
+      <div class="agree-box">
+        <b data-i18n="ag1">WHO WE ARE:</b> <span data-i18n="ag1t">Hanman Travels — Government of India licensed recruiting agency (RA B-1857/TEL/PER/1000+/5/10271/2023) under the Emigration Act 1983. Recruitment service for employers: 0 ₽. Revenue comes from the regulated candidate service fee only (receipted, capped by law).</span><br><br>
+        <b data-i18n="ag2">OUR SERVICES:</b> <span data-i18n="ag2t">Sourcing → 4-stage screening (PCC, medical, trade test, orientation) → eMigrate processing → visa/MVD coordination → deployment in 30–45 days → 90-day free replacement warranty.</span><br><br>
+        <b data-i18n="ag3">WHAT WE EXPECT FROM YOUR COMPANY:</b>
+        <span data-i18n="ag3t">1) The three government documents (eMigrate Demand, POA, signed employment contracts). 2) Monthly wages paid on time, directly to each worker's bank account, at market level — no deductions beyond Russian law. 3) Housing per Russian law + written house rules for workers. 4) Cooperation on MVD invitation and migration registration. 5) Clear acceptance criteria (video tests or live interviews).</span><br><br>
+        <b data-i18n="ag4">OUR PROMISE TO YOU:</b> <span data-i18n="ag4t">Transparent pricing of reimbursables (approved by you in advance), on-time delivery with written SLAs, zero corruption, civilian employment only, and full documentation at every step. Disputes are resolved by dialogue — we mediate actively; the Indian Consulate and MVD authorities are the neutral fallback.</span>
+      </div>
+
+      <div class="checkbox-item" style="margin-top:14px"><label><input type="checkbox" id="agree-check"><b data-i18n="agchk">I confirm I understood the above</b><span data-i18n="agchkd">I understand our responsibilities and the Agency's commitments before we sign the agreement</span></label></div>
+    </div>
+  </div>
+
+  <!-- ============ SUMMARY ============ -->
+  <div class="col-summary">
+    <div class="summary">
+      <div class="card">
+        <h3 data-i18n="sum">Request summary</h3>
+        <div id="srows"><div class="empty" data-i18n="sumempty">Fill the form — the summary builds live.</div></div>
+        <div class="actions">
+          <button class="btn" id="send-btn" onclick="sendWhatsApp()">WhatsApp ➤</button>
+          <button class="btn ghost" onclick="window.print()">Print</button>
+        </div>
+        <div class="hint" data-i18n="sumhint">Your summary is sent to us as a message — we reply within 24h on business days.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const dict = {
+    en: {
+      sec1:'Company information', sec1sub:'Who are we dealing with?',
+      sec2:'The requirement', sec2sub:'Tell us exactly what you need — we price and plan from this',
+      sec3:'Money & process', sec3sub:'Standard, transparent — no surprises for either side',
+      sec4:'Our services — what do you need from us?', sec4sub:'All included in the 0 ₽ model unless marked',
+      sec5:'The partnership agreement — who we are & what we expect', sec5sub:'Please read and confirm — this is the heart of the contract',
+      cname:'Company name', region:'Region / city of operation', size:'Company size',
+      foreign:'Have you hired foreign workers before?', decision:'Who makes the hiring decision?',
+      contact:'Contact person', role:'Role / title', phone:'Phone / WhatsApp / Telegram',
+      trades:'Trades needed (select all)', qty:'Total number of workers needed', deadline:'By when must the first group arrive?',
+      recur:'Is this one-time or an ongoing need?', shifts:'Shift pattern', salary:'Gross monthly salary (RUB) per worker',
+      housing:'Will you provide housing?', supervisor:'Russian-speaking supervisor available?',
+      accept:'How do you want to verify candidates?', details:'Anything else about the role or site?',
+      paywho:'Who pays for flights, visa and medical?', emigrate:'Ready to issue the eMigrate Demand Letter + Power of Attorney to us?',
+      currency:'Preferred payment currency', compare:'Comparing other agencies?', mvd:'Who will handle migration registration & MVD notifications?',
+      sum:'Request summary', sumempty:'Fill the form — the summary builds live.',
+      sumhint:'Your summary is sent to us as a message — we reply within 24h on business days.',
+      ag1:'WHO WE ARE:', ag1t:'Hanman Travels — Government of India licensed recruiting agency (RA B-1857/TEL/PER/1000+/5/10271/2023) under the Emigration Act 1983. Recruitment service for employers: 0 ₽. Revenue comes from the regulated candidate service fee only (receipted, capped by law).',
+      ag2:'OUR SERVICES:', ag2t:'Sourcing → 4-stage screening (PCC, medical, trade test, orientation) → eMigrate processing → visa/MVD coordination → deployment in 30–45 days → 90-day free replacement warranty.',
+      ag3:'WHAT WE EXPECT FROM YOUR COMPANY:', ag3t:'1) The three government documents (eMigrate Demand, POA, signed employment contracts). 2) Monthly wages paid on time, directly to each worker\u2019s bank account, at market level — no deductions beyond Russian law. 3) Housing per Russian law + written house rules for workers. 4) Cooperation on MVD invitation and migration registration. 5) Clear acceptance criteria (video tests or live interviews).',
+      ag4:'OUR PROMISE TO YOU:', ag4t:'Transparent pricing of reimbursables (approved by you in advance), on-time delivery with written SLAs, zero corruption, civilian employment only, and full documentation at every step. Disputes are resolved by dialogue — we mediate actively; the Indian Consulate and MVD authorities are the neutral fallback.',
+      agchk:'I confirm I understood the above', agchkd:'I understand our responsibilities and the Agency\u2019s commitments before we sign the agreement',
+      tother:'Describe: trades + quantities', tdetails:'Location, weather, special requirements…',
+      yes:'Yes', no:'No', notindia:'Yes, but not from India',
+      s1:'Under 100 employees', s2:'100–500 employees', s3:'500–2000 employees', s4:'2000+ employees',
+      t1:'Welders 6G/TIG/SMAW', t2:'Steel fixers / assemblers', t3:'Masons / plasterers', t4:'CNC operators / lathe',
+      t5:'Fitters / maintenance', t6:'Forklift drivers', t7:'Truck drivers Cat C/E', t8:'Warehouse loaders / packers',
+      t9:'Greenhouse / farm workers', t10:'General factory workers', other:'Other…',
+      d1:'As soon as possible (under 45 days)', d2:'Within 1–2 months', d3:'Within 3–6 months', d4:'Planning stage, no fixed date',
+      once:'One-time batch', ongoing:'Ongoing / framework partnership',
+      sh1:'8h, 5 days/week', sh2:'12h shifts (rotating)', sh3:'Shift work 2/2 or 3/3', sh4:'6 days/week',
+      hm:'Yes, with meals', ho:'Yes, housing only', employer:'Employer (zero-cost model)', worker:'Worker pays', shared:'Shared / to discuss',
+      ready:'Yes, ready', guidance:'Yes, need your guidance', later:'Later',
+      video:'Video trade tests', live:'Live video interviews', both:'Both',
+      sv1:'Full-cycle recruitment', sv1d:'Sourcing, screening, trade testing with video evidence',
+      sv2:'eMigrate / MEA processing', sv2d:'Demand acknowledgement, POA, emigration clearance',
+      sv3:'Visa / MVD coordination', sv3d:'Work invitation & visa process support',
+      sv4:'Pre-departure orientation', sv4d:'Workplace discipline, housing rules, basic Russian vocabulary',
+      sv5:'Post-arrival onboarding support', sv5d:'Migration registration advice, first weeks coordination',
+      sv6:'Interpreters / supervisor package', sv6d:'Paid add-on — we arrange Russian-speaking support',
+      sv7:'90-day replacement warranty', sv7d:'Free replacement worker, we cover airfare'
+    },
+    ru: {
+      sec1:'Информация о компании', sec1sub:'С кем мы работаем?',
+      sec2:'Потребность', sec2sub:'Опишите точно, что вам нужно — от этого зависят план и расчеты',
+      sec3:'Деньги и процесс', sec3sub:'Стандартно и прозрачно — без сюрпризов',
+      sec4:'Наши услуги — что вам нужно от нас?', sec4sub:'Все включено в модель «0 ₽», кроме отмеченных',
+      sec5:'Договор о партнерстве — кто мы и что мы ожидаем', sec5sub:'Прочитайте и подтвердите — это основа контракта',
+      cname:'Название компании', region:'Регион / город работы', size:'Размер компании',
+      foreign:'Нанимали ли иностранных работников раньше?', decision:'Кто принимает решение о найме?',
+      contact:'Контактное лицо', role:'Должность', phone:'Телефон / WhatsApp / Telegram',
+      trades:'Нужные специальности (выберите все)', qty:'Общее число работников', deadline:'К какому сроку нужна первая группа?',
+      recur:'Это разовая поставка или постоянная потребность?', shifts:'График работы', salary:'Зарплата (гросс, RUB) в месяц',
+      housing:'Предоставите ли жилье?', supervisor:'Есть ли русскоязычный бригадир/наставник?',
+      accept:'Как вы хотите проверять кандидатов?', details:'Еще что-то о должности или объекте?',
+      paywho:'Кто оплачивает перелет, визу и медосмотр?', emigrate:'Готовы ли оформить заявку eMigrate + доверенность на нас?',
+      currency:'Предпочитаемая валюта расчетов', compare:'Сравниваете ли другие агентства?', mvd:'Кто будет заниматься миграционным учетом и уведомлениями МВД?',
+      sum:'Сводка заявки', sumempty:'Заполняйте форму — сводка формируется автоматически.',
+      sumhint:'Сводка отправляется нам сообщением — ответим в течение 24 часов в рабочие дни.',
+      ag1:'КТО МЫ:', ag1t:'Hanman Travels — лицензированное правительством Индии агентство (RA B-1857/TEL/PER/1000+/5/10271/2023) по Закону об эмиграции 1983 г. Услуги подбора для работодателей: 0 ₽. Доход — только регламентированный сбор с кандидатов (с чеком, в пределах закона).',
+      ag2:'НАШИ УСЛУГИ:', ag2t:'Подбор → 4-этапный отбор (справка, медосмотр, тест, инструктаж) → оформление eMigrate → координация визы/МВД → поставка за 30–45 дней → гарантия бесплатной замены 90 дней.',
+      ag3:'ЧТО МЫ ОЖИДАЕМ ОТ ВАШЕЙ КОМПАНИИ:', ag3t:'1) Три официальных документа (заявка eMigrate, доверенность, подписанные трудовые договоры). 2) Своевременная ежемесячная зарплата напрямую на счет работника, по рыночному уровню — удержания только по закону РФ. 3) Жилье по закону РФ + письменные правила проживания. 4) Сотрудничество по приглашению МВД и миграционному учету. 5) Четкие критерии приемки (видео-тесты или живые собеседования).',
+      ag4:'НАШЕ ОБЕЩАНИЕ ВАМ:', ag4t:'Прозрачные цены на возмещаемые расходы (с вашего предварительного согласия), точные сроки в письменных SLA, нулевая коррупция, только гражданская занятость, полная документация на каждом шаге. Споры решаем диалогом — мы активно выступаем посредником; Консульство Индии и органы МВД — нейтральная поддержка.',
+      agchk:'Я подтверждаю, что понял(а) вышесказанное', agchkd:'Я понимаю наши обязанности и обязательства Агентства до подписания договора',
+      tother:'Опишите: специальности + количество', tdetails:'Локация, климат, особые требования…',
+      yes:'Да', no:'Нет', notindia:'Да, но не из Индии',
+      s1:'До 100 сотрудников', s2:'100–500 сотрудников', s3:'500–2000 сотрудников', s4:'Более 2000 сотрудников',
+      t1:'Сварщики 6G/TIG/SMAW', t2:'Арматурщики / монтажники', t3:'Каменщики / штукатуры', t4:'Операторы ЧПУ / токари',
+      t5:'Слесари / механики', t6:'Водители погрузчиков', t7:'Водители грузовиков C/E', t8:'Комплектовщики / грузчики',
+      t9:'Рабочие теплиц / СХ', t10:'Рабочие производства', other:'Другое…',
+      d1:'Как можно скорее (до 45 дней)', d2:'В течение 1–2 месяцев', d3:'В течение 3–6 месяцев', d4:'Планируем, даты нет',
+      once:'Разовая партия', ongoing:'Постоянно / рамочное партнерство',
+      sh1:'8 часов, 5 дней/нед', sh2:'Смены по 12 часов', sh3:'Сменный график 2/2 или 3/3', sh4:'6 дней в неделю',
+      hm:'Да, с питанием', ho:'Да, только жилье', employer:'Работодатель (модель 0 ₽)', worker:'Работник', shared:'Поделить / обсудить',
+      ready:'Да, готовы', guidance:'Да, нужна ваша помощь', later:'Позже',
+      video:'Видео-тесты', live:'Живые собеседования', both:'Оба варианта',
+      sv1:'Полный цикл подбора', sv1d:'Поиск, отбор, тестирование с видеофиксацией',
+      sv2:'Оформление eMigrate / MEA', sv2d:'Акцепт заявки, доверенность, эмиграционная очистка',
+      sv3:'Координация визы / МВД', sv3d:'Поддержка приглашения и визового процесса',
+      sv4:'Предотъездный инструктаж', sv4d:'Дисциплина, правила проживания, базовая русская лексика',
+      sv5:'Поддержка после прилета', sv5d:'Миграционный учет, координация первых недель',
+      sv6:'Переводчики / пакет сопровождения', sv6d:'Платная опция — организуем русскоязычную поддержку',
+      sv7:'Гарантия замены 90 дней', sv7d:'Бесплатная замена, перелет за наш счет'
+    }
+  };
+  let lang = 'en';
+  function tr(k){ return (dict[lang] && dict[lang][k]) ? dict[lang][k] : dict.en[k] || k; }
+
+  function toggleLang(){
+    lang = lang === 'en' ? 'ru' : 'en';
+    document.body.dataset.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => el.innerText = tr(el.dataset.i18n));
+    document.querySelectorAll('[data-i18n-o]').forEach(el => el.innerText = tr(el.dataset.i18nO));
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => el.placeholder = tr(el.dataset.i18nPh));
+    rebuildSummary();
+  }
+
+  // chips multi-select
+  document.querySelectorAll('#trade-chips .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('sel');
+      document.getElementById('trade-other').classList.toggle('show', chip.dataset.v === 'OTHER' && chip.classList.contains('sel'));
+      rebuildSummary();
+    });
+  });
+  // radio rows
+  document.querySelectorAll('.radio-row').forEach(row => {
+    row.addEventListener('click', (e) => {
+      const ro = e.target.closest('.ro'); if (!ro) return;
+      row.querySelectorAll('.ro').forEach(r => r.classList.remove('sel'));
+      ro.classList.add('sel'); ro.querySelector('input').checked = true;
+      rebuildSummary();
+    });
+  });
+  // checkboxes
+  document.querySelectorAll('.checkbox-item input').forEach(cb => {
+    cb.addEventListener('change', () => { cb.closest('.checkbox-item').classList.toggle('sel', cb.checked); rebuildSummary(); });
+  });
+  // text/number/select
+  document.querySelectorAll('input[type=text], input[type=number], input[type=tel], input[type=email], select, textarea').forEach(el => {
+    el.addEventListener('input', rebuildSummary);
+    el.addEventListener('change', rebuildSummary);
+  });
+
+  function gv(name){ const el = document.querySelector(`[name="${name}"]`); return el ? el.value.trim() : ''; }
+  function selectedChips(){ return [...document.querySelectorAll('#trade-chips .chip.sel')].map(c => c.dataset.v === 'OTHER' ? 'Other: ' + (gv('tother') || document.getElementById('trade-other').querySelector('input').value) : c.dataset.v).join(', '); }
+
+  function buildSections(){
+    const S = [];
+    const push = (label, val) => { if (val) S.push({label, val}); };
+    push('Company', gv('cname'));
+    push('INN', gv('inn'));
+    push('Region', gv('region'));
+    push('Size', document.querySelector('[name=size]').selectedOptions[0] ? document.querySelector('[name=size]').selectedOptions[0].text : '');
+    const f = document.querySelector('input[name=foreign]:checked'); push('Foreign hires', f ? f.value : '');
+    push('Decision maker', gv('decision'));
+    push('Contact', gv('contact'));
+    push('Role', gv('role'));
+    push('Phone', gv('phone'));
+    push('Email', gv('email'));
+    push('Trades', selectedChips());
+    push('Quantity', gv('qty'));
+    const dl = document.querySelector('[name=deadline]').selectedOptions[0]; push('Deadline', dl ? dl.text : '');
+    const rec = document.querySelector('input[name=recur]:checked'); push('One-time/Ongoing', rec ? rec.value : '');
+    const sh = document.querySelector('[name=shifts]').selectedOptions[0]; push('Shifts', sh ? sh.text : '');
+    push('Salary', gv('salary'));
+    const h = document.querySelector('input[name=housing]:checked'); push('Housing', h ? h.value : '');
+    const sp = document.querySelector('input[name=supervisor]:checked'); push('Supervisor', sp ? sp.value : '');
+    const ac = document.querySelector('input[name=accept]:checked'); push('Verification', ac ? ac.value : '');
+    push('Details', gv('details'));
+    const pw = document.querySelector('input[name=paywho]:checked'); push('Relocation costs', pw ? pw.value : '');
+    const em = document.querySelector('input[name=emigrate]:checked'); push('eMigrate docs', em ? em.value : '');
+    const cu = document.querySelector('[name=currency]').selectedOptions[0]; push('Currency', cu && cu.value ? cu.value : '');
+    const cp = document.querySelector('input[name=compare]:checked'); push('Comparing agencies', cp ? cp.value : '');
+    push('MVD handling', gv('mvd'));
+    const svc = [...document.querySelectorAll('input[name=svc]:checked')].map(c => c.value);
+    if (svc.length) push('Services requested', svc.join(', '));
+    push('Agreement confirmed', document.getElementById('agree-check').checked ? 'YES' : '');
+    return S;
+  }
+
+  function rebuildSummary(){
+    const box = document.getElementById('srows');
+    const S = buildSections();
+    if (!S.length) { box.innerHTML = `<div class="empty">${tr('sumempty')}</div>`; return; }
+    box.innerHTML = S.map(s => `<div class="srow"><b>${s.label}</b><span>${s.val}</span></div>`).join('');
+  }
+
+  function sendWhatsApp(){
+    const S = buildSections();
+    if (!S.length) { alert(lang === 'ru' ? 'Заполните хотя бы одно поле.' : 'Fill in at least one field.'); return; }
+    if (!document.getElementById('agree-check').checked) { alert(lang === 'ru' ? 'Подтвердите раздел 5 (договор).' : 'Please confirm Section 5 (agreement).'); return; }
+    const lines = S.map(s => `${s.label}: ${s.val}`).join('\n');
+    const msg = encodeURIComponent('HANMAN TRAVELS — Client Request (ITB 26)\n' + lines);
+    window.open(`https://wa.me/919490194000?text=${msg}`, '_blank');
+  }
+
+  rebuildSummary();
+</script>
+</body>
+</html>
