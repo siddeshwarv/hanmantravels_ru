@@ -533,6 +533,23 @@ button, input, select, textarea {
   justify-content: space-between;
 }
 
+/* Russia Market Context Section */
+.market-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 3px solid var(--accent-gold);
+}
+
+.market-value {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
 .reason-number {
   font-family: var(--font-heading);
   font-size: 2.2rem;

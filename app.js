@@ -12,12 +12,25 @@ const i18n = {
     navContact: "Контакты",
     btnRequestWorkers: "Запросить персонал (0 ₽)",
     btnPitchDeck: "Смотреть Pitch Deck",
+    btnAgreement: "Договор о сотрудничестве ↗",
     heroTitle: "Лицензированный индийский кадровый партнер для предприятий России",
     heroSubtitle: "Подбор квалифицированных и рабочих кадров без комиссий с работодателя (0 ₽) с 90-дневной гарантией бесплатной замены.",
     statFee: "0 ₽ Комиссия",
     statGuarantee: "90 Дней Гарантия",
     statLegal: "100% Легально (МВД/MEA)",
     statPool: "10 000+ В базе",
+
+    // Russia Market Context
+    marketTitle: "Дефицит кадров в РФ и государственное соглашение 2025 года",
+    marketSubtitle: "Привлечение индийских специалистов поддержано на высшем государственном уровне обеих стран",
+    market1Title: "Безработица в РФ",
+    market1Desc: "Минимальный уровень за 50 лет — острая нехватка рабочих рук в строительстве, промышленности и логистике.",
+    market2Title: "Трудовых въездов в 2024 г.",
+    market2Desc: "Рост в 4 раза за два года: российский бизнес активно замещает дефицит кадров специалистами из Индии.",
+    market3Title: "Индийцев уже в России",
+    market3Desc: "Проверенная практика найма и адаптации индийских работников на российских предприятиях.",
+    market4Title: "Соглашение о мобильности труда",
+    market4Desc: "Межправительственный договор Индии и России: официальный механизм набора, признание квалификаций и безопасная миграция.",
 
     // Why 0 Rubles
     whyTitle: "Почему подбор бесплатен для работодателя (0 ₽)?",
@@ -61,12 +74,25 @@ const i18n = {
     navContact: "Contacts",
     btnRequestWorkers: "Request Workers (0 ₽)",
     btnPitchDeck: "View Pitch Deck",
+    btnAgreement: "Partnership Agreement ↗",
     heroTitle: "Licensed Indian Manpower Partner for Russian Enterprise",
     heroSubtitle: "Supply of skilled and industrial manpower with 0 ₽ recruitment fee for employers and a 90-day free replacement warranty.",
     statFee: "0 ₽ Agency Fee",
     statGuarantee: "90-Day Warranty",
     statLegal: "100% Compliant (MVD/MEA)",
     statPool: "10,000+ Ready Pool",
+
+    // Russia Market Context
+    marketTitle: "Russia's Labour Shortage & the 2025 Government Agreement",
+    marketSubtitle: "Hiring Indian workers is now supported at the highest government level of both countries",
+    market1Title: "Russia Unemployment",
+    market1Desc: "2.7% — the lowest in 50 years. Acute shortage of hands in construction, industry and logistics.",
+    market2Title: "Work Entries in 2024",
+    market2Desc: "26,000+ — up 4× in two years. Russian business is actively replacing the labour gap with Indian specialists.",
+    market3Title: "Indians Already in Russia",
+    market3Desc: "60,000+ — proven practice of hiring and adapting Indian workers at Russian enterprises.",
+    market4Title: "Labour Mobility Agreement",
+    market4Desc: "Dec 2025 intergovernmental pact India–Russia: official recruitment mechanism, skill recognition and safe migration.",
 
     // Why 0 Rubles
     whyTitle: "Why 0 ₽ Recruitment Fee for Employers?",
@@ -250,13 +276,26 @@ function initTabs() {
   });
 }
 
-// Contact Form & Toast Feedback
+// Contact Form & Toast Feedback — sends lead via WhatsApp
 function initContactForm() {
   const form = document.getElementById('demand-form');
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    const inputs = form.querySelectorAll('input, textarea');
+    let parts = [];
+    inputs.forEach(inp => {
+      const label = inp.closest('.form-group')?.querySelector('.form-label');
+      const labelText = label ? label.innerText : '';
+      const val = inp.value.trim();
+      if (val) parts.push(`${labelText}: ${val}`);
+    });
+
+    const msg = encodeURIComponent('Hanman Travels — Новая заявка на персонал (ITB 26)\n' + parts.join('\n'));
+    const waPhone = '919490194000';
+    window.open(`https://wa.me/${waPhone}?text=${msg}`, '_blank');
     showToast(i18n[currentLang].toastSuccess);
     form.reset();
   });

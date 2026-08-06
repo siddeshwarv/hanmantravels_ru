@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manpower Recruitment Service Agreement — Hanman Travels (Editable)</title>
+<style>
+  :root {
+    --ink: #1a2332; --muted: #5b6472; --line: #d9dee6; --accent: #0f6f5c; --gold: #b8860b;
+    --bg: #f3f5f8; --paper: #ffffff; --soft: #eef7f4;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--ink); }
+  .toolbar {
+    position: sticky; top: 0; z-index: 50; background: #13202e; color: #fff;
+    font-family: Arial, sans-serif; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    padding: 10px 20px;
+  }
+  .toolbar h1 { font-size: 15px; margin: 0 12px 0 0; font-weight: 700; letter-spacing: .4px; }
+  .toolbar button {
+    background: var(--accent); color: #fff; border: 0; padding: 8px 14px; border-radius: 6px;
+    cursor: pointer; font-size: 13px; font-weight: 600; font-family: Arial, sans-serif;
+  }
+  .toolbar button:hover { filter: brightness(1.15); }
+  .toolbar .lang-btn { background: #2b3a4c; }
+  .toolbar .hint { font-size: 11px; color: #9fb2c5; margin-left: auto; font-family: Arial, sans-serif; }
+  .layout { display: flex; gap: 20px; max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+  .sidebar {
+    width: 300px; flex-shrink: 0; background: var(--paper); border: 1px solid var(--line);
+    border-radius: 10px; padding: 18px; font-family: Arial, sans-serif; height: fit-content;
+    position: sticky; top: 70px;
+  }
+  .sidebar h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); margin: 0 0 12px; }
+  .sidebar label { display: block; font-size: 12px; font-weight: 700; margin: 10px 0 4px; color: #37424f; }
+  .sidebar input, .sidebar textarea {
+    width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; font-size: 13px;
+    font-family: Arial, sans-serif;
+  }
+  .sidebar .btn-fill { width: 100%; margin-top: 14px; background: var(--accent); color: #fff; border: 0; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 13px; }
+  .sidebar .note { font-size: 11px; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+  .page {
+    flex: 1; background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+    padding: 48px 56px; box-shadow: 0 6px 24px rgba(20,30,50,.08); min-width: 0;
+  }
+  [contenteditable] { outline: none; border-bottom: 1px dashed transparent; }
+  [contenteditable]:hover { border-bottom-color: #b9c6d4; }
+  [contenteditable]:focus { border-bottom-color: var(--accent); background: var(--soft); border-radius: 2px; }
+  .doc-title { text-align: center; font-size: 20px; letter-spacing: 1px; font-weight: 700; margin: 0 0 4px; }
+  .doc-sub { text-align: center; font-size: 13px; color: var(--muted); margin: 0 0 26px; font-style: italic; }
+  .meta { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 26px; font-size: 13.5px; }
+  .meta b { font-weight: 700; }
+  h2.clause {
+    font-family: Arial, sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 4px; margin: 30px 0 12px;
+  }
+  p { font-size: 13.5px; line-height: 1.65; margin: 9px 0; text-align: justify; }
+  ol { margin: 8px 0 8px 22px; padding: 0; }
+  ol li { font-size: 13.5px; line-height: 1.6; margin: 5px 0; text-align: justify; }
+  .field { display: inline-block; min-width: 90px; font-weight: 700; }
+  .party-block { border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin: 12px 0; background: #fafbfd; }
+  .party-block h3 { font-family: Arial, sans-serif; font-size: 12.5px; letter-spacing: .6px; color: var(--gold); margin: 0 0 8px; text-transform: uppercase; }
+  .party-line { font-size: 13px; line-height: 1.7; }
+  .table-wrap { overflow-x: auto; margin: 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 12px; }
+  th { background: var(--soft); text-align: left; }
+  th, td { border: 1px solid var(--line); padding: 7px 9px; }
+  .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+  .sig-box { border-top: 1.5px solid var(--ink); padding-top: 8px; font-size: 12.5px; }
+  .sig-box .sig-name { font-weight: 700; font-size: 13.5px; margin: 6px 0 2px; }
+  .lang-ru, [data-lang="ru"] .lang-en { display: none; }
+  [data-lang="ru"] .lang-ru { display: block; }
+  [data-lang="ru"] .lang-ru-inline { display: inline; }
+  .lang-ru-inline { display: none; }
+  .badge { display: inline-block; background: var(--gold); color: #fff; font-family: Arial; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px; letter-spacing: .5px; vertical-align: middle; }
+  @media print {
+    body { background: #fff; }
+    .toolbar, .sidebar { display: none !important; }
+    .layout { display: block; max-width: none; margin: 0; padding: 0; }
+    .page { border: 0; box-shadow: none; border-radius: 0; padding: 0; }
+    @page { size: A4; margin: 18mm 16mm; }
+    p, ol li { font-size: 12px; }
+  }
+  @media (max-width: 900px) { .layout { flex-direction: column; } .sidebar { position: static; width: 100%; } }
+</style>
+</head>
+<body data-lang="en">
+
+<div class="toolbar">
+  <h1>MANPOWER RECRUITMENT SERVICE AGREEMENT</h1>
+  <button class="lang-btn" onclick="toggleLang()">🌐 Русский / English</button>
+  <button onclick="window.print()">🖨 Print / Save PDF</button>
+  <span class="hint">Click any text to edit it directly · then Print → "Save as PDF"</span>
+</div>
+
+<div class="layout">
+  <!-- ======================= SIDEBAR (QUICK FILL) ======================= -->
+  <aside class="sidebar">
+    <h2>Quick Fill — Autofill Party Details</h2>
+    <label>Agreement No.</label>
+    <input id="q-no" placeholder="HTR-2026-001">
+    <label>Place of signing</label>
+    <input id="q-place" placeholder="St. Petersburg, Russia">
+    <label>Date</label>
+    <input id="q-date" placeholder="12 August 2026">
+
+    <label>Employer Company Name</label>
+    <input id="q-cname" placeholder="ООО «СтройИнвест» / StroyInvest LLC">
+    <label>Employer INN / TIN</label>
+    <input id="q-inn" placeholder="7812345678">
+    <label>Employer Legal Address</label>
+    <input id="q-caddr" placeholder="Moscow, Russian Federation">
+    <label>Authorized Signatory (Employer)</label>
+    <input id="q-rep" placeholder="Aleksandr Ivanov">
+    <label>Signatory Title</label>
+    <input id="q-reptitle" placeholder="General Director">
+
+    <label>Hanman Travels Signatory</label>
+    <input id="q-htrep" placeholder="Ravi Kumar Vasam">
+    <label>Hanman Signatory Title</label>
+    <input id="q-httitle" placeholder="Proprietor / Director">
+
+    <button class="btn-fill" onclick="fillAll()">Apply to Agreement</button>
+    <p class="note">All fields are also directly editable in the document. Use Print → Save as PDF for a clean copy. RU/EN toggle switches the full contract language.</p>
+  </aside>
+
+  <!-- ======================= THE AGREEMENT ======================= -->
+  <main class="page" id="doc">
+
+    <p class="doc-title">MANPOWER RECRUITMENT SERVICE AGREEMENT</p>
+    <p class="lang-ru doc-sub" style="text-align:center;font-style:italic;color:var(--muted);font-size:13px;margin:0 0 26px;">ДОГОВОР ОБ ОКАЗАНИИ УСЛУГ ПО ПОДБОРУ ПЕРСОНАЛА</p>
+
+    <div class="meta">
+      <div><b>Agreement No.:</b> <span class="field editable" id="m-no">HTR-2026-001</span></div>
+      <div><b>Date:</b> <span class="field editable" id="m-date">12 August 2026</span></div>
+      <div><b>Place:</b> <span class="field editable" id="m-place">St. Petersburg, Russian Federation</span></div>
+    </div>
+
+    <!-- Parties -->
+    <h2 class="clause">Parties — Стороны</h2>
+    <div class="party-block">
+      <h3>Party A — Service Provider (Агентство)</h3>
+      <div class="party-line">
+        <b>HANMAN TRAVELS</b>, a company duly incorporated under the laws of India, acting through its authorised signatory
+        <span class="editable" id="m-htrep">Ravi Kumar Vasam</span>, <span class="editable" id="m-httitle">Director</span>,<br>
+        Registered Head Office: <span class="editable">Mancherial, Telangana, India</span><br>
+        MEA Recruiting Agent License No.: <b>B-1857/TEL/PER/1000+/5/10271/2023</b> (issued under the Emigration Act, 1983)<br>
+        E-mail: <span class="editable">hanmantravels@gmail.com</span> · Phone/WhatsApp: <span class="editable">+91 94901 94000</span>
+        <span class="lang-ru">(далее — «Агентство»)</span>
+        <span class="lang-en">(hereinafter "Agency")</span>
+      </div>
+    </div>
+    <div class="party-block">
+      <h3>Party B — Employer (Работодатель)</h3>
+      <div class="party-line">
+        <b><span class="editable" id="m-cname">ООО «СтройИнвест» / StroyInvest LLC</span></b>, INN <span class="editable" id="m-inn">7812345678</span>,<br>
+        Legal address: <span class="editable" id="m-caddr">Moscow, Russian Federation</span>,<br>
+        acting through its authorised signatory <span class="editable" id="m-rep">Aleksandr Ivanov</span>, <span class="editable" id="m-reptitle">General Director</span>,<br>
+        E-mail: <span class="editable">hr@stroyinvest.ru</span> · Phone: <span class="editable">+7 900 000-00-00</span>
+        <span class="lang-ru">(далее — «Работодатель»)</span>
+        <span class="lang-en">(hereinafter "Employer")</span>
+      </div>
+    </div>
+
+    <h2 class="clause">Recitals — Преамбула</h2>
+    <p><span class="lang-ru">Настоящий Договор заключается в соответствии с Законом Индии об эмиграции 1983 г. и правилами системы eMigrate МИД Индии, законодательством РФ о привлечении иностранной рабочей силы, а также Соглашением между Правительствами Индии и России о мобильности рабочей силы (декабрь 2025 г.).</span>
+       <span class="lang-en">This Agreement is entered into in accordance with the Indian Emigration Act, 1983 and the rules of the eMigrate portal of the Ministry of External Affairs of India (MEA), the laws of the Russian Federation on attraction of foreign workforce, and the India–Russia Labour Mobility Agreement (December 2025).</span></p>
+    <ol type="A">
+      <li><span class="lang-ru">Работодатель имеет потребность в привлечении квалифицированной и рабочей силы из Индии (далее — «Работники») для своих производственных нужд в Российской Федерации;</span>
+          <span class="lang-en">The Employer has a need for recruitment of skilled and general workforce from India (the "Workers") for its operations in the Russian Federation;</span></li>
+      <li><span class="lang-ru">Агентство является лицензированным рекрутинговым агентством Правительства Индии (RA License No. B-1857/TEL/PER/1000+/5/10271/2023) и уполномочено оказывать услуги по подбору, оформлению и трудоустройству индийских граждан за рубежом;</span>
+          <span class="lang-en">The Agency is a Government of India licensed recruiting agency (RA License No. B-1857/TEL/PER/1000+/5/10271/2023) and is authorised to provide recruitment, processing and placement services for Indian nationals abroad;</span></li>
+      <li><span class="lang-ru">Стороны намерены установить долгосрочное партнерство на основе взаимной выгоды, качества, прозрачности и полного соответствия законодательству обеих стран.</span>
+          <span class="lang-en">The Parties intend to establish a long-term partnership founded on mutual benefit, quality, transparency and full compliance with the laws of both countries.</span></li>
+    </ol>
+
+    <h2 class="clause">1. Definitions — Определения</h2>
+    <p><span class="lang-ru">«Работник» — гражданин Индии, подобранный, протестированный и оформленный Агентством по заявке Работодателя; «Деманд» — заявка Работодателя в системе eMigrate; «Трудовой договор» — двуязычный трудовой договор между Работодателем и Работником, согласованный с МИД Индии; «Сервисный сбор» — плата за услуги, предусмотренная Разделом 3; «Сила-мажор» — обстоятельства, указанные в Разделе 12.</span>
+       <span class="lang-en">"Worker" means an Indian citizen sourced, tested and processed by the Agency upon the Employer's demand; "Demand" means the Employer's demand letter raised on the eMigrate portal; "Employment Contract" means the bilingual employment contract between the Employer and each Worker per MEA requirements; "Service Fee" means the consideration for services under Section 3; "Force Majeure" means the circumstances set out in Section 12.</span></p>
+
+    <h2 class="clause">2. Scope of Services — Объем услуг</h2>
+    <p><span class="lang-en">The Agency shall provide the following services:</span>
+       <span class="lang-ru">Агентство обязуется оказать следующие услуги:</span></p>
+    <ol>
+      <li><span class="lang-en">Sourcing, screening and pre-selection of Workers from its pan-India candidate pool, including police clearance (PCC), medical fitness (GAMCA/panel) and background checks;</span>
+          <span class="lang-ru">Подбор, отбор и предварительный скрининг Работников из всероссийской… из общенациональной базы кандидатов Агентства в Индии, включая справку об отсутствии судимости (PCC), медицинский осмотр (GAMCA) и проверку анкетных данных;</span></li>
+      <li><span class="lang-en">Practical trade testing with video evidence (welders 6G/TIG/SMAW, CNC operators, drivers, technicians, and general workers), with live-video inspection available to the Employer;</span>
+          <span class="lang-ru">Практическое тестирование квалификации с видеофиксацией (сварщики 6G/TIG/SMAW, операторы ЧПУ, водители, техники, рабочие общего профиля), с возможностью осмотра по видеосвязи;</span></li>
+      <li><span class="lang-en">Processing of all Indian-side emigration formalities: eMigrate demand acknowledgement, Power of Attorney, emigration clearance, PBBY insurance facilitation, pre-departure orientation (incl. basic Russian vocabulary and workplace discipline);</span>
+          <span class="lang-ru">Оформление всех индийских эмиграционных формальностей: акцепт деманда eMigrate, доверенность, эмиграционная очистка, содействие страхованию PBBY, предотъездный инструктаж (включая базовую русскую лексику и трудовую дисциплину);</span></li>
+      <li><span class="lang-en">Coordination of the Employer's MVD electronic invitation and the Russian work visa process;</span>
+          <span class="lang-ru">Координация электронного приглашения МВД РФ и процесса получения рабочей визы;</span></li>
+      <li><span class="lang-en">Post-arrival support: migration registration advisory, onboarding coordination, and the 90-day free replacement guarantee per Section 5.</span>
+          <span class="lang-ru">Постприездная поддержка: консультации по миграционному учету, координация адаптации, и гарантия бесплатной замены 90 дней согласно Разделу 5.</span></li>
+    </ol>
+    <p><span class="lang-en">The Employer retains full responsibility for its statutory duties as the employer of record in Russia: work permits, employment contracts, wages, taxes, housing and occupational safety.</span>
+       <span class="lang-ru">Работодатель сохраняет полную ответственность за свои установленные законом обязанности как работодателя в России: разрешения на работу, трудовые договоры, заработную плату, налоги, жилье и охрану труда.</span></p>
+
+    <h2 class="clause">3. Fees & Payment Terms — Стоимость и порядок расчетов</h2>
+    <p><span class="lang-en"><b>3.1 Recruitment Service Fee: 0 (zero) ₽.</b> As a strategic market-entry initiative, the Agency charges the Employer no recruitment fee. The Agency's revenue derives solely from the regulated service fee payable by Workers under the Emigration Act, 1983 and eMigrate rules — which is capped at the statutory limit and documented with receipts.</span>
+       <span class="lang-ru"><b>3.1. Сбор за подбор: 0 (ноль) ₽.</b> В рамках стратегии выхода на российский рынок Агентство не взимает с Работодателя комиссии за подбор. Доход Агентства формируется исключительно из регламентированного сбора с Работников по Закону об эмиграции 1983 г. и правилам eMigrate — в пределах установленного лимита, с выдачей чеков.</span></p>
+    <p><span class="lang-en"><b>3.2 Reimbursable costs</b> (documented, invoiced at cost, payable within 10 banking days): air tickets per the agreed deployment schedule, visa fee, medical examination, PBBY insurance, attestation — as listed in Annex A. No cost is incurred without the Employer's prior written approval.</span>
+       <span class="lang-ru"><b>3.2. Возмещаемые расходы</b> (документированные, выставляемые по фактической стоимости, оплата в течение 10 банковских дней): авиабилеты по согласованному графику, визовый сбор, медосмотр, страховка PBBY, легализация — согласно Приложению А. Никакие расходы не производятся без предварительного письменного согласия Работодателя.</span></p>
+    <p><span class="lang-en"><b>3.3 Optional mobilization advance:</b> where the Employer requests dedicated sourcing priority, a non-refundable advance of up to 30% of estimated reimbursable costs may be agreed (Annex A), creditable against final invoices. This advance funds trade testing, medicals and documentation to protect both Parties' commitment.</span>
+       <span class="lang-ru"><b>3.3. Опциональный аванс на мобилизацию:</b> при запросе Работодателем приоритетного подбора может быть согласован невозвратный аванс до 30% от ориентировочных возмещаемых расходов (Приложение А), засчитываемый в счет итоговых счетов. Аванс финансирует тестирование, медосмотры и оформление и фиксирует обязательства обеих Сторон.</span></p>
+    <p><span class="lang-en"><b>3.4 Invoicing & currency:</b> invoices in EUR/USD/INR (RUB only with prior written agreement); late payment interest of 0.05% per day after 10 banking days. Settlement shall use lawful banking channels (incl. Special Rupee Vostro Accounts where applicable).</span>
+       <span class="lang-ru"><b>3.4. Счета и валюта:</b> счета в EUR/USD/INR (RUB — только по предварительному письменному соглашению); пени за просрочку 0,05% в день после 10 банковских дней. Расчеты — через законные банковские каналы (в т.ч. специальные рупийные счета Vostro, где применимо).</span></p>
+
+    <h2 class="clause">4. Timelines & Service Levels — Сроки и SLA</h2>
+    <ol>
+      <li><span class="lang-en">Standard deployment cycle: <b>30–45 days</b> from Demand acknowledgement to arrival (Annex A schedule); sourcing and trade testing within 14–21 days.</span>
+          <span class="lang-ru">Стандартный цикл поставки: <b>30–45 дней</b> от акцепта деманда до прилета (график — Приложение А); подбор и тестирование в течение 14–21 дней.</span></li>
+      <li><span class="lang-en">The Employer shall issue the Demand Letter, Power of Attorney and signed specimen Employment Contracts within 5 business days of request — this is the trigger for the timeline.</span>
+          <span class="lang-ru">Работодатель оформляет Деманд, Доверенность и подписанные модельные трудовые договоры в течение 5 рабочих дней с момента запроса — это точка отсчета сроков.</span></li>
+      <li><span class="lang-en">Any delay caused by the Employer, Indian or Russian authorities (visa, MVD, migration registration) extends the timeline correspondingly and is not attributable to the Agency.</span>
+          <span class="lang-ru">Любая задержка, вызванная Работодателем, индийскими или российскими органами (виза, МВД, миграционный учет), продлевает сроки и не является ответственностью Агентства.</span></li>
+      <li><span class="lang-en">Mutual symmetric liquidated damages: 0.1% of the affected batch's estimated reimbursable cost per week of Agency-side delay (max 5%), and the same on the Employer side for late payment or late documentation (max 5%), netted monthly.</span>
+          <span class="lang-ru">Взаимная симметричная неустойка: 0,1% от ориентировочных возмещаемых расходов затронутой партии за каждую неделю просрочки Агентства (макс. 5%) и такая же для Работодателя за просрочку оплаты или документов (макс. 5%), с ежемесячным зачетом.</span></li>
+    </ol>
+
+    <h2 class="clause">5. Quality Guarantee & 90-Day Replacement — Гарантия качества и замена</h2>
+    <ol>
+      <li><span class="lang-en">Each Worker passes the 4-stage screening: police clearance, medical fitness, practical trade test, and pre-departure orientation.</span>
+          <span class="lang-ru">Каждый Работник проходит 4-этапный отбор: справка об отсутствии судимости, медицинское освидетельствование, практический тест и предотъездный инструктаж.</span></li>
+      <li><span class="lang-en">If a Worker fails to meet the agreed trade standards or leaves employment through no fault of the Employer within <b>90 days</b> of arrival, the Agency shall provide one free replacement Worker at its own cost (including replacement's airfare and documentation) within 60 days.</span>
+          <span class="lang-ru">Если Работник не соответствует согласованным квалификационным стандартам или покидает работу не по вине Работодателя в течение <b>90 дней</b> с момента прилета, Агентство предоставляет одного бесплатного Работника на замену за свой счет (включая авиабилет и оформление) в течение 60 дней.</span></li>
+      <li><span class="lang-en">Warranty applies per replacement slot once per Worker; refunds pro-rata only if a replacement is impossible after two attempts through Agency fault.</span>
+          <span class="lang-ru">Гарантия применяется один раз на каждого Работника; возврат пропорционально — только если замена невозможна после двух попыток по вине Агентства.</span></li>
+      <li><span class="lang-en">The warranty does not cover termination for the Employer's breach, layoffs, or Workers' wilful misconduct after arrival.</span>
+          <span class="lang-ru">Гарантия не покрывает увольнение по вине Работодателя, сокращения или умышленные нарушения Работника после прилета.</span></li>
+    </ol>
+
+    <h2 class="clause">6. Mutual Benefits & Partnership Terms — Взаимные выгоды и партнерство</h2>
+    <p><span class="lang-en">The Parties intend more than a one-off transaction. In consideration of the 0 ₽ model and the Agency's investment in Russia, the following partnership terms apply:</span>
+       <span class="lang-ru">Стороны намерены строить более чем разовую сделку. В силу модели «0 ₽» и инвестиций Агентства в российский рынок действуют следующие партнерские условия:</span></p>
+    <ol>
+      <li><span class="lang-en"><b>Framework partnership (6.1):</b> This Agreement is an annual framework. The Employer may raise multiple Demands; unused volumes roll over within the term. Quarterly joint reviews (time-to-deploy, 90-day retention, grievance count) set shared KPIs.</span>
+          <span class="lang-ru"><b>Рамочное партнерство (6.1):</b> настоящий Договор является годовым рамочным. Работодатель может подавать несколько демандов; неиспользованные объемы переносятся в пределах срока. Совместные ежеквартальные обзоры (сроки поставки, удержание за 90 дней, количество жалоб) задают общие KPI.</span></li>
+      <li><span class="lang-en"><b>Preferred partner status (6.2):</b> The Employer grants the Agency preferred/sole-sourcing status for India-bound workforce in the categories in Annex A for the term; the Agency in return guarantees priority pipeline, a dedicated account manager and fixed-price lock for the term.</span>
+          <span class="lang-ru"><b>Статус предпочтительного партнера (6.2):</b> Работодатель предоставляет Агентству статус предпочтительного/единственного источника индийской рабочей силы по категориям Приложения А на срок договора; взамен Агентство гарантирует приоритетную поставку, персонального менеджера и фиксацию цен на срок договора.</span></li>
+      <li><span class="lang-en"><b>First right of refusal (6.3):</b> For 10 business days, the Employer has first right of refusal on Workers sourced by the Agency for similar roles, before they are offered to other employers.</span>
+          <span class="lang-ru"><b>Преимущественное право (6.3):</b> в течение 10 рабочих дней Работодатель имеет преимущественное право на Работников, подобранных Агентством для аналогичных должностей, до предложения их другим работодателям.</span></li>
+      <li><span class="lang-en"><b>Volume loyalty (6.4):</b> Reimbursable-cost margins and priority service improve at committed volumes (50+, 100+ Workers per year) per Annex A; meeting KPIs triggers both preferential terms for the Employer and preferred-status renewal for the Agency.</span>
+          <span class="lang-ru"><b>Лояльность за объем (6.4):</b> условия по возмещаемым расходам и приоритет обслуживания улучшаются при подтвержденных объемах (50+, 100+ Работников в год) согласно Приложению А; выполнение KPI дает Работодателю льготные условия, а Агентству — продление предпочтительного статуса.</span></li>
+      <li><span class="lang-en"><b>Performance bonus (6.5):</b> Batches delivered faster than the SLA (under 30 days) earn the Agency a priority-fee credit, mutually agreed per batch — recognition, not penalty, for superior service.</span>
+          <span class="lang-ru"><b>Бонус за результат (6.5):</b> партии, поставленные быстрее SLA (менее 30 дней), дают Агентству приоритетный кредит, согласуемый по каждой партии, — признание, а не штраф, за качество сервиса.</span></li>
+      <li><span class="lang-en"><b>Referrals & co-branding (6.6):</b> The Employer may refer other Russian employers (with consent); a referral credit applies. Each Party may cite the other as an approved partner in marketing materials (subject to prior written approval).</span>
+          <span class="lang-ru"><b>Рекомендации и кобрендинг (6.6):</b> Работодатель может рекомендовать Агентство другим российским компаниям (с согласия); предусмотрен реферальный бонус. Стороны вправе ссылаться друг на друга как на утвержденных партнеров в маркетинговых материалах (с предварительного письменного согласия).</span></li>
+    </ol>
+
+    <h2 class="clause">7. Compliance — Соответствие законодательству</h2>
+    <ol>
+      <li><span class="lang-en">Both Parties shall comply with the Indian Emigration Act 1983, eMigrate rules, the Russian laws on migration and employment, and the India–Russia Labour Mobility Agreement framework.</span>
+          <span class="lang-ru">Обе Стороны соблюдают Закон Индии об эмиграции 1983 г., правила eMigrate, российское миграционное и трудовое законодательство и положения Соглашения о мобильности рабочей силы между Индией и Россией.</span></li>
+      <li><span class="lang-en"><b>Zero-cost guarantee to Workers:</b> the Agency certifies Workers are charged only the regulated fee, within statutory limits, with receipts; the Employer pays wages and benefits per the specimen contract, never charging Workers recruitment costs.</span>
+          <span class="lang-ru"><b>Гарантия нулевых затрат для Работников:</b> Агентство заверяет, что с Работников взимается только регламентированный сбор в пределах лимитов с выдачей чеков; Работодатель выплачивает зарплату и льготы по модельному договору и не перекладывает на Работников расходы по подбору.</span></li>
+      <li><span class="lang-en"><b>Civilian use only (7.3):</b> Workers are supplied exclusively for civilian economic activity. Deployment to military, paramilitary or conflict-zone operations is expressly prohibited and voids all Agency warranties.</span>
+          <span class="lang-ru"><b>Только гражданское применение (7.3):</b> Работники поставляются исключительно для гражданской хозяйственной деятельности. Привлечение к военным, военизированным или конфликтным операциям прямо запрещено и аннулирует все гарантии Агентства.</span></li>
+      <li><span class="lang-en"><b>Sanctions & banking (7.4):</b> All payments shall use lawful channels only; neither Party shall request or perform any scheme to circumvent sanctions, currency controls or tax law.</span>
+          <span class="lang-ru"><b>Санкции и банковские расчеты (7.4):</b> все платежи осуществляются только через законные каналы; ни одна Сторона не вправе требовать или совершать схемы обхода санкций, валютного или налогового законодательства.</span></li>
+    </ol>
+
+    <h2 class="clause">8. Confidentiality — Конфиденциальность</h2>
+    <p><span class="lang-en">Each Party shall keep confidential all non-public information (candidate data, pricing, project data, contract terms) and use it solely for this Agreement. Obligation survives 3 years after termination. Breach entitles the harmed Party to liquidated damages of 5% of the total reimbursable costs of the affected batch, without prejudice to other remedies.</span>
+       <span class="lang-ru">Каждая Сторона сохраняет конфиденциальность всей непубличной информации (данные кандидатов, цены, данные проектов, условия договора) и использует ее исключительно в рамках настоящего Договора. Обязательство действует 3 года после прекращения договора. Нарушение дает пострадавшей Стороне право на неустойку в размере 5% от общей суммы возмещаемых расходов затронутой партии, без ущерба для иных средств защиты.</span></p>
+
+    <h2 class="clause">9. Intellectual Property — Интеллектуальная собственность</h2>
+    <p><span class="lang-en">Candidate databases, screening methodologies, trade-test materials and related know-how remain the Agency's property. Marketing materials provided to the Employer remain the Employer's property. Nothing transfers between the Parties.</span>
+       <span class="lang-ru">Базы кандидатов, методики отбора, материалы тестирования и ноу-хау остаются собственностью Агентства. Маркетинговые материалы, переданные Работодателю, остаются его собственностью. Передачи прав между Сторонами не происходит.</span></p>
+
+    <h2 class="clause">10. Liability & Indemnity — Ответственность</h2>
+    <ol>
+      <li><span class="lang-en">Each Party indemnifies the other against third-party claims arising from its own breach, negligence or wilful misconduct.</span>
+          <span class="lang-ru">Каждая Сторона возмещает другой убытки по претензиям третьих лиц, возникшим из-за ее собственного нарушения, небрежности или умысла.</span></li>
+      <li><span class="lang-en">Each Party's aggregate liability is capped at the total reimbursable costs of the affected batch; consequential, indirect or lost-profit damages are excluded, except for confidentiality and compliance breaches.</span>
+          <span class="lang-ru">Совокупная ответственность каждой Стороны ограничена общей суммой возмещаемых расходов затронутой партии; косвенные убытки и упущенная выгода исключаются, кроме нарушений конфиденциальности и комплаенса.</span></li>
+      <li><span class="lang-en">The Agency is not liable for the Workers' conduct at work or the Employer's statutory employer duties.</span>
+          <span class="lang-ru">Агентство не отвечает за поведение Работников на производстве и за выполнение Работодателем своих обязательств как работодателя.</span></li>
+    </ol>
+
+    <h2 class="clause">11. Term & Termination — Срок и расторжение</h2>
+    <ol>
+      <li><span class="lang-en">Initial term: 12 months from the date above, auto-renewing annually unless either Party gives 30 days' notice.</span>
+          <span class="lang-ru">Начальный срок: 12 месяцев с указанной выше даты, автоматически продлевается ежегодно, если одна из Сторон не уведомит за 30 дней.</span></li>
+      <li><span class="lang-en">Either Party may terminate with 30 days' written notice, or immediately for material breach (incl. license suspension, insolvency, illegality) with 7 days' cure period where curable.</span>
+          <span class="lang-ru">Любая Сторона вправе расторгнуть договор с письменным уведомлением за 30 дней или немедленно при существенном нарушении (включая приостановление лицензии, банкротство, незаконность) с 7-дневным периодом устранения, если нарушение устранимо.</span></li>
+      <li><span class="lang-en">On termination: outstanding invoices are settled; Workers already in process are completed per Annex A terms; unused advances are credited or refunded within 30 days.</span>
+          <span class="lang-ru">При расторжении: оплачиваются выставленные счета; Работники в процессе оформления доводятся до конца на условиях Приложения А; неиспользованные авансы засчитываются или возвращаются в течение 30 дней.</span></li>
+    </ol>
+
+    <h2 class="clause">12. Force Majeure — Обстоятельства непреодолимой силы</h2>
+    <p><span class="lang-en">Neither Party is liable for delay or failure caused by force majeure: war, sanctions affecting lawful payment channels, visa or migration freezes, pandemics, natural disasters, or governmental acts — provided the affected Party notifies the other within 7 days and uses reasonable efforts to mitigate. If force majeure exceeds 90 days, either Party may terminate with proportionate settlement.</span>
+       <span class="lang-ru">Стороны не несут ответственности за просрочку или неисполнение, вызванные форс-мажором: война, санкции, влияющие на законные платежные каналы, замораживание выдачи виз или миграционных услуг, пандемии, стихийные бедствия, акты органов власти — при условии уведомления другой Стороны в течение 7 дней и разумных усилий по минимизации последствий. Если форс-мажор длится более 90 дней, любая Сторона вправе расторгнуть договор с пропорциональными расчетами.</span></p>
+
+    <h2 class="clause">13. Governing Law & Dispute Resolution — Применимое право и споры</h2>
+    <p><span class="lang-en">This Agreement is governed by the laws of India. Disputes shall first be resolved through 30 days of good-faith negotiations; failing which, the dispute shall be settled by arbitration at the Singapore International Arbitration Centre (SIAC) under its rules, seat Singapore, in English, with one arbitrator. This neutral seat is chosen for enforceability in both countries. Nothing prevents either Party from seeking interim relief in competent courts.</span>
+       <span class="lang-ru">Настоящий Договор регулируется правом Индии. Споры сначала разрешаются путем добросовестных переговоров в течение 30 дней; при недостижении согласия — арбитражем в Сингапурском международном арбитражном центре (SIAC) по его правилам, место арбитража — Сингапур, язык — английский, один арбитр. Нейтральное место арбитража выбрано для исполнимости решений в обеих странах. Ничто не препятствует обращению за обеспечительными мерами в компетентные суды.</span></p>
+
+    <h2 class="clause">14. General — Общие положения</h2>
+    <ol>
+      <li><span class="lang-en">Amendments require written agreement of both Parties; this Agreement is the entire understanding between them; if any provision is invalid, the remainder stays effective; no waiver unless written.</span>
+          <span class="lang-ru">Изменения — только в письменной форме с согласия обеих Сторон; настоящий Договор является полным соглашением Сторон; при недействительности какого-либо положения остальные сохраняют силу; отказ от прав — только в письменной форме.</span></li>
+      <li><span class="lang-en">Notices by e-mail to the addresses above are valid; this Agreement may be executed in counterparts, incl. by electronic signature.</span>
+          <span class="lang-ru">Уведомления по электронной почте на указанные адреса действительны; Договор может быть подписан в нескольких экземплярах, в т.ч. электронной подписью.</span></li>
+      <li><span class="lang-en">The English text prevails in case of discrepancy; a Russian translation is provided for convenience.</span>
+          <span class="lang-ru">В случае расхождений преимущественную силу имеет английский текст; русский перевод предоставлен для удобства.</span></li>
+    </ol>
+
+    <h2 class="clause">15. Signatures — Подписи сторон</h2>
+    <p style="font-size:12.5px;color:var(--muted);"><span class="lang-en">Each signatory represents that he/she is duly authorised to bind the respective Party.</span>
+    <span class="lang-ru">Каждый подписант подтверждает, что он/она должным образом уполномочен(а) представлять соответствующую Сторону.</span></p>
+    <div class="sig-grid">
+      <div class="sig-box">
+        <b>For HANMAN TRAVELS (Agency)</b>
+        <div class="sig-name editable" contenteditable="true">Ravi Kumar Vasam</div>
+        <div class="editable" contenteditable="true">Director</div>
+        <div>Date: <span class="editable" contenteditable="true">12 August 2026</span></div>
+        <div>Signature: ______________________________</div>
+      </div>
+      <div class="sig-box">
+        <b>For the Employer (Работодатель)</b>
+        <div class="sig-name editable" contenteditable="true">Aleksandr Ivanov</div>
+        <div class="editable" contenteditable="true">General Director</div>
+        <div>Date: <span class="editable" contenteditable="true">12 August 2026</span></div>
+        <div>Signature: ______________________________</div>
+      </div>
+    </div>
+
+    <p style="margin-top:34px;font-size:11.5px;color:var(--muted);text-align:center;">HANMAN TRAVELS · RA License B-1857/TEL/PER/1000+/5/10271/2023 · hanmantravels@gmail.com · +91 94901 94000</p>
+  </main>
+</div>
+
+<script>
+  function fillAll() {
+    const map = { 'q-no':'m-no', 'q-date':'m-date', 'q-place':'m-place', 'q-cname':'m-cname', 'q-inn':'m-inn', 'q-caddr':'m-caddr', 'q-rep':'m-rep', 'q-reptitle':'m-reptitle', 'q-htrep':'m-htrep', 'q-httitle':'m-httitle' };
+    for (const [src, dst] of Object.entries(map)) {
+      const v = document.getElementById(src).value.trim();
+      if (v) document.getElementById(dst).textContent = v;
+    }
+  }
+  function toggleLang() {
+    const body = document.body;
+    body.dataset.lang = body.dataset.lang === 'en' ? 'ru' : 'en';
+  }
+</script>
+</body>
+</html>
