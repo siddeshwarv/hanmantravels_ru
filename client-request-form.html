@@ -61,6 +61,38 @@
   .hint { font-size:11px; color:var(--muted); margin-top:10px; line-height:1.5; }
   .agree-box { background:rgba(230,179,77,.06); border:1px solid rgba(230,179,77,.35); border-radius:12px; padding:14px; margin-top:10px; font-size:12.5px; line-height:1.65; }
   .agree-box b { color:var(--gold); }
+  /* PITCH HERO + SECTIONS */
+  .hero { background:linear-gradient(135deg,#0e1c34 0%,#15264a 55%,#0e1c34 100%); border:1px solid var(--line); border-radius:18px; padding:36px 30px 28px; margin-bottom:18px; position:relative; overflow:hidden; }
+  .hero::after { content:''; position:absolute; inset:0; opacity:.08; background:linear-gradient(90deg,#ff9933 0%,#fff 30%,#138808 55%,#fff 70%,#0039a6 88%,#d52b1e 100%); pointer-events:none; }
+  .hero .badge { display:inline-block; background:rgba(230,179,77,.18); border:1px solid rgba(230,179,77,.45); color:var(--gold); font-size:11px; font-weight:800; letter-spacing:1.5px; padding:5px 12px; border-radius:999px; text-transform:uppercase; }
+  .hero h1 { font-size:30px; line-height:1.2; margin:14px 0 8px; font-weight:900; letter-spacing:.3px; }
+  .hero p.lead { font-size:15px; color:var(--muted); max-width:680px; margin:0 0 20px; line-height:1.55; }
+  .hero .first { color:var(--green); font-weight:800; font-size:12.5px; letter-spacing:.6px; margin-bottom:14px; }
+  .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0 20px; position:relative; z-index:1; }
+  @media(max-width:640px){ .stat-row{ grid-template-columns:repeat(2,1fr); } }
+  .stat { background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:12px; padding:14px 12px; text-align:center; }
+  .stat .v { font-size:22px; font-weight:900; color:var(--gold); letter-spacing:.5px; }
+  .stat .l { font-size:11px; color:var(--muted); margin-top:3px; line-height:1.3; }
+  .hero .cta-row { display:flex; gap:10px; flex-wrap:wrap; position:relative; z-index:1; }
+  .hero .cta-row .btn { font-size:14px; padding:11px 20px; }
+  .hero .cta-row .btn.ghost { background:transparent; border:1.5px solid var(--gold); color:var(--gold); }
+  .pitch-h2 { font-size:13px; text-transform:uppercase; letter-spacing:1.6px; color:var(--cyan); margin:0 0 4px; font-weight:800; }
+  .pitch-sub { font-size:12px; color:var(--muted); margin-bottom:14px; }
+  .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  @media(max-width:640px){ .grid4{ grid-template-columns:repeat(2,1fr); } .grid2{ grid-template-columns:1fr; } }
+  .ptile { background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:12px; padding:16px 14px; }
+  .ptile .n { color:var(--gold); font-weight:900; font-size:14px; letter-spacing:1px; margin-bottom:6px; }
+  .ptile h3 { font-size:14px; margin:0 0 6px; font-weight:800; }
+  .ptile p { font-size:12.5px; color:var(--muted); line-height:1.55; margin:0; }
+  .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  @media(max-width:640px){ .steps{ grid-template-columns:1fr; } }
+  .step { position:relative; padding-left:42px; }
+  .step .sn { position:absolute; left:0; top:0; width:30px; height:30px; border-radius:9px; background:var(--cyan); color:#0e1626; font-weight:900; display:flex; align-items:center; justify-content:center; }
+  .step h4 { font-size:13.5px; margin:2px 0 4px; }
+  .step p { font-size:12px; color:var(--muted); line-height:1.5; margin:0; }
+  .anchorpad { height:10px; }
+  .lang-en, [data-lang="en"] .lang-ru { } .lang-ru { display:none; } [data-lang="ru"] .lang-ru { display:inline; } [data-lang="ru"] .lang-en { display:none; }
   .print-area { display:none; }
   @media print {
     body { background:#fff; color:#111; }
@@ -89,6 +121,90 @@
 
 <div class="wrap">
   <div class="col-form">
+
+    <!-- ============ PITCH HERO ============ -->
+    <div class="hero">
+      <span class="badge"><span class="lang-en">Indo-Russia Talent Bridge 2026 · St. Petersburg</span><span class="lang-ru">Индия–Россия: мост талантов 2026 · Санкт-Петербург</span></span>
+      <h1><span class="lang-en">Indian workers for your company — <span style="color:var(--gold)">0 ₽</span> recruitment fee</span><span class="lang-ru">Индийские рабочие для вашей компании — <span style="color:var(--gold)">0 ₽</span> за подбор</span></h1>
+      <p class="first"><span class="lang-en">Our client comes first — every time.</span><span class="lang-ru">Наш клиент — на первом месте. Всегда.</span></p>
+      <p class="lead"><span class="lang-en">Licensed Indian manpower partner (Government of India, MEA). Full-cycle: sourcing → trade testing → visas → deployment in 30–45 days → 90-day free replacement warranty. Scroll down — see us, then leave your request. One page, one minute.</span><span class="lang-ru">Лицензированное индийское кадровое агентство (Правительство Индии, МИД). Полный цикл: подбор → тестирование → визы → поставка за 30–45 дней → гарантия бесплатной замены 90 дней. Прокрутите вниз — узнайте о нас и оставьте заявку. Одна страница, одна минута.</span></p>
+      <div class="stat-row">
+        <div class="stat"><div class="v">0 ₽</div><div class="l"><span class="lang-en">Agency fee</span><span class="lang-ru">Комиссия агентства</span></div></div>
+        <div class="stat"><div class="v">90 DAYS</div><div class="l"><span class="lang-en">Free replacement</span><span class="lang-ru">Гарантия замены</span></div></div>
+        <div class="stat"><div class="v">30–45</div><div class="l"><span class="lang-en">Days to arrival</span><span class="lang-ru">Дней до прилета</span></div></div>
+        <div class="stat"><div class="v">100%</div><div class="l"><span class="lang-en">Legal (MEA/MVD)</span><span class="lang-ru">Легально (МИД/МВД)</span></div></div>
+      </div>
+      <div class="cta-row">
+        <a href="#form-top" class="btn"><span class="lang-en">Leave your request →</span><span class="lang-ru">Оставить заявку →</span></a>
+        <a href="https://wa.me/919490194000" target="_blank" class="btn ghost">WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- ============ PITCH: WHO WE ARE ============ -->
+    <div class="card">
+      <div class="pitch-h2"><span class="lang-en">Who we are</span><span class="lang-ru">Кто мы</span></div>
+      <div class="pitch-sub"><span class="lang-en">A small family-owned, government-licensed Indian recruitment agency.</span><span class="lang-ru">Семейное кадровое агентство, лицензированное правительством Индии.</span></div>
+      <div class="grid2">
+        <div class="ptile"><div class="n">RA</div><h3><span class="lang-en">MEA Licence</span><span class="lang-ru">Лицензия МИД</span></h3><p>B-1857/TEL/PER/1000+/5/10271/2023 · <span class="lang-en">Emigration Act 1983</span><span class="lang-ru">Закон об эмиграции 1983</span></p></div>
+        <div class="ptile"><div class="n">2025</div><h3><span class="lang-en">India–Russia Labour Mobility Agreement</span><span class="lang-ru">Соглашение о мобильности труда</span></h3><p><span class="lang-en">Official government-to-government framework</span><span class="lang-ru">Официальный межправительственный механизм</span></p></div>
+      </div>
+    </div>
+
+    <!-- ============ PITCH: WHY 0 ₽ ============ -->
+    <div class="card">
+      <div class="pitch-h2"><span class="lang-en">Why 0 ₽ for employers</span><span class="lang-ru">Почему 0 ₽ для работодателя</span></div>
+      <div class="pitch-sub"><span class="lang-en">Direct answer to: "is this a scam?"</span><span class="lang-ru">Прямой ответ: «В чем подвох?»</span></div>
+      <div class="grid4">
+        <div class="ptile"><div class="n">01</div><h3><span class="lang-en">Market expansion</span><span class="lang-ru">Выход на рынок РФ</span></h3><p><span class="lang-en">Strategic Russia entry — we invest in trust, not fees.</span><span class="lang-ru">Стратегия доверия, а не комиссии.</span></p></div>
+        <div class="ptile"><div class="n">02</div><h3><span class="lang-en">Indian revenue model</span><span class="lang-ru">Индийская модель</span></h3><p><span class="lang-en">Regulated candidate fee covers our costs (Emigration Act 1983).</span><span class="lang-ru">Регламентированный сбор с кандидата.</span></p></div>
+        <div class="ptile"><div class="n">03</div><h3><span class="lang-en">Pan-India pool</span><span class="lang-ru">Вся Индия</span></h3><p><span class="lang-en">Pre-screened thousands — minimal marginal cost.</span><span class="lang-ru">Готовая база — минимум издержек.</span></p></div>
+        <div class="ptile"><div class="n">04</div><h3><span class="lang-en">Zero risk</span><span class="lang-ru">Ноль риска</span></h3><p><span class="lang-en">No financial commitment — only official documents.</span><span class="lang-ru">Финансовых обязательств нет. Только документы.</span></p></div>
+      </div>
+    </div>
+
+    <!-- ============ PITCH: TRADES ============ -->
+    <div class="card">
+      <div class="pitch-h2"><span class="lang-en">Trades we supply</span><span class="lang-ru">Специальности</span></div>
+      <div class="pitch-sub"><span class="lang-en">Capacity: 100–500 workers per batch in 14–21 days.</span><span class="lang-ru">Поставка: 100–500 человек за партию за 14–21 дней.</span></div>
+      <div class="grid2">
+        <div class="ptile"><h3>🏗️ <span class="lang-en">Construction</span><span class="lang-ru">Строительство</span></h3><p>6G/TIG/SMAW welders, steel fixers, masons, plasterers, electricians.</p></div>
+        <div class="ptile"><h3>⚙️ <span class="lang-en">Manufacturing</span><span class="lang-ru">Производство</span></h3><p>CNC operators, lathe, fitters, maintenance technicians, assemblers.</p></div>
+        <div class="ptile"><h3>🚛 <span class="lang-en">Logistics</span><span class="lang-ru">Логистика</span></h3><p>Forklift drivers, truck drivers Cat C/E, loaders, packers.</p></div>
+        <div class="ptile"><h3>🌾 <span class="lang-en">Agriculture</span><span class="lang-ru">Сельское хозяйство</span></h3><p>Greenhouse workers, tractor drivers, farm hands.</p></div>
+      </div>
+    </div>
+
+    <!-- ============ PITCH: QUALITY + PROCESS ============ -->
+    <div class="card">
+      <div class="pitch-h2"><span class="lang-en">Quality — 4-stage screening</span><span class="lang-ru">Отбор — 4 этапа</span></div>
+      <div class="steps" style="margin-bottom:20px">
+        <div class="step"><div class="sn">1</div><h4><span class="lang-en">Police clearance</span><span class="lang-ru">Справка МВД</span></h4><p>PCC, India</p></div>
+        <div class="step"><div class="sn">2</div><h4><span class="lang-en">Medical</span><span class="lang-ru">Медосмотр</span></h4><p>GAMCA/panel</p></div>
+        <div class="step"><div class="sn">3</div><h4><span class="lang-en">Trade test</span><span class="lang-ru">Тест Qual</span></h4><p><span class="lang-en">Video evidence</span><span class="lang-ru">С видеофиксацией</span></p></div>
+        <div class="step"><div class="sn">4</div><h4><span class="lang-en">Orientation</span><span class="lang-ru">Инструктаж</span></h4><p><span class="lang-en">Discipline, RU basics</span><span class="lang-ru">Дисциплина, базовый RU</span></p></div>
+      </div>
+      <div class="pitch-h2"><span class="lang-en">Process — 4 steps to arrival</span><span class="lang-ru">Процесс — 4 шага</span></div>
+      <div class="steps" style="margin-top:8px">
+        <div class="step"><div class="sn">1</div><h4><span class="lang-en">Demand + POA</span><span class="lang-ru">Заявка + доверенность</span></h4><p><span class="lang-en">eMigrate</span><span class="lang-ru">eMigrate</span></p></div>
+        <div class="step"><div class="sn">2</div><h4><span class="lang-en">Test in India</span><span class="lang-ru">Тест в Индии</span></h4><p><span class="lang-en">Trade + medical + PCC</span><span class="lang-ru">Тест + мед + справка</span></p></div>
+        <div class="step"><div class="sn">3</div><h4><span class="lang-en">MVD + visa</span><span class="lang-ru">МВД + виза</span></h4><p><span class="lang-en">90-day single entry</span><span class="lang-ru">Однократная 90 дней</span></p></div>
+        <div class="step"><div class="sn">4</div><h4><span class="lang-en">Arrive + register</span><span class="lang-ru">Прилет + учет</span></h4><p><span class="lang-en">Migration registration</span><span class="lang-ru">Миграционный учет</span></p></div>
+      </div>
+    </div>
+
+    <!-- ============ PITCH: PARTNERSHIP HIGHLIGHTS ============ -->
+    <div class="card">
+      <div class="pitch-h2"><span class="lang-en">Our undertaking to you</span><span class="lang-ru">Наши обязательства</span></div>
+      <div class="pitch-sub"><span class="lang-en">Bilingual contract · annual framework · civilian use only · sanctions-compliant.</span><span class="lang-ru">Двуязычный договор · рамочное партнерство · только гражданская занятость · комплаенс.</span></div>
+      <div class="grid4">
+        <div class="ptile"><div class="n">✓</div><h3><span class="lang-en">90-day warranty</span><span class="lang-ru">Гарантия 90 дней</span></h3><p><span class="lang-en">Free replacement, we pay airfare.</span><span class="lang-ru">Бесплатная замена, перелет за наш счет.</span></p></div>
+        <div class="ptile"><div class="n">✓</div><h3><span class="lang-en">Wages on time</span><span class="lang-ru">Зарплата вовремя</span></h3><p><span class="lang-en">Monthly, bank transfer, market rate.</span><span class="lang-ru">Ежемесячно, на счет, рыночная ставка.</span></p></div>
+        <div class="ptile"><div class="n">✓</div><h3><span class="lang-en">Speed</span><span class="lang-ru">Скорость</span></h3><p><span class="lang-en">30–45 days end-to-end.</span><span class="lang-ru">30–45 дней весь цикл.</span></p></div>
+        <div class="ptile"><div class="n">✓</div><h3><span class="lang-en">Compliance</span><span class="lang-ru">Комплаенс</span></h3><p><span class="lang-en">Wages, documents, dispute path — all in writing.</span><span class="lang-ru">Зарплата, документы, споры — всё письменно.</span></p></div>
+      </div>
+    </div>
+
+    <div class="anchorpad" id="form-top"></div>
 
     <!-- ============ 1. COMPANY ============ -->
     <div class="card">
