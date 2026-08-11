@@ -57,12 +57,56 @@ python3 -m http.server 8888
 # Open http://localhost:8888
 ```
 
-### No Google Dependencies
+## 🇷🇺 Russia-Specific Constraints
 
-- Google Fonts removed — uses system fonts (Segoe UI, Arial)
-- No Google Analytics, no external CDN scripts
-- All images self-hosted in `assets/images/`
-- Only external call: WhatsApp (`wa.me`) — works in Russia
+Russia has significant internet restrictions. Every design and deploy decision was made with these in mind.
+
+### What Is Blocked in Russia
+
+| Service | Status | Impact on This Site |
+|---|---|---|
+| **Google Fonts** | 🚫 Blocked | Removed. Using system fallbacks: `Segoe UI`, `Arial`, `Trebuchet MS` |
+| **Google Analytics** | 🚫 Blocked | Not included. Use Yandex.Metrica instead |
+| **Google APIs / CDN** | 🚫 Blocked | Zero Google-hosted resources |
+| **Facebook / Instagram** | 🚫 Blocked | No social embeds or pixels |
+| **Cloudflare Pages (.pages.dev)** | 🚫 Roskomnadzor blocklist | Not used. Deployed to GitHub Pages instead |
+| **Vercel IP ranges** | ⚠️ Throttled | `hanmantravels.com` on Vercel loads poorly in Russia |
+| **Google Forms** | 🚫 Unreliable | Built custom `client-request-form.html` instead |
+| **YouTube embeds** | 🚫 Throttled | Not used |
+| **Twitter/X** | 🚫 Blocked | Not used |
+
+### What Works in Russia
+
+| Service | Used In This Site |
+|---|---|
+| **WhatsApp (`wa.me`)** | Contact form submits via WhatsApp |
+| **Telegram** | Recommended for client follow-up |
+| **Yandex.Metrica** | Analytics (not yet added — ready to integrate) |
+| **Yandex Webmaster** | Search indexing (sitemap submitted) |
+| **GitHub Pages (`github.io`)** | Deployment platform |
+| **Self-hosted images** | All assets in `assets/images/` |
+| **System fonts** | `Segoe UI`, `Arial` — no external downloads |
+| **Schema.org** | Structured data markup (not blocked) |
+
+### Design Choices Driven by Russia
+
+- **Dark theme:** Works well even if CSS partially fails. Light text on dark = always readable.
+- **No external CSS/JS:** Zero CDN dependencies. Single `index.css` + `app.js` — both local.
+- **Bilingual EN/RU:** Toggle in header. Russian is default.
+- **Offline-first forms:** `client-request-form.html` works without internet. Falls back to WhatsApp submit.
+- **No webfont downloads:** Eliminated the #1 cause of blank pages in Russia.
+- **Progressive JPEG images:** Compressed 87–92% for fast load on Russian mobile networks. 1.8MB → 200KB.
+- **Minimal JavaScript:** No framework. Vanilla JS only. No npm build step.
+
+### What We Tried and Why It Failed
+
+| Attempt | Result |
+|---|---|
+| Cloudflare Pages (`.pages.dev`) | BLOCKED by CityTelecom/Roskomnadzor — "Доступ к ресурсу ограничен" |
+| Wrangler direct API deploy | Deploy succeeded but pages.dev IPs blocked at ISP level |
+| CNAME to pages.dev | Same blocked IPs — CNAME doesn't bypass ISP block |
+| Vercel (`hanmantravels.com`) | Site already exists but loads unreliably in Russia |
+| ✅ **GitHub Pages** | Works. Different IP range. Not on Russian blocklist. |
 
 ---
 
@@ -70,15 +114,30 @@ python3 -m http.server 8888
 
 ```
 hanmantravels_ru/
-├── index.html        # Main landing page for Russian enterprise clients
-├── index.css         # Modern design system & stylesheet
-├── app.js            # Translation dictionary, calculator & interactive engine
-├── README.md         # Repository documentation
+├── index.html                    # Main B2B landing (EN/RU, dark theme, calculator)
+├── index.css                     # Design system (CSS variables, dark/light modes)
+├── app.js                        # i18n engine, calculator, contact form logic
+├── agreement.html                # Editable bilingual Service Agreement (16 sections)
+├── client-request-form.html      # Interactive 5-section client questionnaire
+├── CNAME                         # russia.hanmantravels.com → GitHub Pages
+├── sitemap.xml                   # For Yandex Webmaster + Google Search Console
+├── robots.txt                    # Allows all bots, specifies Yandex Host
+├── README.md                     # This file
 └── assets/
-    └── images/       # High-resolution workforce & trade testing photography
-        ├── hero_workforce.jpg
-        └── trade_testing.jpg
+    └── images/
+        ├── hero_workforce.jpg    # Compressed 940KB → 131KB
+        └── trade_testing.jpg     # Compressed 831KB → 69KB
 ```
+
+## 🔍 Russian Search Engines
+
+Russia uses **Yandex** (62% market share), not Google (25%).
+
+- **Yandex Webmaster:** Site submitted at `webmaster.yandex.ru`
+- **Region:** Set to "Russia"
+- **Sitemap:** `https://russia.hanmantravels.com/sitemap.xml`
+- **Yandex.Metrica:** Ready to add (replaces Google Analytics)
+- **Yandex.Business:** Create profile at `business.yandex.ru` for local listing
 
 ---
 
