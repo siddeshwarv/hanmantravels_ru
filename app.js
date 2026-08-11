@@ -7,6 +7,7 @@ const i18n = {
   ru: {
     navServices: "Услуги",
     navWhyFree: "Почему 0 ₽?",
+    navEmployer: "Что нужно сделать",
     navCalculator: "Калькулятор",
     navWorkflow: "Юриспруденция",
     navContact: "Контакты",
@@ -64,11 +65,24 @@ const i18n = {
     labelDetails: "Дополнительные пожелания / вакансии",
     btnSendForm: "Отправить заявку в Hanman Travels",
 
-    toastSuccess: "Заявка успешно отправлена! Наш представитель свяжется с вами в течение 15 минут."
+    toastSuccess: "Заявка успешно отправлена! Наш представитель свяжется с вами в течение 15 минут.",
+
+    // Employer To-Do Section
+    todoTitle: "Что нужно сделать с вашей стороны",
+    todoSubtitle: "Если вы впервые нанимаете иностранных рабочих — мы полностью сопровождаем процесс.",
+    todo1Title: "Три документа",
+    todo1Desc: "1) Заявка eMigrate (Demand Letter) 2) Доверенность на нас 3) Трудовые договоры. Мы заполняем вместе с вами. 2–3 дня.",
+    todo2Title: "Приглашение МВД",
+    todo2Desc: "Вы подаете заявление в МВД. Мы готовим полный пакет документов с индийской стороны. 15–30 рабочих дней.",
+    todo3Title: "Жилье и учет",
+    todo3Desc: "Вы предоставляете жилье и ставите работников на миграционный учет в течение 7 дней. Зарплата — на банковский счет.",
+    todoHelp: "Мы поможем на каждом этапе",
+    todoHelpDesc: "Если вы никогда не нанимали иностранных рабочих — мы зарегистрируем вас в eMigrate, подготовим образцы документов, проконсультируем по МВД. Полное сопровождение — 0 ₽.",
   },
   en: {
     navServices: "Services",
     navWhyFree: "Why 0 ₽?",
+    navEmployer: "What You Need",
     navCalculator: "Calculator",
     navWorkflow: "Legal Workflow",
     navContact: "Contacts",
@@ -126,7 +140,19 @@ const i18n = {
     labelDetails: "Additional Requirements / Trades",
     btnSendForm: "Submit Request to Hanman Travels",
 
-    toastSuccess: "Request submitted successfully! Our representative will contact you within 15 minutes."
+    toastSuccess: "Request submitted successfully! Our representative will contact you within 15 minutes.",
+
+    // Employer To-Do Section
+    todoTitle: "What You Need To Do",
+    todoSubtitle: "If it's your first time hiring foreign workers — we guide the entire process. Here's what's needed from your side.",
+    todo1Title: "Three Documents",
+    todo1Desc: "1) eMigrate Demand Letter 2) Power of Attorney for us 3) Employment contracts. We fill everything together. 2–3 days.",
+    todo2Title: "MVD Work Invitation",
+    todo2Desc: "You submit an application to the territorial MVD. We prepare the complete document package from the Indian side. 15–30 working days.",
+    todo3Title: "Housing & Registration",
+    todo3Desc: "You provide housing and register workers within 7 days of arrival. Wages — twice monthly to bank account. We advise every step.",
+    todoHelp: "We Help At Every Stage",
+    todoHelpDesc: "First time hiring foreign workers? We'll register you on eMigrate, prepare all document templates, and guide you through MVD procedures. Full support — 0 ₽.",
   }
 };
 
