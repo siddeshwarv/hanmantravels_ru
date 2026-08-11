@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+Host: hanmantravels.ru
+
+Sitemap: https://hanmantravels.ru/sitemap.xml

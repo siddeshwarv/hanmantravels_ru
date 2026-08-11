@@ -38,8 +38,8 @@
   --text-muted-light: #94a3b8;
 
   /* Fonts */
-  --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Space Grotesk', 'Segoe UI', 'Trebuchet MS', 'Impact', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
 
   /* Layout Constants */
   --container-max-width: 1280px;
