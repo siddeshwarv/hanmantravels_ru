@@ -16,8 +16,7 @@
 <!-- Yandex Webmaster: replace YOUR_CODE_HERE with code from https://webmaster.yandex.com -->
 <meta name="yandex-verification" content="YOUR_CODE_HERE" />
 
-<!-- Yandex Metrika: replace YOUR_METRIKA_ID with numeric ID from https://metrica.yandex.com -->
-<!-- Yandex.Metrika is Russia-friendly analytics — Google Analytics is throttled/blocked in Russia. Uncomment when you have the ID. -->
+<!-- Yandex Metrika: replace YOUR_METRIKA_ID with numeric ID from https://metrica.yandex.com (Google Analytics is throttled in Russia) -->
 <!--
 <script type="text/javascript">
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
@@ -39,17 +38,12 @@
   "email": "siddeshwar.vasam@gmail.com",
   "image": "https://russia.hanmantravels.com/assets/images/logo.jpg",
   "url": "https://russia.hanmantravels.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Korutla",
-    "addressRegion": "Telangana",
-    "addressCountry": "IN"
-  },
+  "address": { "@type": "PostalAddress", "addressLocality": "Korutla", "addressRegion": "Telangana", "addressCountry": "IN" },
   "sameAs": ["https://russia.hanmantravels.com", "https://hanmantravels.com"]
 }
 </script>
 
-<!-- HTTPS auto-redirect: GitHub Pages → Settings → Pages → tick "Enforce HTTPS". The cert auto-provisions in minutes. -->
+<!-- HTTPS auto-redirect: GitHub repo Settings → Pages → tick "Enforce HTTPS" -->
 <script>
 (function(){
   if (location.protocol === 'http:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
@@ -59,61 +53,30 @@
 </script>
 
 <style>
-  /* ============ DESIGN SYSTEM ============ */
   :root {
-    --bg: #0a0e1a;
-    --bg-elev: #131826;
-    --line: #1f2937;
-    --text: #f1f5f9;
-    --muted: #94a3b8;
-    --gold: #f59e0b;
-    --gold-dark: #d97706;
-    --cyan: #06b6d4;
-    --green: #10b981;
-    --red: #ef4444;
-    --r-sm: 8px;
-    --r-md: 14px;
-    --r-lg: 20px;
-    --shadow: 0 4px 12px rgba(0,0,0,.2);
+    --bg: #0a0e1a; --bg-elev: #131826; --line: #1f2937;
+    --text: #f1f5f9; --muted: #94a3b8;
+    --gold: #f59e0b; --gold-dark: #d97706;
+    --cyan: #06b6d4; --green: #10b981; --red: #ef4444;
+    --r-sm: 8px; --r-md: 14px; --r-lg: 20px; --shadow: 0 4px 12px rgba(0,0,0,.2);
   }
   [data-theme="light"] {
-    --bg: #f8fafc;
-    --bg-elev: #ffffff;
-    --line: #e2e8f0;
-    --text: #0f172a;
-    --muted: #64748b;
-    --gold: #b45309;
-    --gold-dark: #92400e;
-    --cyan: #0e7490;
-    --green: #047857;
+    --bg: #f8fafc; --bg-elev: #ffffff; --line: #e2e8f0;
+    --text: #0f172a; --muted: #64748b;
+    --gold: #b45309; --gold-dark: #92400e; --cyan: #0e7490; --green: #047857;
     --shadow: 0 2px 8px rgba(15,23,42,.06);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; font-size: 18px; }
-  body {
-    font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-    transition: background-color .25s ease, color .25s ease;
-  }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; transition: background-color .25s, color .25s; }
   h1, h2, h3 { line-height: 1.15; font-weight: 800; letter-spacing: -.02em; }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; height: auto; display: block; }
   button, input, select, textarea { font-family: inherit; font-size: inherit; }
-
   .container { width: 100%; max-width: 1136px; margin: 0 auto; padding: 0 24px; }
 
-  /* ============ NAVBAR ============ */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: color-mix(in srgb, var(--bg) 90%, transparent);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
-    height: 64px;
-    display: flex; align-items: center;
-  }
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); height: 64px; display: flex; align-items: center; }
   .nav .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
   .brand img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; flex-shrink: 0; box-shadow: var(--shadow); }
@@ -126,8 +89,12 @@
   .btn { padding: 10px 18px; border-radius: var(--r-sm); font-weight: 700; font-size: 14px; cursor: pointer; border: 0; transition: all .15s; display: inline-flex; align-items: center; gap: 6px; }
   .btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #0a0e1a; }
   .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px color-mix(in srgb, var(--gold) 40%, transparent); }
+  .btn-secondary { background: var(--bg-elev); color: var(--text); border: 1px solid var(--line); }
+  .btn-secondary:hover { border-color: var(--gold); }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); padding: 8px 12px; }
+  .btn-ghost:hover { color: var(--text); border-color: var(--gold); }
 
-  /* ============ HERO ============ */
+  /* HERO */
   .hero { padding: 120px 0 80px; }
   .hero .container { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 99px; background: color-mix(in srgb, var(--cyan) 12%, transparent); color: var(--cyan); border: 1px solid color-mix(in srgb, var(--cyan) 30%, transparent); font-size: 12px; font-weight: 700; letter-spacing: .5px; margin-bottom: 24px; }
@@ -135,23 +102,18 @@
   .hero h1 .gold-text { color: var(--gold); }
   .hero-subtitle { font-size: clamp(1rem, 1.4vw, 1.2rem); color: var(--muted); max-width: 720px; margin-bottom: 36px; line-height: 1.6; }
   .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 56px; }
-  .btn-secondary { background: var(--bg-elev); color: var(--text); border: 1px solid var(--line); }
-  .btn-secondary:hover { border-color: var(--gold); }
-  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
-  .btn-ghost:hover { color: var(--text); border-color: var(--gold); }
-
   .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 880px; width: 100%; }
   .hero-stat { padding: 24px 16px; background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-md); }
   .hero-stat .num { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 8px; }
   .hero-stat .label { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
-  /* ============ SECTIONS ============ */
+  /* SECTIONS */
   .section { padding: 80px 0; border-top: 1px solid var(--line); }
   .section-head { text-align: center; margin-bottom: 56px; }
   .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 14px; }
   .section-head p { color: var(--muted); font-size: 1.05rem; max-width: 720px; margin: 0 auto; }
 
-  /* ============ CARDS ============ */
+  /* CARDS */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -162,11 +124,14 @@
   .card .ico svg { width: 22px; height: 22px; }
   .card-gold { border-color: color-mix(in srgb, var(--gold) 45%, var(--line)); }
   .card-green { border-color: color-mix(in srgb, var(--green) 45%, var(--line)); }
-
-  /* id badge */
   .badge-id { display: inline-block; padding: 2px 8px; border-radius: 6px; background: color-mix(in srgb, var(--gold) 14%, transparent); color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: .5px; margin-top: 12px; }
 
-  /* ============ STEPS ============ */
+  /* CHECKLIST in cards */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .checklist li { display: flex; gap: 8px; align-items: flex-start; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+  .checklist li::before { content: "✓"; color: var(--green); font-weight: 800; flex-shrink: 0; }
+
+  /* STEPPER */
   .steps { display: grid; gap: 20px; }
   .step { display: flex; gap: 20px; padding: 24px; background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-md); }
   .step-num { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #0a0e1a; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; }
@@ -174,41 +139,34 @@
   .step-body .day { display: inline-block; color: var(--green); font-size: 13px; font-weight: 700; margin-bottom: 8px; }
   .step-body p { color: var(--muted); font-size: 0.95rem; }
 
-  /* ============ TABLE ============ */
-  .tbl { width: 100%; margin-top: 24px; background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
-  .tbl table { width: 100%; border-collapse: collapse; }
-  .tbl th, .tbl td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
-  .tbl th { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: color-mix(in srgb, var(--bg) 50%, transparent); }
-  .tbl tr:last-child td { border-bottom: 0; }
-  .tbl td strong { color: var(--text); }
-
-  /* ============ CALLOUT ============ */
+  /* CALLOUT */
   .callout { background: color-mix(in srgb, var(--gold) 8%, transparent); border-left: 3px solid var(--gold); padding: 18px 22px; border-radius: 0 var(--r-sm) var(--r-sm) 0; margin: 24px 0; }
   .callout strong { color: var(--gold); }
   .callout p { color: var(--text); margin-top: 4px; }
+  .callout ul { margin-top: 10px; padding-left: 20px; line-height: 1.8; color: var(--text); }
+  .callout-green { background: color-mix(in srgb, var(--green) 10%, transparent); border-left-color: var(--green); }
+  .callout-green strong { color: var(--green); }
 
-  /* ============ AGENT CARD ============ */
-  .agent { display: flex; gap: 24px; align-items: center; padding: 32px; background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-md); }
-  .agent-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
-  .agent-info h3 { font-size: 1.3rem; margin-bottom: 4px; }
-  .agent-info .role { color: var(--cyan); font-size: 14px; font-weight: 600; margin-bottom: 14px; }
-  .agent-info p { color: var(--muted); font-size: 15px; margin-bottom: 6px; }
+  /* AGENT */
+  .agent { display: flex; gap: 20px; align-items: center; padding: 24px; background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-md); }
+  .agent + .agent { margin-top: 12px; }
+  .agent-photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
+  .agent-info h3 { font-size: 1.15rem; margin-bottom: 2px; }
+  .agent-info .role { color: var(--cyan); font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+  .agent-info p { color: var(--muted); font-size: 14px; margin-bottom: 4px; }
   .agent-info a { color: var(--gold); }
 
-  /* ============ FORM ============ */
-  .form-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-md); padding: 36px; }
-  .field { margin-bottom: 18px; }
+  /* FORM */
+  .form-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-md); padding: 32px; }
+  .field { margin-bottom: 16px; }
   .field label { display: block; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-  .field input, .field select, .field textarea {
-    width: 100%; padding: 12px 14px; background: var(--bg); color: var(--text);
-    border: 1px solid var(--line); border-radius: var(--r-sm); font-size: 15px; transition: border-color .15s;
-  }
+  .field input, .field select, .field textarea { width: 100%; padding: 12px 14px; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-sm); font-size: 15px; transition: border-color .15s; }
   .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--muted); line-height: 1.5; cursor: pointer; }
   .consent input { margin-top: 3px; width: auto; flex-shrink: 0; }
 
-  /* ============ FOOTER ============ */
+  /* FOOTER */
   footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 70%, #000); color: var(--muted); font-size: 14px; }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
   .footer-grid h4 { color: var(--text); font-size: 14px; margin-bottom: 14px; font-weight: 700; }
@@ -217,15 +175,16 @@
   .footer-grid a:hover { color: var(--gold); }
   .footer-bottom { border-top: 1px solid var(--line); padding-top: 20px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; }
 
-  /* ============ TOAST ============ */
+  /* TOAST */
   .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--green); color: #fff; padding: 14px 24px; border-radius: var(--r-sm); font-weight: 700; box-shadow: var(--shadow); z-index: 1000; opacity: 0; transition: all .3s; pointer-events: none; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* ============ MOBILE NAV ============ */
+  /* MOBILE */
   .menu-btn { display: none; background: transparent; border: 0; color: var(--text); cursor: pointer; padding: 8px; }
   .menu-btn svg { width: 24px; height: 24px; }
+  .lang-btn { background: var(--bg-elev); color: var(--text); border: 1px solid var(--line); padding: 8px 12px; border-radius: var(--r-sm); font-size: 13px; font-weight: 700; cursor: pointer; transition: all .15s; }
+  .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
 
-  /* ============ RESPONSIVE ============ */
   @media (max-width: 1024px) {
     .grid-4 { grid-template-columns: repeat(2, 1fr); }
     .grid-3 { grid-template-columns: 1fr; }
@@ -254,7 +213,7 @@
 </head>
 <body data-theme="dark">
 
-<!-- ============ NAVBAR ============ -->
+<!-- ============ NAV ============ -->
 <nav class="nav">
   <div class="container">
     <a href="#" class="brand">
@@ -265,18 +224,19 @@
       </div>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#trades">Специальности</a>
-      <a href="#process">Процесс</a>
-      <a href="#why-free">Почему 0 ₽?</a>
-      <a href="#warranty">Гарантия</a>
-      <a href="#contact">Заявка</a>
+      <a href="#trades" data-i18n="navTrades">Специальности</a>
+      <a href="#process" data-i18n="navProcess">Процесс</a>
+      <a href="#why-free" data-i18n="navWhy">Почему 0 ₽?</a>
+      <a href="#warranty" data-i18n="navWarranty">Гарантия</a>
+      <a href="#contact" data-i18n="navContact">Заявка</a>
     </div>
     <div class="nav-actions">
-      <a href="#contact" class="btn btn-primary">Оставить заявку</a>
-      <button class="btn-ghost btn" id="themeBtn" aria-label="Сменить тему">
+      <button class="lang-btn" id="langBtn">EN</button>
+      <a href="#contact" class="btn btn-primary" data-i18n="navCta">Заявка</a>
+      <button class="btn-ghost btn" id="themeBtn" aria-label="Theme">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <button class="menu-btn" id="menuBtn" aria-label="Меню">
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -286,191 +246,218 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="container">
-    <div class="hero-badge">🇮🇳 ↔ 🇷🇺 · Делегация ITB '26 — Санкт-Петербург, 12–13 августа</div>
-    <h1>Рабочие из Индии для российских предприятий — <span class="gold-text">0 ₽</span> комиссия для работодателя</h1>
-    <p class="hero-subtitle">Лицензированное МИД Индии кадровое агентство (RA5501045) поставляет квалифицированных, протестированных и дисциплинированных рабочих для строительных, промышленных, логистических и сельскохозяйственных предприятий России. Полный цикл — от подбора до прилёта — в рамках официального Соглашения о мобильности труда (декабрь 2025).</p>
+    <div class="hero-badge" data-i18n="heroBadge">🇮🇳 ↔ 🇷🇺 · Делегация ITB '26 — Санкт-Петербург, 12–13 августа</div>
+    <h1 data-i18n="heroTitle">Рабочие из Индии для российских предприятий — <span class="gold-text">0 ₽</span> комиссия для работодателя</h1>
+    <p class="hero-subtitle" data-i18n="heroSubtitle">Лицензированное МИД Индии кадровое агентство (RA5501045). Квалифицированные, протестированные и дисциплинированные рабочие для строительства, производства, логистики и сельского хозяйства. Полный цикл подбора и прилёта в рамках Соглашения о мобильности труда (декабрь 2025).</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Запросить персонал (0 ₽)</a>
-      <a href="agreement.html" class="btn btn-secondary">Договор сотрудничества ↗</a>
+      <a href="#contact" class="btn btn-primary" data-i18n="heroCta1">Запросить персонал (0 ₽)</a>
+      <a href="agreement.html" class="btn btn-secondary" data-i18n="heroCta2">Договор ↗</a>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="num">0 ₽</div><div class="label">Комиссия для работодателя</div></div>
-      <div class="hero-stat"><div class="num">90 дней</div><div class="label">Гарантия бесплатной замены + обратный билет</div></div>
-      <div class="hero-stat"><div class="num">30–45</div><div class="label">Дней от заявки до прилёта</div></div>
-      <div class="hero-stat"><div class="num">2 000+</div><div class="label">Кандидатов в базе по всей Индии</div></div>
+      <div class="hero-stat"><div class="num">0 ₽</div><div class="label" data-i18n="stat1">Комиссия для работодателя</div></div>
+      <div class="hero-stat"><div class="num">90 дней</div><div class="label" data-i18n="stat2">Гарантия замены + обратный билет</div></div>
+      <div class="hero-stat"><div class="num">30–45</div><div class="label" data-i18n="stat3">Дней от заявки до прилёта</div></div>
+      <div class="hero-stat"><div class="num">2 000+</div><div class="label" data-i18n="stat4">Кандидатов в базе</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============ WHY 0 RUBLES — first objection answered ============ -->
+<!-- ============ WHY 0 ₽ ============ -->
 <section id="why-free" class="section">
   <div class="container">
     <div class="section-head">
-      <h2>Почему подбор бесплатен для вас (0 ₽)?</h2>
-      <p>Прямой ответ на вопрос, который задаёт каждый работодатель: «в чём подвох?»</p>
+      <h2 data-i18n="whyTitle">Почему 0 ₽ для работодателя?</h2>
+      <p data-i18n="whySubtitle">Прямой ответ: «в чём подвох?» — никакого подвоха.</p>
     </div>
     <div class="grid-4">
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        <h3>Стратегический выход на рынок РФ</h3>
-        <p>Мы расширяемся в Россию через официальный канал Соглашения о мобильности труда (декабрь 2025) и саммит ITB '26. Поэтому первые клиентские контракты — бесплатные для работодателя.</p>
+        <h3 data-i18n="why1Title">Стратегический выход на РФ</h3>
+        <p data-i18n="why1Desc">Расширяемся в Россию через официальный канал Соглашения о мобильности труда (дек 2025). Первые контракты — бесплатные для работодателя.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.66 0 3.22.45 4.56 1.24"/></svg></div>
-        <h3>Индийское законодательство</h3>
-        <p>Сбор за оформление оплачивает кандидат в Индии — по Закону об эмиграции 1983 года, в пределах, установленных МИД Индии. Доход агентства регулируется законом, а не работодателем.</p>
+        <h3 data-i18n="why2Title">Индийский закон</h3>
+        <p data-i18n="why2Desc">Сбор оплачивает кандидат в Индии — по Закону об эмиграции 1983, в пределах, установленных МИД Индии. Доход регулируется законом, не работодателем.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Нулевой финансовый риск</h3>
-        <p>Вы не подписываете финансовых обязательств перед агентством. Все документы подписываются только по факту готовности работников к вылету. Если работник не подойдет — обратный билет за наш счёт.</p>
+        <h3 data-i18n="why3Title">Нулевой риск</h3>
+        <p data-i18n="why3Desc">Вы не подписываете финансовых обязательств перед нами. Если работник не подойдет — обратный билет за наш счёт.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <h3>Дисциплинированные кандидаты</h3>
-        <p>Отбираем зрелых, опытных работников с сильной рабочей этикой: справка МВД об отсутствии судимостей, опыт работы в странах Залива (ОАЭ, Саудовская Аравия, Катар), готовность к строгой дисциплине на объекте.</p>
+        <h3 data-i18n="why4Title">Дисциплинированные кадры</h3>
+        <p data-i18n="why4Desc">Зрелые работники с сильной этикой: справка МВД, опыт в ОАЭ/Саудовской Аравии/Катаре, готовность к строгой дисциплине на объекте.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ TRADES — what we supply ============ -->
+<!-- ============ TRADES ============ -->
 <section id="trades" class="section">
   <div class="container">
     <div class="section-head">
-      <h2>Кого мы поставляем</h2>
-      <p>Полный перечень специальностей, которые мы можем мобилизовать из Индии в течение 30–45 дней. Все кандидаты проходят практическое тестирование и медицинский осмотр.</p>
+      <h2 data-i18n="tradesTitle">Кого мы поставляем</h2>
+      <p data-i18n="tradesSubtitle">4 основные отрасли. Полный цикл подбора — 30–45 дней.</p>
     </div>
     <div class="grid-4">
       <div class="card card-gold">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20M4 22V8l8-5 8 5v14M8 22V12h8v10"/></svg></div>
-        <h3>Строительство</h3>
-        <p>Сварщики 6G/TIG/MIG, арматурщики, каменщики, штукатуры, монтажники лесов, электрики, сантехники, операторы спецтехники (JCB, экскаватор, кран).</p>
+        <h3 data-i18n="trade1Title">Строительство</h3>
+        <ul class="checklist">
+          <li data-i18n="trade1Item1">Сварщики 6G/TIG/MIG</li>
+          <li data-i18n="trade1Item2">Арматурщики, каменщики, монтажники</li>
+          <li data-i18n="trade1Item3">Электрики, сантехники</li>
+          <li data-i18n="trade1Item4">Операторы JCB, экскаватора, крана</li>
+        </ul>
       </div>
       <div class="card card-gold">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M22 12h-3M5 12H2M19.07 4.93l-2.12 2.12M7.05 16.95l-2.12 2.12M19.07 19.07l-2.12-2.12M7.05 7.05L4.93 4.93"/></svg></div>
-        <h3>Производство</h3>
-        <p>Операторы ЧПУ (токарные/фрезерные), слесари-сборщики, токари, механики по обслуживанию, сборщики конвейера, операторы линий.</p>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M22 12h-3M5 12H2"/></svg></div>
+        <h3 data-i18n="trade2Title">Производство</h3>
+        <ul class="checklist">
+          <li data-i18n="trade2Item1">Операторы ЧПУ (токарные/фрезерные)</li>
+          <li data-i18n="trade2Item2">Слесари-сборщики, токари</li>
+          <li data-i18n="trade2Item3">Механики по обслуживанию</li>
+          <li data-i18n="trade2Item4">Сборщики конвейера</li>
+        </ul>
       </div>
       <div class="card card-gold">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2.5 2.5 0 1 1 5 0M15.5 21a2.5 2.5 0 1 1 5 0"/></svg></div>
-        <h3>Логистика и склад</h3>
-        <p>Водители погрузчиков, водители грузовиков (кат. C/E), водители лёгкого транспорта, комплектовщики, грузчики, операторы склада.</p>
+        <h3 data-i18n="trade3Title">Логистика и склад</h3>
+        <ul class="checklist">
+          <li data-i18n="trade3Item1">Водители погрузчиков</li>
+          <li data-i18n="trade3Item2">Водители грузовиков (кат. C/E)</li>
+          <li data-i18n="trade3Item3">Комплектовщики, грузчики</li>
+          <li data-i18n="trade3Item4">Операторы склада</li>
+        </ul>
       </div>
       <div class="card card-gold">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20M4 22V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v17M9 22v-4a2 2 0 0 1 4 0v4M9 7h2M9 11h2M13 7h2M13 11h2"/></svg></div>
-        <h3>Гостиничный и клининг</h3>
-        <p>Повара, стюарды, F&B, хаускепинг, уборщики; промальп L1-3 (веревочный доступ), мойщики фасадов, промышленный клининг.</p>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20M4 22V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v17M9 22v-4a2 2 0 0 1 4 0v4"/></svg></div>
+        <h3 data-i18n="trade4Title">Гостиничный и клининг</h3>
+        <ul class="checklist">
+          <li data-i18n="trade4Item1">Повара, стюарды, F&B</li>
+          <li data-i18n="trade4Item2">Хаускепинг, уборщики</li>
+          <li data-i18n="trade4Item3">Промальп L1-3 (веревочный доступ)</li>
+          <li data-i18n="trade4Item4">Мойщики фасадов, FM-менеджеры</li>
+        </ul>
       </div>
     </div>
     <div class="callout">
-      <strong>Опыт работы в Заливе (Gulf-returned):</strong>
-      <p>Тысячи кандидатов в нашем резерве имеют 3–5 лет опыта работы в ОАЭ, Саудовской Аравии, Катаре — дисциплинированные, знают английский, адаптированы к строгой рабочей культуре.</p>
+      <strong data-i18n="gulfLabel">Опыт работы в Заливе:</strong>
+      <span data-i18n="gulfDesc"> 3–5 лет в ОАЭ, Саудовской Аравии, Катаре — дисциплинированные, знают английский, адаптированы к строгой рабочей культуре.</span>
     </div>
   </div>
 </section>
 
-<!-- ============ PROCESS — step-by-step ============ -->
+<!-- ============ PROCESS — VISUAL STEPPER ============ -->
 <section id="process" class="section">
   <div class="container">
     <div class="section-head">
-      <h2>Как это работает — 4 шага от заявки до прилёта</h2>
-      <p>Прозрачный, законный процесс. Сроки указаны реалистично — не маркетинговые обещания.</p>
+      <h2 data-i18n="processTitle">Как это работает — 4 шага</h2>
+      <p data-i18n="processSubtitle">Прозрачный, законный процесс. Реалистичные сроки.</p>
     </div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3>Договор и 3 документа на eMigrate</h3>
-          <div class="day">Дни 0–5 · совместно</div>
-          <p>Подписываем двусторонний договор (RU/EN). Вы регистрируетесь на портале eMigrate МИД Индии и оформляете 3 документа: Demand Letter (заявка), Power of Attorney (доверенность на нас), Specimen Employment Contract (образец трудового договора). Мы ведём вас через каждый шаг — это занимает 2–3 дня.</p>
+          <h3 data-i18n="step1Title">Договор и 3 документа eMigrate</h3>
+          <div class="day" data-i18n="step1Day">Дни 0–5 · совместно</div>
+          <p data-i18n="step1Desc">Подписываем двусторонний договор (RU/EN). Вы регистрируетесь на eMigrate и оформляете: Demand Letter, Power of Attorney, Specimen Contract. Мы ведём через каждый шаг — 2–3 дня.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <h3>Подбор, тестирование, медосмотр в Индии</h3>
-          <div class="day">Дни 5–25 · наша сторона</div>
-          <p>Мы отбираем кандидатов из базы 2 000+ человек, проводим практическое тестирование (HD-видеофиксация), полный медицинский осмотр (ВИЧ, туберкулёз, гепатит) и справку МВД об отсутствии судимостей. Вы получаете видеозаписи тестов и одобряете каждого кандидата лично.</p>
+          <h3 data-i18n="step2Title">Подбор и тестирование в Индии</h3>
+          <div class="day" data-i18n="step2Day">Дни 5–25 · наша сторона</div>
+          <p data-i18n="step2Desc">Отбираем из базы 2 000+ кандидатов. Практическое тестирование (HD-видео), медосмотр (ВИЧ, туберкулёз, гепатит), справка МВД. Вы одобряете каждого лично.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3>Разрешение МВД и рабочая виза</h3>
-          <div class="day">Дни 25–38 · МВД + консульство</div>
-          <p>Вы подаёте заявление в территориальное МВД на оформление рабочего приглашения для каждого работника (15–30 рабочих дней). Мы готовим полный пакет документов с индийской стороны. После выдачи приглашения — вклейка рабочей визы в консульстве РФ в Индии.</p>
+          <h3 data-i18n="step3Title">Разрешение МВД и виза</h3>
+          <div class="day" data-i18n="step3Day">Дни 25–38 · МВД + консульство</div>
+          <p data-i18n="step3Desc">Вы подаёте заявление в МВД на рабочее приглашение (15–30 рабочих дней). Мы готовим пакет документов. После выдачи — вклейка рабочей визы в консульстве РФ в Индии.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <h3>Прилёт, миграционный учёт, гарантия</h3>
-          <div class="day">Дни 40–45 · старт работы</div>
-          <p>Группа прилетает в Россию. Вы ставите их на миграционный учёт в течение 7 рабочих дней (обязанность работодателя по закону РФ), организуете жилье. Зарплата — дважды в месяц на банковский счёт работника (ст. 136 ТК РФ). С этого момента начинается 90-дневная гарантия замены.</p>
+          <h3 data-i18n="step4Title">Прилёт, учёт, гарантия</h3>
+          <div class="day" data-i18n="step4Day">Дни 40–45 · старт работы</div>
+          <p data-i18n="step4Desc">Группа прилетает в РФ. Миграционный учёт в течение 7 дней. Жилье — работодатель. Зарплата 2 раза в месяц на банковский счёт (ст. 136 ТК РФ). Старт 90-дневной гарантии.</p>
         </div>
       </div>
     </div>
     <div class="callout">
-      <strong>Что нужно от вас — короткий список:</strong>
-      <ul style="margin-top:10px; padding-left:20px; line-height:1.8; color: var(--text);">
-        <li>Подписать договор</li>
-        <li>Оформить 3 документа на eMigrate (Demand Letter, POA, Specimen Contract)</li>
-        <li>Подать заявление в МВД на рабочее приглашение</li>
-        <li>Предоставить жилье работникам (по закону РФ)</li>
-        <li>Выплачивать зарплату 2 раза в месяц на банковский счёт</li>
-        <li>Поставить работников на миграционный учёт в течение 7 дней</li>
+      <strong data-i18n="empListTitle">Что нужно от вас — короткий список:</strong>
+      <ul>
+        <li data-i18n="emp1">Подписать договор</li>
+        <li data-i18n="emp2">Оформить 3 документа на eMigrate</li>
+        <li data-i18n="emp3">Подать заявление в МВД</li>
+        <li data-i18n="emp4">Предоставить жилье (по закону РФ)</li>
+        <li data-i18n="emp5">Зарплата 2 раза в месяц на банк</li>
+        <li data-i18n="emp6">Миграционный учёт в течение 7 дней</li>
       </ul>
-      <p style="margin-top:10px; color: var(--muted); font-size: 0.95rem;">Мы помогаем на каждом этапе.</p>
+      <p data-i18n="empHelp" style="margin-top:10px; color: var(--muted); font-size: 0.95rem;">Мы помогаем на каждом этапе.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ WARRANTY — what makes us different ============ -->
+<!-- ============ WARRANTY — the differentiator ============ -->
 <section id="warranty" class="section">
   <div class="container">
     <div class="section-head">
-      <h2>90 дней гарантии — включая обратный билет</h2>
-      <p>Это единственное, что отличает нас от 34 других индийских агентств, приехавших на саммит. Мы пишем это в договоре — а не обещаем на словах.</p>
+      <h2 data-i18n="warrantyTitle">90 дней гарантии — включая обратный билет</h2>
+      <p data-i18n="warrantySubtitle">Единственное, что отличает нас от 34 агентств на саммите. Это в договоре — не на словах.</p>
     </div>
     <div class="grid-3">
       <div class="card card-green">
-        <h3>Если работник не справится</h3>
-        <p>В течение 90 дней с момента прилёта — мы бесплатно заменим его. Без споров, без скрытых условий. Один раз на каждого работника.</p>
+        <div class="ico" style="background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h3 data-i18n="warranty1Title">Работник не справился</h3>
+        <p data-i18n="warranty1Desc">В течение 90 дней — бесплатная замена. Без споров, без скрытых условий. Один раз на каждого работника.</p>
       </div>
       <div class="card card-green">
-        <h3>Медицинские проблемы</h3>
-        <p>Если после прилёта выявится медицинское противопоказание к работе — мы меняем работника за свой счёт.</p>
+        <div class="ico" style="background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9"/></svg></div>
+        <h3 data-i18n="warranty2Title">Медицинские проблемы</h3>
+        <p data-i18n="warranty2Desc">После прилёта выявилось противопоказание — меняем за свой счёт.</p>
       </div>
       <div class="card card-green">
-        <h3>Обратный билет — за наш счёт</h3>
-        <p>В случае замены мы оплачиваем обратный авиабилет работника в Индию. Это записано в §7 нашего договора — не доверяйте словам, читайте договор.</p>
+        <div class="ico" style="background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+        <h3 data-i18n="warranty3Title">Обратный билет — за наш счёт</h3>
+        <p data-i18n="warranty3Desc">В случае замены мы оплачиваем обратный авиабилет. Это в §7 договора — читайте, не верьте на словА.</p>
       </div>
+    </div>
+    <div class="callout callout-green">
+      <strong data-i18n="testBatchLabel">Тестовая партия — начните с 5 человек:</strong>
+      <p data-i18n="testBatchDesc">Докажите нас на 5 работниках — мы несём риск. Если всё работает — масштабируем до 50–500. Это снимает риск для обеих сторон.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ LEGAL — bilateral framework ============ -->
+<!-- ============ LEGAL ============ -->
 <section id="legal" class="section">
   <div class="container">
     <div class="section-head">
-      <h2>Полное правовое соответствие — Индия и Россия</h2>
-      <p>Каждый шаг задокументирован на обеих сторонах. Никаких серых схем, никаких рисков для вашего бизнеса.</p>
+      <h2 data-i18n="legalTitle">Полное правовое соответствие</h2>
+      <p data-i18n="legalSubtitle">Каждый шаг задокументирован. Никаких серых схем.</p>
     </div>
     <div class="grid-2">
       <div class="card">
-        <h3>🇮🇳 Индийская сторона</h3>
-        <p>Лицензия МИД Индии <strong>RA5501045</strong> (Закон об эмиграции 1983). Все заявки и POA регистрируются на портале eMigrate. Сбор с кандидата регулируется законом. Заявка должна быть выполнена за 45 дней или квота аннулируется — мы это контролируем.</p>
+        <h3>🇮🇳 <span data-i18n="legal1Title">Индийская сторона</span></h3>
+        <p data-i18n="legal1Desc">Лицензия МИД Индии <strong>RA5501045</strong> (Закон об эмиграции 1983). Все заявки на eMigrate. Сбор с кандидата регулируется законом. Заявка выполняется за 45 дней или квота аннулируется.</p>
         <div class="badge-id">RA5501045</div>
       </div>
       <div class="card">
-        <h3>🇷🇺 Российская сторона</h3>
-        <p>Соглашение о мобильности труда между Индией и Россией (декабрь 2025) — официальный межправительственный механизм. Разрешение МВД 15–30 рабочих дней. Зарплата 2 раза в месяц на банковский счёт (ст. 136 ТК РФ + ст. 15.25 КоАП). Оговорка о гражданском использовании в договоре — санкционно-безопасно.</p>
+        <h3>🇷🇺 <span data-i18n="legal2Title">Российская сторона</span></h3>
+        <p data-i18n="legal2Desc">Соглашение о мобильности труда (дек 2025) — официальный механизм. Разрешение МВД 15–30 дней. Зарплата 2 раза в месяц на банк (ст. 136 ТК РФ). Оговорка о гражданском использовании — санкционно-безопасно.</p>
       </div>
     </div>
     <div class="callout">
-      <strong>Разрешение споров — SIAC:</strong>
-      <p>Арбитраж в Сингапуре, 1 арбитр, английский язык. Решение обязательно в обеих странах по Нью-Йоркской конвенции — и Индия, и Россия её подписали.</p>
+      <strong data-i18n="siacLabel">Разрешение споров — SIAC:</strong>
+      <span data-i18n="siacDesc"> Арбитраж в Сингапуре, 1 арбитр, английский язык. Обязательно в обеих странах по Нью-Йоркской конвенции.</span>
     </div>
   </div>
 </section>
@@ -479,8 +466,8 @@
 <section id="contact" class="section">
   <div class="container">
     <div class="section-head">
-      <h2>Оставить заявку на подбор персонала</h2>
-      <p>Заполните форму — мы получим её мгновенно в Telegram и свяжемся с вами в течение рабочего дня. Никаких посредников, всё конфиденциально.</p>
+      <h2 data-i18n="contactTitle">Оставить заявку</h2>
+      <p data-i18n="contactSubtitle">Заполните форму — мы получим её мгновенно в Telegram и свяжемся в течение рабочего дня.</p>
     </div>
     <div class="grid-2" style="align-items: start;">
       <div>
@@ -488,86 +475,82 @@
           <img src="assets/images/logo.jpg" alt="Hanman Travels" class="agent-photo">
           <div class="agent-info">
             <h3>Vasam Siddeshwar</h3>
-            <div class="role">Партнёр — Международный бизнес</div>
+            <div class="role" data-i18n="agent1Role">Партнёр — Международный бизнес</div>
             <p><a href="https://wa.me/919347128712" target="_blank" rel="noopener">WhatsApp: +91 93471 28712</a></p>
             <p><a href="https://t.me/siddesh_v" target="_blank" rel="noopener">Telegram: @siddesh_v</a></p>
             <p><a href="mailto:siddeshwar.vasam@gmail.com">siddeshwar.vasam@gmail.com</a></p>
           </div>
         </div>
-        <div class="agent" style="margin-top: 16px;">
+        <div class="agent">
           <img src="assets/images/logo.jpg" alt="Hanman Travels" class="agent-photo">
           <div class="agent-info">
             <h3>Vasam Ravi Kumar</h3>
-            <div class="role">Управляющий партнёр</div>
+            <div class="role" data-i18n="agent2Role">Управляющий партнёр</div>
             <p><a href="https://wa.me/917780674085" target="_blank" rel="noopener">WhatsApp: +91 77806 74085</a></p>
             <p><a href="mailto:hanmantravels@gmail.com">hanmantravels@gmail.com</a></p>
           </div>
         </div>
         <div style="margin-top: 16px; padding: 20px; background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-md);">
-          <h4 style="font-size: 14px; aspect-ratio: auto; margin-bottom: 10px;">HANMAN TRAVELS</h4>
+          <h4 style="font-size: 14px; margin-bottom: 10px;">HANMAN TRAVELS</h4>
           <p style="font-size: 14px; color: var(--muted); line-height: 1.7;">
             MEA Lic. <strong style="color: var(--gold);">RA5501045</strong><br>
-            Головной офис: Korutla, Telangana, India<br>
-            Филиал: Visakhapatnam, AP, India<br>
-            С 1992 года · Государственная лицензия с 2019 года
+            <span data-i18n="hqLabel">Головной офис:</span> Korutla, Telangana<br>
+            <span data-i18n="branchLabel">Филиал:</span> Visakhapatnam, AP<br>
+            <span data-i18n="sinceLabel">С 1992 года · Гос. лицензия с 2019</span>
           </p>
-          <p style="margin-top: 14px; font-size: 13px; color: var(--cyan); font-weight: 600;">Делегация ITB '26 — Санкт-Петербург, 12–13 августа, Grand Hotel Emerald</p>
+          <p style="margin-top: 14px; font-size: 13px; color: var(--cyan); font-weight: 600;" data-i18n="summitInfo">Делегация ITB '26 — 12–13 августа, Grand Hotel Emerald, СПб</p>
         </div>
       </div>
 
       <div class="form-card">
         <form id="demand-form">
           <div class="field">
-            <label>Название вашей компании (РФ) *</label>
+            <label data-i18n="fCompany">Название компании (РФ) *</label>
             <input type="text" name="company" autocomplete="organization" placeholder="ООО «СтройГрупп»" required>
           </div>
           <div class="field-row">
             <div class="field">
-              <label>ИНН компании</label>
+              <label data-i18n="fInn">ИНН</label>
               <input type="text" name="inn" inputmode="numeric" pattern="[0-9]{10,12}" placeholder="7707083893">
             </div>
             <div class="field">
-              <label>Сфера деятельности</label>
+              <label data-i18n="fSector">Сфера деятельности</label>
               <select name="sector">
-                <option value="">— Выбрать —</option>
-                <option value="construction">Строительство / Инфраструктура</option>
-                <option value="manufacturing">Производство</option>
-                <option value="logistics">Логистика / Склад</option>
-                <option value="agriculture">Сельское хозяйство</option>
-                <option value="hospitality">Гостиничный бизнес / Клининг</option>
+                <option value="" data-i18n="fSectorDefault">— Выбрать —</option>
+                <option value="construction" data-i18n="fSector1">Строительство</option>
+                <option value="manufacturing" data-i18n="fSector2">Производство</option>
+                <option value="logistics" data-i18n="fSector3">Логистика / Склад</option>
+                <option value="agriculture" data-i18n="fSector4">Сельское хозяйство</option>
+                <option value="hospitality" data-i18n="fSector5">Гостиничный / Клининг</option>
               </select>
             </div>
           </div>
           <div class="field">
-            <label>Контактное лицо *</label>
-            <input type="text" name="contact_name" autocomplete="name" placeholder="Александр Иванов — Директор по персоналу" required>
+            <label data-i18n="fContact">Контактное лицо *</label>
+            <input type="text" name="contact_name" autocomplete="name" placeholder="Александр Иванов — HR" required>
           </div>
           <div class="field-row">
             <div class="field">
-              <label>Телефон / WhatsApp *</label>
+              <label data-i18n="fPhone">Телефон / WhatsApp *</label>
               <input type="tel" name="phone" autocomplete="tel" placeholder="+7 (999) 000-00-00" required>
             </div>
             <div class="field">
-              <label>E-mail</label>
+              <label data-i18n="fEmail">E-mail</label>
               <input type="email" name="email" autocomplete="email" placeholder="hr@company.ru">
             </div>
           </div>
           <div class="field">
-            <label>Потребность (специальности, количество, регион, срок)</label>
-            <textarea name="details" rows="4" placeholder="Сварщики 6G — 10 чел, грузчики — 5 чел, Ленинградская область, потребность с сентября 2026"></textarea>
+            <label data-i18n="fDetails">Потребность: специальности, количество, регион, срок</label>
+            <textarea name="details" rows="4" placeholder="Сварщики 6G — 10 чел, грузчики — 5 чел, Ленинградская обл., с сентября 2026"></textarea>
           </div>
           <div class="field">
             <label class="consent">
               <input type="checkbox" name="consent" required>
-              <span>Я даю согласие на обработку персональных данных в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» для обработки заявки на подбор персонала. Данные не передаются третьим лицам.</span>
+              <span data-i18n="fConsent">Я даю согласие на обработку персональных данных в соответствии с ФЗ № 152-ФЗ. Данные не передаются третьим лицам.</span>
             </label>
           </div>
-          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px;">
-            Отправить заявку
-          </button>
-          <p style="font-size: 12px; color: var(--muted); text-align: center; margin-top: 12px;">
-            Заявка отправляется в Telegram делегата и в WhatsApp. Безопасно, без сервера.
-          </p>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px;" data-i18n="fSubmit">Отправить заявку</button>
+          <p style="font-size: 12px; color: var(--muted); text-align: center; margin-top: 12px;" data-i18n="fHelp">Заявка уходит в Telegram и WhatsApp делегата. Безопасно, без сервера.</p>
         </form>
       </div>
     </div>
@@ -586,39 +569,39 @@
             <div class="brand-sub">MEA Lic. RA5501045</div>
           </div>
         </a>
-        <p style="font-size: 13px; max-width: 380px; margin-top: 14px;">Лицензированное МИД Индии кадровое агентство. Поставка квалифицированных рабочих из Индии для предприятий России в рамках Соглашения о мобильности труда (декабрь 2025).</p>
+        <p style="font-size: 13px; max-width: 380px; margin-top: 14px;" data-i18n="footerAbout">Лицензированное МИД Индии кадровое агентство. Поставка квалифицированных рабочих из Индии для предприятий России в рамках Соглашения о мобильности труда (декабрь 2025).</p>
       </div>
       <div>
-        <h4>Навигация</h4>
+        <h4 data-i18n="footerNav">Навигация</h4>
         <ul>
-          <li><a href="#trades">Специальности</a></li>
-          <li><a href="#process">Процесс</a></li>
-          <li><a href="#why-free">Почему 0 ₽?</a></li>
-          <li><a href="#warranty">Гарантия</a></li>
-          <li><a href="#contact">Заявка</a></li>
+          <li><a href="#trades" data-i18n="navTrades">Специальности</a></li>
+          <li><a href="#process" data-i18n="navProcess">Процесс</a></li>
+          <li><a href="#why-free" data-i18n="navWhy">Почему 0 ₽?</a></li>
+          <li><a href="#warranty" data-i18n="navWarranty">Гарантия</a></li>
+          <li><a href="#contact" data-i18n="navContact">Заявка</a></li>
         </ul>
       </div>
       <div>
-        <h4>Документы</h4>
+        <h4 data-i18n="footerDocs">Документы</h4>
         <ul>
-          <li><a href="agreement.html" target="_blank">Договор (RU/EN) ↗</a></li>
-          <li><a href="client-request-form.html">Анкета заявки ↗</a></li>
-          <li><a href="https://hanmantravels.com" target="_blank" rel="noopener">Основной сайт ↗</a></li>
+          <li><a href="agreement.html" target="_blank" data-i18n="footerAgreement">Договор (RU/EN) ↗</a></li>
+          <li><a href="client-request-form.html" data-i18n="footerForm">Анкета ↗</a></li>
+          <li><a href="https://hanmantravels.com" target="_blank" rel="noopener" data-i18n="footerMain">Основной сайт ↗</a></li>
         </ul>
       </div>
       <div>
-        <h4>Контакты</h4>
+        <h4 data-i18n="footerContacts">Контакты</h4>
         <ul>
-          <li><a href="https://wa.me/919347128712" target="_blank" rel="noopener">Siddeshwar — WhatsApp +91 93471 28712</a></li>
-          <li><a href="https://t.me/siddesh_v" target="_blank" rel="noopener">Siddeshwar — Telegram @siddesh_v</a></li>
-          <li><a href="https://wa.me/917780674085" target="_blank" rel="noopener">Ravi Kumar — WhatsApp +91 77806 74085</a></li>
+          <li><a href="https://wa.me/919347128712" target="_blank" rel="noopener">Siddeshwar · WhatsApp +91 93471 28712</a></li>
+          <li><a href="https://t.me/siddesh_v" target="_blank" rel="noopener">Siddeshwar · Telegram @siddesh_v</a></li>
+          <li><a href="https://wa.me/917780674085" target="_blank" rel="noopener">Ravi Kumar · WhatsApp +91 77806 74085</a></li>
           <li><a href="mailto:siddeshwar.vasam@gmail.com">siddeshwar.vasam@gmail.com</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <div>© 2026 Hanman Travels · russia.hanmantravels.com</div>
-      <div>RA5501045 · Serving industry since 1992</div>
+      <div>RA5501045 · <span data-i18n="footerSince">с 1992 года</span></div>
     </div>
   </div>
 </footer>
@@ -626,6 +609,117 @@
 <div class="toast" id="toast"></div>
 
 <script>
+/* ============ I18N DICTIONARY ============ */
+const I18N = {
+  ru: {
+    navTrades: "Специальности", navProcess: "Процесс", navWhy: "Почему 0 ₽?", navWarranty: "Гарантия", navContact: "Заявка", navCta: "Заявка",
+    heroBadge: "🇮🇳 ↔ 🇷🇺 · Делегация ITB '26 — Санкт-Петербург, 12–13 августа",
+    heroTitle: 'Рабочие из Индии для российских предприятий — <span class="gold-text">0 ₽</span> комиссия для работодателя',
+    heroSubtitle: "Лицензированное МИД Индии кадровое агентство (RA5501045). Квалифицированные, протестированные и дисциплинированные рабочие для строительства, производства, логистики и сельского хозяйства. Полный цикл подбора и прилёта в рамках Соглашения о мобильности труда (декабрь 2025).",
+    heroCta1: "Запросить персонал (0 ₽)", heroCta2: "Договор ↗",
+    stat1: "Комиссия для работодателя", stat2: "Гарантия замены + обратный билет", stat3: "Дней от заявки до прилёта", stat4: "Кандидатов в базе",
+    whyTitle: "Почему 0 ₽ для работодателя?", whySubtitle: "Прямой ответ: «в чём подвох?» — никакого подвоха.",
+    why1Title: "Стратегический выход на РФ", why1Desc: "Расширяемся в Россию через официальный канал Соглашения о мобильности труда (дек 2025). Первые контракты — бесплатные для работодателя.",
+    why2Title: "Индийский закон", why2Desc: "Сбор оплачивает кандидат в Индии — по Закону об эмиграции 1983, в пределах, установленных МИД Индии. Доход регулируется законом, не работодателем.",
+    why3Title: "Нулевой риск", why3Desc: "Вы не подписываете финансовых обязательств перед нами. Если работник не подойдет — обратный билет за наш счёт.",
+    why4Title: "Дисциплинированные кадры", why4Desc: "Зрелые работники с сильной этикой: справка МВД, опыт в ОАЭ/Саудовской Аравии/Катаре, готовность к строгой дисциплине на объекте.",
+    tradesTitle: "Кого мы поставляем", tradesSubtitle: "4 основные отрасли. Полный цикл подбора — 30–45 дней.",
+    trade1Title: "Строительство", trade1Item1: "Сварщики 6G/TIG/MIG", trade1Item2: "Арматурщики, каменщики, монтажники", trade1Item3: "Электрики, сантехники", trade1Item4: "Операторы JCB, экскаватора, крана",
+    trade2Title: "Производство", trade2Item1: "Операторы ЧПУ (токарные/фрезерные)", trade2Item2: "Слесари-сборщики, токари", trade2Item3: "Механики по обслуживанию", trade2Item4: "Сборщики конвейера",
+    trade3Title: "Логистика и склад", trade3Item1: "Водители погрузчиков", trade3Item2: "Водители грузовиков (кат. C/E)", trade3Item3: "Комплектовщики, грузчики", trade3Item4: "Операторы склада",
+    trade4Title: "Гостиничный и клининг", trade4Item1: "Повара, стюарды, F&B", trade4Item2: "Хаускепинг, уборщики", trade4Item3: "Промальп L1-3 (веревочный доступ)", trade4Item4: "Мойщики фасадов, FM-менеджеры",
+    gulfLabel: "Опыт работы в Заливе:", gulfDesc: " 3–5 лет в ОАЭ, Саудовской Аравии, Катаре — дисциплинированные, знают английский, адаптированы к строгой рабочей культуре.",
+    processTitle: "Как это работает — 4 шага", processSubtitle: "Прозрачный, законный процесс. Реалистичные сроки.",
+    step1Title: "Договор и 3 документа eMigrate", step1Day: "Дни 0–5 · совместно", step1Desc: "Подписываем двусторонний договор (RU/EN). Вы регистрируетесь на eMigrate и оформляете: Demand Letter, Power of Attorney, Specimen Contract. Мы ведём через каждый шаг — 2–3 дня.",
+    step2Title: "Подбор и тестирование в Индии", step2Day: "Дни 5–25 · наша сторона", step2Desc: "Отбираем из базы 2 000+ кандидатов. Практическое тестирование (HD-видео), медосмотр (ВИЧ, туберкулёз, гепатит), справка МВД. Вы одобряете каждого лично.",
+    step3Title: "Разрешение МВД и виза", step3Day: "Дни 25–38 · МВД + консульство", step3Desc: "Вы подаёте заявление в МВД на рабочее приглашение (15–30 рабочих дней). Мы готовим пакет документов. После выдачи — вклейка рабочей визы в консульстве РФ в Индии.",
+    step4Title: "Прилёт, учёт, гарантия", step4Day: "Дни 40–45 · старт работы", step4Desc: "Группа прилетает в РФ. Миграционный учёт в течение 7 дней. Жилье — работодатель. Зарплата 2 раза в месяц на банковский счёт (ст. 136 ТК РФ). Старт 90-дневной гарантии.",
+    empListTitle: "Что нужно от вас — короткий список:", emp1: "Подписать договор", emp2: "Оформить 3 документа на eMigrate", emp3: "Подать заявление в МВД", emp4: "Предоставить жилье (по закону РФ)", emp5: "Зарплата 2 раза в месяц на банк", emp6: "Миграционный учёт в течение 7 дней", empHelp: "Мы помогаем на каждом этапе.",
+    warrantyTitle: "90 дней гарантии — включая обратный билет", warrantySubtitle: "Единственное, что отличает нас от 34 агентств на саммите. Это в договоре — не на словах.",
+    warranty1Title: "Работник не справился", warranty1Desc: "В течение 90 дней — бесплатная замена. Без споров, без скрытых условий. Один раз на каждого работника.",
+    warranty2Title: "Медицинские проблемы", warranty2Desc: "После прилёта выявилось противопоказание — меняем за свой счёт.",
+    warranty3Title: "Обратный билет — за наш счёт", warranty3Desc: "В случае замены мы оплачиваем обратный авиабилет. Это в §7 договора — читайте, не верьте на словА.",
+    testBatchLabel: "Тестовая партия — начните с 5 человек:", testBatchDesc: "Докажите нас на 5 работниках — мы несём риск. Если всё работает — масштабируем до 50–500. Это снимает риск для обеих сторон.",
+    legalTitle: "Полное правовое соответствие", legalSubtitle: "Каждый шаг задокументирован. Никаких серых схем.",
+    legal1Title: "Индийская сторона", legal1Desc: 'Лицензия МИД Индии <strong>RA5501045</strong> (Закон об эмиграции 1983). Все заявки на eMigrate. Сбор с кандидата регулируется законом. Заявка выполняется за 45 дней или квота аннулируется.',
+    legal2Title: "Российская сторона", legal2Desc: "Соглашение о мобильности труда (дек 2025) — официальный механизм. Разрешение МВД 15–30 дней. Зарплата 2 раза в месяц на банк (ст. 136 ТК РФ). Оговорка о гражданском использовании — санкционно-безопасно.",
+    siacLabel: "Разрешение споров — SIAC:", siacDesc: " Арбитраж в Сингапуре, 1 арбитр, английский язык. Обязательно в обеих странах по Нью-Йоркской конвенции.",
+    contactTitle: "Оставить заявку", contactSubtitle: "Заполните форму — мы получим её мгновенно в Telegram и свяжемся в течение рабочего дня.",
+    agent1Role: "Партнёр — Международный бизнес", agent2Role: "Управляющий партнёр",
+    hqLabel: "Головной офис:", branchLabel: "Филиал:", sinceLabel: "С 1992 года · Гос. лицензия с 2019",
+    summitInfo: "Делегация ITB '26 — 12–13 августа, Grand Hotel Emerald, СПб",
+    fCompany: "Название компании (РФ) *", fInn: "ИНН", fSector: "Сфера деятельности", fSectorDefault: "— Выбрать —", fSector1: "Строительство", fSector2: "Производство", fSector3: "Логистика / Склад", fSector4: "Сельское хозяйство", fSector5: "Гостиничный / Клининг",
+    fContact: "Контактное лицо *", fPhone: "Телефон / WhatsApp *", fEmail: "E-mail", fDetails: "Потребность: специальности, количество, регион, срок",
+    fConsent: "Я даю согласие на обработку персональных данных в соответствии с ФЗ № 152-ФЗ. Данные не передаются третьим лицам.", fSubmit: "Отправить заявку", fHelp: "Заявка уходит в Telegram и WhatsApp делегата. Безопасно, без сервера.",
+    footerAbout: "Лицензированное МИД Индии кадровое агентство. Поставка квалифицированных рабочих из Индии для предприятий России в рамках Соглашения о мобильности труда (декабрь 2025).",
+    footerNav: "Навигация", footerDocs: "Документы", footerContacts: "Контакты",
+    footerAgreement: "Договор (RU/EN) ↗", footerForm: "Анкета ↗", footerMain: "Основной сайт ↗", footerSince: "с 1992 года",
+    toastSuccess: "Заявка отправлена! Мы свяжемся с вами в течение рабочего дня."
+  },
+  en: {
+    navTrades: "Trades", navProcess: "Process", navWhy: "Why 0 ₽?", navWarranty: "Warranty", navContact: "Request", navCta: "Request",
+    heroBadge: "🇮🇳 ↔ 🇷🇺 · ITB '26 Delegation — St. Petersburg, Aug 12–13",
+    heroTitle: 'Indian workers for Russian enterprises — <span class="gold-text">0 ₽</span> employer fee',
+    heroSubtitle: "Govt. of India-licensed agency (MEA RA5501045). Skilled, trade-tested, disciplined workers for construction, manufacturing, logistics and agriculture. Full-cycle deployment under the India–Russia Labour Mobility Agreement (Dec 2025).",
+    heroCta1: "Request workers (0 ₽)", heroCta2: "Agreement ↗",
+    stat1: "Employer recruitment fee", stat2: "Replacement warranty + return ticket", stat3: "Days from request to arrival", stat4: "Candidates in pool",
+    whyTitle: "Why 0 ₽ for employers?", whySubtitle: "Direct answer to 'what's the catch?' — there isn't one.",
+    why1Title: "Strategic Russian entry", why1Desc: "We are expanding into Russia through the official Labour Mobility Agreement channel (Dec 2025). First contracts are free for employers.",
+    why2Title: "Indian law", why2Desc: "The fee is paid by the candidate in India — under the Emigration Act 1983, within limits set by the Indian MEA. Revenue is regulated by law, not the employer.",
+    why3Title: "Zero risk", why3Desc: "You sign no financial obligations to us. If a worker doesn't fit — return airfare is on us.",
+    why4Title: "Disciplined candidates", why4Desc: "Mature workers with strong work ethic: police clearance, 3-5 yrs in UAE/Saudi/Qatar, ready for strict on-site discipline.",
+    tradesTitle: "Who we supply", tradesSubtitle: "4 core industries. Full deployment cycle — 30–45 days.",
+    trade1Title: "Construction", trade1Item1: "6G/TIG/MIG welders", trade1Item2: "Steel fixers, masons, scaffolders", trade1Item3: "Electricians, plumbers", trade1Item4: "JCB, excavator, crane operators",
+    trade2Title: "Manufacturing", trade2Item1: "CNC operators (turning/milling)", trade2Item2: "Fitters, lathe operators", trade2Item3: "Maintenance technicians", trade2Item4: "Line assemblers",
+    trade3Title: "Logistics & warehouse", trade3Item1: "Forklift drivers", trade3Item2: "Truck drivers (Cat C/E)", trade3Item3: "Pickers, loaders", trade3Item4: "Warehouse operators",
+    trade4Title: "Hospitality & cleaning", trade4Item1: "Cooks, stewards, F&B", trade4Item2: "Housekeeping, cleaners", trade4Item3: "Rope access L1-3", trade4Item4: "Façade cleaners, FM managers",
+    gulfLabel: "Gulf-returned experience:", gulfDesc: " 3–5 years in UAE, Saudi Arabia, Qatar — disciplined, English-speaking, adapted to strict work culture.",
+    processTitle: "How it works — 4 steps", processSubtitle: "Transparent, lawful process. Realistic timelines.",
+    step1Title: "Agreement + 3 eMigrate documents", step1Day: "Days 0–5 · joint", step1Desc: "Sign bilateral agreement (EN/RU). You register on eMigrate and issue: Demand Letter, Power of Attorney, Specimen Contract. We guide every step — 2–3 days.",
+    step2Title: "Sourcing & testing in India", step2Day: "Days 5–25 · our side", step2Desc: "We screen from 2,000+ candidates. Practical trade test (HD video), medical (HIV, TB, hepatitis), police clearance. You approve each candidate personally.",
+    step3Title: "MVD work permit + visa", step3Day: "Days 25–38 · MVD + consulate", step3Desc: "You petition territorial MVD for work invitation (15–30 working days). We prepare the document pack. On issue — work visa stamped at Russian consulate in India.",
+    step4Title: "Arrival, registration, warranty", step4Day: "Days 40–45 · work starts", step4Desc: "Group arrives in Russia. Migration registration within 7 days. Housing — employer. Wages twice monthly to bank account (Labour Code Art. 136). 90-day warranty starts.",
+    empListTitle: "What we need from you — short list:", emp1: "Sign the agreement", emp2: "Issue 3 eMigrate documents", emp3: "File MVD petition", emp4: "Provide housing (Russian law)", emp5: "Pay wages twice monthly to bank", emp6: "Migration registration within 7 days", empHelp: "We help at every step.",
+    warrantyTitle: "90-day warranty — incl. return ticket", warrantySubtitle: "The one thing that distinguishes us from 34 agencies at the summit. It's in the contract — not on words.",
+    warranty1Title: "Worker underperforms", warranty1Desc: "Within 90 days — free replacement. No disputes, no hidden conditions. Once per worker.",
+    warranty2Title: "Medical issues", warranty2Desc: "A contraindication surfaces after arrival — we replace at our cost.",
+    warranty3Title: "Return ticket — on us", warranty3Desc: "On replacement we pay the return airfare. This is in §7 of the agreement — read it, don't take our word.",
+    testBatchLabel: "Test-batch — start with 5 workers:", testBatchDesc: "Prove us on 5 workers — we carry the risk. If it works — scale to 50–500. This removes risk for both sides.",
+    legalTitle: "Full legal compliance", legalSubtitle: "Every step documented. No grey schemes.",
+    legal1Title: "India side", legal1Desc: 'MEA License <strong>RA5501045</strong> (Emigration Act 1983). All demands on eMigrate. Candidate fee is law-regulated. Demand must be filled in 45 days or quota lapses.',
+    legal2Title: "Russia side", legal2Desc: "Labour Mobility Agreement (Dec 2025) — official mechanism. MVD permit 15–30 days. Wages twice monthly to bank (Labour Code Art. 136). Civilian-use-only clause — sanctions-safe.",
+    siacLabel: "Dispute resolution — SIAC:", siacDesc: " Arbitration in Singapore, 1 arbitrator, English. Enforceable in both countries under the New York Convention.",
+    contactTitle: "Submit a request", contactSubtitle: "Fill the form — we receive it instantly on Telegram and respond within one business day.",
+    agent1Role: "Partner — International Business", agent2Role: "Managing Partner",
+    hqLabel: "Head Office:", branchLabel: "Branch:", sinceLabel: "Since 1992 · Govt. license since 2019",
+    summitInfo: "ITB '26 Delegation — Aug 12–13, Grand Hotel Emerald, SPb",
+    fCompany: "Company name (Russia) *", fInn: "INN", fSector: "Industry", fSectorDefault: "— Select —", fSector1: "Construction", fSector2: "Manufacturing", fSector3: "Logistics / Warehouse", fSector4: "Agriculture", fSector5: "Hospitality / Cleaning",
+    fContact: "Contact person *", fPhone: "Phone / WhatsApp *", fEmail: "Email", fDetails: "Requirement: trades, quantity, region, timeline",
+    fConsent: "I consent to processing of personal data under Russian FZ No. 152-FZ. Data is not shared with third parties.", fSubmit: "Submit request", fHelp: "Request goes to the delegate's Telegram and WhatsApp. Secure, no server.",
+    footerAbout: "Govt. of India-licensed recruitment agency. Supplying skilled Indian workers to Russian enterprises under the Labour Mobility Agreement (Dec 2025).",
+    footerNav: "Navigation", footerDocs: "Documents", footerContacts: "Contacts",
+    footerAgreement: "Agreement (EN/RU) ↗", footerForm: "Request form ↗", footerMain: "Main site ↗", footerSince: "since 1992",
+    toastSuccess: "Request sent! We will contact you within one business day."
+  }
+};
+
+/* ============ LANG TOGGLE ============ */
+let curLang = (function(){ try { return localStorage.getItem('ht-lang') || 'ru'; } catch(e){ return 'ru'; } })();
+function applyLang(lang) {
+  curLang = lang;
+  document.documentElement.lang = lang;
+  const dict = I18N[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (dict[k] !== undefined) el.innerHTML = dict[k];
+  });
+  document.getElementById('langBtn').textContent = (lang === 'ru') ? 'EN' : 'RU';
+  try { localStorage.setItem('ht-lang', lang); } catch(e){}
+  document.getElementById('langBtn').setAttribute('aria-label', lang === 'ru' ? 'Switch to English' : 'Переключить на русский');
+}
+document.getElementById('langBtn').addEventListener('click', () => applyLang(curLang === 'ru' ? 'en' : 'ru'));
+applyLang(curLang);
+
 /* ============ THEME TOGGLE ============ */
 (function() {
   const saved = (function(){ try { return localStorage.getItem('ht-theme'); } catch(e){ return null; } })();
@@ -638,61 +732,46 @@
 })();
 
 /* ============ MOBILE MENU ============ */
-document.getElementById('menuBtn').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => {
-  document.getElementById('navLinks').classList.remove('open');
-}));
+document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
 
 /* ============ FORM SUBMIT — Telegram first, WhatsApp fallback ============ */
-/* Russia-proof: Telegram is the default business channel in Russia and is not blocked.
-   No server needed — direct client-side fetch. No Google Forms (blocked/throttled). */
-const TG_BOT_TOKEN = 'YOUR_BOT_TOKEN';   // from @BotFather
-const TG_CHAT_ID = 'YOUR_CHAT_ID';       // https://t.me/userinfobot gives your numeric chat ID
-const WA_PHONE = '919347128712';         // Siddeshwar's WhatsApp (E.164, no +)
+const TG_BOT_TOKEN = 'YOUR_BOT_TOKEN';
+const TG_CHAT_ID = 'YOUR_CHAT_ID';
+const WA_PHONE = '919347128712';
 
 document.getElementById('demand-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const f = e.target;
   const get = (n) => (f.querySelector('[name="' + n + '"]') || {}).value || '';
   const lines = [
-    '🇮🇳 НОВАЯ ЗАЯВКА — Hanman Travels (с сайта)',
+    '🇮🇳 NEW LEAD — Hanman Travels (website)',
     '───────────────',
-    '🏢 Компания: ' + get('company'),
-    'ИНН: ' + get('inn'),
-    'Сфера: ' + get('sector'),
+    '🏢 Company: ' + get('company'),
+    'INN: ' + get('inn'),
+    'Sector: ' + get('sector'),
     '',
-    '👤 Контакт: ' + get('contact_name'),
-    '📞 Телефон: ' + get('phone'),
+    '👤 Contact: ' + get('contact_name'),
+    '📞 Phone: ' + get('phone'),
     '✉️ Email: ' + get('email'),
     '',
-    '📋 Потребность: ' + get('details'),
+    '📋 Requirement: ' + get('details'),
     '',
     '🕐 ' + new Date().toLocaleString('ru-RU')
   ];
   const msg = lines.join('\n');
-
-  /* Try Telegram first (works in Russia, no server) */
   let tgOk = false;
   if (TG_BOT_TOKEN && TG_CHAT_ID && TG_BOT_TOKEN !== 'YOUR_BOT_TOKEN') {
     try {
       const r = await fetch('https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: msg, parse_mode: 'HTML' })
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: msg })
       });
       tgOk = r.ok;
     } catch (e) { tgOk = false; }
   }
-
-  /* Always also fire WhatsApp so the lead is delivered even if Telegram bot is not yet set up */
-  const waUrl = 'https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(msg);
-  if (!tgOk) {
-    window.open(waUrl, '_blank', 'noopener');
-  }
-
-  showToast('Заявка отправлена! Мы свяжемся с вами в течение рабочего дня.');
+  if (!tgOk) window.open('https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  showToast(I18N[curLang].toastSuccess);
   f.reset();
 });
 
@@ -703,6 +782,5 @@ function showToast(text) {
   setTimeout(() => t.classList.remove('show'), 4500);
 }
 </script>
-
 </body>
 </html>
