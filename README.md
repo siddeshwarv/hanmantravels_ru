@@ -26,15 +26,43 @@
 
 ---
 
-## 🚀 How to Run Locally
+## 🚀 Deployment
 
-You can launch a local web server in this directory:
+**Live URL:** [https://russia.hanmantravels.com](https://russia.hanmantravels.com)  
+**Fallback:** [https://siddeshwarv.github.io/hanmantravels_ru/](https://siddeshwarv.github.io/hanmantravels_ru/)
+
+**Platform:** GitHub Pages (from `master` branch, `/` root)
+
+### Why GitHub Pages (not Cloudflare/Vercel)
+
+- Cloudflare Pages (`.pages.dev`) — **BLOCKED by Russian ISPs** (Roskomnadzor blocklist)
+- Vercel IPs — throttled/unreliable in Russia  
+- GitHub Pages (`github.io`) — **works in Russia**, not blocked
+
+### Setup
+
+1. **Repo:** Public. `master` branch set as Pages source in repo Settings → Pages.
+2. **CNAME:** `CNAME` file in repo root = `russia.hanmantravels.com`
+3. **DNS:** At hostingraja.in — CNAME `russia` → `siddeshwarv.github.io`
+4. **SSL:** GitHub auto-provisions Let's Encrypt certificate. Takes 5-15 min after DNS propagation.
+
+### Auto-Deploy
+
+Every `git push origin master` auto-rebuilds the site. No build step — pure static HTML/CSS/JS. Deploys in ~30 seconds.
+
+### Local Dev
 
 ```bash
-cd ~/Music/hanmantravels_ru
-python3 -m http.server 8080
+python3 -m http.server 8888
+# Open http://localhost:8888
 ```
-Then open `http://localhost:8080` in your web browser.
+
+### No Google Dependencies
+
+- Google Fonts removed — uses system fonts (Segoe UI, Arial)
+- No Google Analytics, no external CDN scripts
+- All images self-hosted in `assets/images/`
+- Only external call: WhatsApp (`wa.me`) — works in Russia
 
 ---
 
