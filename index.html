@@ -130,6 +130,9 @@
   .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
   .checklist li { display: flex; gap: 8px; align-items: flex-start; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
   .checklist li::before { content: "✓"; color: var(--green); font-weight: 800; flex-shrink: 0; }
+  .checklist.tight { gap: 5px; margin-top: 0; }
+  .checklist.tight li { font-size: 0.88rem; line-height: 1.45; }
+  .checklist.gold li::before { content: "▸"; color: var(--gold); }
 
   /* STEPPER */
   .steps { display: grid; gap: 20px; }
@@ -249,7 +252,7 @@
   <div class="container">
     <div class="hero-badge" data-i18n="heroBadge">🇮🇳 ↔ 🇷🇺 · Делегация ITB '26 — Санкт-Петербург, 12–13 августа</div>
     <h1 data-i18n="heroTitle">Рабочие из Индии для российских компаний — <span class="gold-text">0 ₽</span> для работодателя</h1>
-    <p class="hero-subtitle" data-i18n="heroSubtitle">Лицензированное МИД Индии кадровое агентство (RA5501045). Квалифицированные, протестированные и дисциплинированные рабочие для строительства, производства, логистики и сельского хозяйства. Полный цикл подбора и прилёта в рамках Соглашения о мобильности труда (декабрь 2025).</p>
+    <div class="hero-subtitle" data-i18n="heroSubtitle">Лицензированное МИД Индии кадровое агентство (RA5501045). Квалифицированные, протестированные и дисциплинированные рабочие для строительства, производства, логистики и сельского хозяйства. Полный цикл подбора и прилёта в рамках Соглашения о мобильности труда (декабрь 2025).</div>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary" data-i18n="heroCta1">Запросить персонал (0 ₽)</a>
       <a href="agreement.html" class="btn btn-secondary" data-i18n="heroCta2">Договор ↗</a>
@@ -275,22 +278,22 @@
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
         <h3 data-i18n="why1Title">Стратегический выход на РФ</h3>
-        <p data-i18n="why1Desc">Расширяемся в Россию через официальный канал Соглашения о мобильности труда (дек 2025). Первые контракты — бесплатные для работодателя.</p>
+        <div data-i18n="why1Desc">Расширяемся в Россию через официальный канал Соглашения о мобильности труда (дек 2025). Первые контракты — бесплатные для работодателя.</div>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.66 0 3.22.45 4.56 1.24"/></svg></div>
         <h3 data-i18n="why2Title">Индийский закон</h3>
-        <p data-i18n="why2Desc">Сбор оплачивает кандидат в Индии — по Закону об эмиграции 1983, в пределах, установленных МИД Индии. Доход регулируется законом, не работодателем.</p>
+        <div data-i18n="why2Desc">Сбор оплачивает кандидат в Индии — по Закону об эмиграции 1983, в пределах, установленных МИД Индии. Доход регулируется законом, не работодателем.</div>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3 data-i18n="why3Title">Нулевой риск</h3>
-        <p data-i18n="why3Desc">Вы не подписываете финансовых обязательств перед нами. Если работник не подойдет — обратный билет за наш счёт.</p>
+        <div data-i18n="why3Desc">Вы не подписываете финансовых обязательств перед нами. Если работник не подойдет — обратный билет за наш счёт.</div>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
         <h3 data-i18n="why4Title">Дисциплинированные кадры</h3>
-        <p data-i18n="why4Desc">Зрелые работники с сильной этикой: справка МВД, опыт в ОАЭ/Саудовской Аравии/Катаре, готовность к строгой дисциплине на объекте.</p>
+        <div data-i18n="why4Desc">Зрелые работники с сильной этикой: справка МВД, опыт в ОАЭ/Саудовской Аравии/Катаре, готовность к строгой дисциплине на объекте.</div>
       </div>
     </div>
   </div>
@@ -307,7 +310,7 @@
       <div class="card card-gold">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20M4 22V8l8-5 8 5v14M8 22V12h8v10"/></svg></div>
         <h3 data-i18n="trade1Title">Строительство</h3>
-        <ul class="checklist">
+        <ul class="checklist tight gold">
           <li data-i18n="trade1Item1">Сварщики 6G/TIG/MIG</li>
           <li data-i18n="trade1Item2">Арматурщики, каменщики, монтажники</li>
           <li data-i18n="trade1Item3">Электрики, сантехники</li>
@@ -317,7 +320,7 @@
       <div class="card card-gold">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M22 12h-3M5 12H2"/></svg></div>
         <h3 data-i18n="trade2Title">Производство</h3>
-        <ul class="checklist">
+        <ul class="checklist tight gold">
           <li data-i18n="trade2Item1">Операторы ЧПУ (токарные/фрезерные)</li>
           <li data-i18n="trade2Item2">Слесари-сборщики, токари</li>
           <li data-i18n="trade2Item3">Механики по обслуживанию</li>
@@ -327,7 +330,7 @@
       <div class="card card-gold">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2.5 2.5 0 1 1 5 0M15.5 21a2.5 2.5 0 1 1 5 0"/></svg></div>
         <h3 data-i18n="trade3Title">Логистика и склад</h3>
-        <ul class="checklist">
+        <ul class="checklist tight gold">
           <li data-i18n="trade3Item1">Водители погрузчиков</li>
           <li data-i18n="trade3Item2">Водители грузовиков (кат. C/E)</li>
           <li data-i18n="trade3Item3">Комплектовщики, грузчики</li>
@@ -337,7 +340,7 @@
       <div class="card card-gold">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20M4 22V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v17M9 22v-4a2 2 0 0 1 4 0v4"/></svg></div>
         <h3 data-i18n="trade4Title">Гостиничный и клининг</h3>
-        <ul class="checklist">
+        <ul class="checklist tight gold">
           <li data-i18n="trade4Item1">Повара, стюарды, F&B</li>
           <li data-i18n="trade4Item2">Хаускепинг, уборщики</li>
           <li data-i18n="trade4Item3">Промальп L1-3 (веревочный доступ)</li>
@@ -347,7 +350,7 @@
     </div>
     <div class="callout">
       <strong data-i18n="gulfLabel">Опыт работы в Заливе:</strong>
-      <span data-i18n="gulfDesc"> 3–5 лет в ОАЭ, Саудовской Аравии, Катаре — дисциплинированные, знают английский, адаптированы к строгой рабочей культуре.</span>
+      <div data-i18n="gulfDesc" style="display:block;margin-top:6px"> 3–5 лет в ОАЭ, Саудовской Аравии, Катаре — дисциплинированные, знают английский, адаптированы к строгой рабочей культуре.</div>
     </div>
   </div>
 </section>
@@ -365,7 +368,7 @@
         <div class="step-body">
           <h3 data-i18n="step1Title">Договор и 3 документа eMigrate</h3>
           <div class="day" data-i18n="step1Day">Дни 0–5 · совместно</div>
-          <p data-i18n="step1Desc">Подписываем двусторонний договор (RU/EN). Вы регистрируетесь на eMigrate и оформляете: Demand Letter, Power of Attorney, Specimen Contract. Мы ведём через каждый шаг — 2–3 дня.</p>
+          <div data-i18n="step1Desc">Подписываем двусторонний договор (RU/EN). Вы регистрируетесь на eMigrate и оформляете: Demand Letter, Power of Attorney, Specimen Contract. Мы ведём через каждый шаг — 2–3 дня.</div>
         </div>
       </div>
       <div class="step">
@@ -373,7 +376,7 @@
         <div class="step-body">
           <h3 data-i18n="step2Title">Подбор и тестирование в Индии</h3>
           <div class="day" data-i18n="step2Day">Дни 5–25 · наша сторона</div>
-          <p data-i18n="step2Desc">Отбираем из базы 2 000+ кандидатов. Практическое тестирование (HD-видео), медосмотр (ВИЧ, туберкулёз, гепатит), справка МВД. Вы одобряете каждого лично.</p>
+          <div data-i18n="step2Desc">Отбираем из базы 2 000+ кандидатов. Практическое тестирование (HD-видео), медосмотр (ВИЧ, туберкулёз, гепатит), справка МВД. Вы одобряете каждого лично.</div>
         </div>
       </div>
       <div class="step">
@@ -381,7 +384,7 @@
         <div class="step-body">
           <h3 data-i18n="step3Title">Разрешение МВД и виза</h3>
           <div class="day" data-i18n="step3Day">Дни 25–38 · МВД + консульство</div>
-          <p data-i18n="step3Desc">Вы подаёте заявление в МВД на рабочее приглашение (15–30 рабочих дней). Мы готовим пакет документов. После выдачи — вклейка рабочей визы в консульстве РФ в Индии.</p>
+          <div data-i18n="step3Desc">Вы подаёте заявление в МВД на рабочее приглашение (15–30 рабочих дней). Мы готовим пакет документов. После выдачи — вклейка рабочей визы в консульстве РФ в Индии.</div>
         </div>
       </div>
       <div class="step">
@@ -389,7 +392,7 @@
         <div class="step-body">
           <h3 data-i18n="step4Title">Прилёт, учёт, гарантия</h3>
           <div class="day" data-i18n="step4Day">Дни 40–45 · старт работы</div>
-          <p data-i18n="step4Desc">Группа прилетает в РФ. Миграционный учёт в течение 7 дней. Жилье — работодатель. Зарплата 2 раза в месяц на банковский счёт (ст. 136 ТК РФ). Старт 90-дневной гарантии.</p>
+          <div data-i18n="step4Desc">Группа прилетает в РФ. Миграционный учёт в течение 7 дней. Жилье — работодатель. Зарплата 2 раза в месяц на банковский счёт (ст. 136 ТК РФ). Старт 90-дневной гарантии.</div>
         </div>
       </div>
     </div>
@@ -419,22 +422,22 @@
       <div class="card card-green">
         <div class="ico" style="background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
         <h3 data-i18n="warranty1Title">Работник не справился</h3>
-        <p data-i18n="warranty1Desc">В течение 90 дней — бесплатная замена. Без споров, без скрытых условий. Один раз на каждого работника.</p>
+        <div data-i18n="warranty1Desc">В течение 90 дней — бесплатная замена. Без споров, без скрытых условий. Один раз на каждого работника.</div>
       </div>
       <div class="card card-green">
         <div class="ico" style="background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9"/></svg></div>
         <h3 data-i18n="warranty2Title">Медицинские проблемы</h3>
-        <p data-i18n="warranty2Desc">После прилёта выявилось противопоказание — меняем за свой счёт.</p>
+        <div data-i18n="warranty2Desc">После прилёта выявилось противопоказание — меняем за свой счёт.</div>
       </div>
       <div class="card card-green">
         <div class="ico" style="background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
         <h3 data-i18n="warranty3Title">Обратный билет — за наш счёт</h3>
-        <p data-i18n="warranty3Desc">В случае замены мы оплачиваем обратный авиабилет. Это в §7 договора — читайте, не верьте на словА.</p>
+        <div data-i18n="warranty3Desc">В случае замены мы оплачиваем обратный авиабилет. Это в §7 договора — читайте, не верьте на словА.</div>
       </div>
     </div>
     <div class="callout callout-green">
       <strong data-i18n="testBatchLabel">Тестовая партия — начните с 5 человек:</strong>
-      <p data-i18n="testBatchDesc">Докажите нас на 5 работниках — мы несём риск. Если всё работает — масштабируем до 50–500. Это снимает риск для обеих сторон.</p>
+      <div data-i18n="testBatchDesc">Докажите нас на 5 работниках — мы несём риск. Если всё работает — масштабируем до 50–500. Это снимает риск для обеих сторон.</div>
     </div>
   </div>
 </section>
@@ -449,25 +452,25 @@
     <div class="grid-2">
       <div class="card">
         <h3>🇮🇳 <span data-i18n="legal1Title">Индийская сторона</span></h3>
-        <p data-i18n="legal1Desc">Лицензия МИД Индии <strong>RA5501045</strong> (Закон об эмиграции 1983). Все заявки на eMigrate. Сбор с кандидата регулируется законом. Заявка выполняется за 45 дней или квота аннулируется.</p>
+        <div data-i18n="legal1Desc">Лицензия МИД Индии <strong>RA5501045</strong> (Закон об эмиграции 1983). Все заявки на eMigrate. Сбор с кандидата регулируется законом. Заявка выполняется за 45 дней или квота аннулируется.</div>
         <div class="badge-id">RA5501045</div>
       </div>
       <div class="card">
         <h3>🇷🇺 <span data-i18n="legal2Title">Российская сторона</span></h3>
-        <p data-i18n="legal2Desc">Соглашение о мобильности труда (дек 2025) — официальный механизм. Разрешение МВД 15–30 дней. Зарплата 2 раза в месяц на банк (ст. 136 ТК РФ). Оговорка о гражданском использовании — санкционно-безопасно.</p>
+        <div data-i18n="legal2Desc">Соглашение о мобильности труда (дек 2025) — официальный механизм. Разрешение МВД 15–30 дней. Зарплата 2 раза в месяц на банк (ст. 136 ТК РФ). Оговорка о гражданском использовании — санкционно-безопасно.</div>
       </div>
     </div>
     <div class="callout">
       <strong data-i18n="siacLabel">Разрешение споров — SIAC:</strong>
-      <span data-i18n="siacDesc"> Арбитраж в Сингапуре, 1 арбитр, английский язык. Обязательно в обеих странах по Нью-Йоркской конвенции.</span>
+      <div data-i18n="siacDesc" style="display:block;margin-top:6px"> Арбитраж в Сингапуре, 1 арбитр, английский язык. Обязательно в обеих странах по Нью-Йоркской конвенции.</div>
     </div>
     <div class="callout callout-green">
       <strong data-i18n="salaryLabel">Затрудняетесь с вилкой зарплат?</strong>
-      <span data-i18n="salaryDesc"> Мы поможем определить подходящий диапазон ЗП для каждой специальности и региона — и подберём кандидатов именно под этот бюджет. Это экономит вам значительные суммы без потери квалификации.</span>
+      <div data-i18n="salaryDesc" style="display:block;margin-top:6px"> Мы поможем определить подходящий диапазон ЗП для каждой специальности и региона — и подберём кандидатов именно под этот бюджет. Это экономит вам значительные суммы без потери квалификации.</div>
     </div>
     <div class="callout">
       <strong data-i18n="transparentLabel">Прозрачный и простой договор:</strong>
-      <span data-i18n="transparentDesc"> Договор простой и прозрачный — 16 разделов, EN/RU, арбитраж SIAC. Откройте <a href="agreement.html" target="_blank" style="color: var(--gold); text-decoration: underline;">полный текст договора ↗</a> или посмотрите <a href="presentation.html" target="_blank" style="color: var(--gold); text-decoration: underline;">презентацию для саммита ↗</a>. Мы открыты к корректировкам под ваши стандарты.</span>
+      <div data-i18n="transparentDesc" style="display:block;margin-top:6px"> Договор простой и прозрачный — 16 разделов, EN/RU, арбитраж SIAC. Откройте <a href="agreement.html" target="_blank" style="color: var(--gold); text-decoration: underline;">полный текст договора ↗</a> или посмотрите <a href="presentation.html" target="_blank" style="color: var(--gold); text-decoration: underline;">презентацию для саммита ↗</a>. Мы открыты к корректировкам под ваши стандарты.</div>
     </div>
   </div>
 </section>
@@ -477,7 +480,7 @@
   <div class="container">
     <div class="section-head">
       <h2 data-i18n="contactTitle">Оставить заявку</h2>
-      <p data-i18n="contactSubtitle">Заполните форму — мы получим её мгновенно в Telegram и свяжемся в течение рабочего дня.</p>
+      <div data-i18n="contactSubtitle">Заполните форму — мы получим её мгновенно в Telegram и свяжемся в течение рабочего дня.</div>
     </div>
     <div class="grid-2" style="align-items: start;">
       <div>
@@ -597,7 +600,7 @@
             <div class="brand-sub">MEA Lic. RA5501045</div>
           </div>
         </a>
-        <p style="font-size: 13px; max-width: 380px; margin-top: 14px;" data-i18n="footerAbout">Лицензированное МИД Индии кадровое агентство. Поставка квалифицированных рабочих из Индии для предприятий России в рамках Соглашения о мобильности труда (декабрь 2025).</p>
+        <div style="font-size: 13px; max-width: 380px; margin-top: 14px;" data-i18n="footerAbout">Лицензированное МИД Индии кадровое агентство. Поставка квалифицированных рабочих из Индии для предприятий России в рамках Соглашения о мобильности труда (декабрь 2025).</div>
       </div>
       <div>
         <h4 data-i18n="footerNav">Навигация</h4>
@@ -648,33 +651,33 @@ const I18N = {
     heroCta1: "Запросить персонал (0 ₽)", heroCta2: "Договор ↗", heroCta3: "Презентация ↗",
     stat1: "Плата с работодателя", stat2: "Гарантия замены + обратный билет", stat3: "Дней от заявки до прилёта", stat4: "Кандидатов в базе",
     whyTitle: "Почему 0 ₽ для работодателя?", whySubtitle: "Прямой ответ: «в чём подвох?» — никакого подвоха.",
-    why1Title: "Стратегический выход на РФ", why1Desc: "Расширяемся в Россию через официальный канал Соглашения о мобильности труда (дек 2025). Первые контракты — 0 ₽ для работодателя. Если у вас есть свои условия и стандарты договора — мы адаптируемся к ним и работаем на взаимную пользу.",
-    why2Title: "Индийский закон", why2Desc: "Сбор оплачивает кандидат в Индии — по Закону об эмиграции 1983, в пределах, установленных МИД Индии. Доход регулируется законом, не работодателем.",
-    why3Title: "Нулевой риск", why3Desc: "Вы не подписываете финансовых обязательств перед нами. Если работник не подойдет — обратный билет за наш счёт.",
-    why4Title: "Дисциплинированные кадры", why4Desc: "Зрелые работники с сильной этикой: справка МВД, опыт в ОАЭ/Саудовской Аравии/Катаре, готовность к строгой дисциплине на объекте.",
+    why1Title: "Стратегический выход на РФ", why1Desc: '<ul class="checklist tight"><li>Official channel — Labour Mobility Agreement (Dec 2025)</li><li>First contract — 0 ₽ for the employer</li><li>We adapt to your contract standards</li></ul>',
+    why2Title: "Индийский закон", why2Desc: '<ul class="checklist tight"><li>Fee paid by candidate in India (Emigration Act 1983)</li><li>Fee caps set by Indian MEA</li><li>Revenue regulated by law</li></ul>',
+    why3Title: "Нулевой риск", why3Desc: '<ul class="checklist tight"><li>No financial obligations to us</li><li>Doesn't fit — return airfare on us</li></ul>',
+    why4Title: "Дисциплинированные кадры", why4Desc: '<ul class="checklist tight"><li>Police clearance — vetted workers</li><li>3–5 yrs experience UAE / Saudi / Qatar</li><li>Ready for strict on-site discipline</li></ul>',
     tradesTitle: "Кого мы поставляем", tradesSubtitle: "4 основные отрасли. Полный цикл подбора — 30–45 дней.",
     trade1Title: "Строительство", trade1Item1: "Сварщики 6G/TIG/MIG", trade1Item2: "Арматурщики, каменщики, монтажники", trade1Item3: "Электрики, сантехники", trade1Item4: "Операторы JCB, экскаватора, крана",
     trade2Title: "Производство", trade2Item1: "Операторы ЧПУ (токарные/фрезерные)", trade2Item2: "Слесари-сборщики, токари", trade2Item3: "Механики по обслуживанию", trade2Item4: "Сборщики конвейера",
     trade3Title: "Логистика и склад", trade3Item1: "Водители погрузчиков", trade3Item2: "Водители грузовиков (кат. C/E)", trade3Item3: "Комплектовщики, грузчики", trade3Item4: "Операторы склада",
     trade4Title: "Гостиничный и клининг", trade4Item1: "Повара, стюарды, F&B", trade4Item2: "Хаускепинг, уборщики", trade4Item3: "Промальп L1-3 (веревочный доступ)", trade4Item4: "Мойщики фасадов, FM-менеджеры",
-    gulfLabel: "Огромный резерв кадров с опытом в Заливе:", gulfDesc: " Тысячи опытных кандидатов, отработавших 3–5 лет в ОАЭ, Саудовской Аравии, Катаре — дисциплинированные, знают английский, адаптированы к строгой рабочей культуре. Мы можем быстро подобрать сотни людей на россиянские зарплаты.",
+    gulfLabel: "Огромный резерв кадров с опытом в Заливе:", gulfDesc: '<ul class="checklist gold tight"><li>Thousands of Gulf-returned experienced candidates</li><li>Disciplined, English-speaking</li><li>Quickly source hundreds for Russian salary levels</li></ul>',
     processTitle: "Как это работает — 4 шага", processSubtitle: "Прозрачный, законный процесс. Реалистичные сроки.",
-    step1Title: "Договор и 3 документа eMigrate", step1Day: "Дни 0–5 · совместно", step1Desc: "Подписываем двусторонний договор (RU/EN). Вы регистрируетесь на eMigrate и оформляете: Demand Letter, Power of Attorney, Specimen Contract. Мы ведём через каждый шаг — 2–3 дня.",
-    step2Title: "Подбор и тестирование в Индии", step2Day: "Дни 5–25 · наша сторона", step2Desc: "Отбираем из базы 2 000+ кандидатов. Практическое тестирование (HD-видео), медосмотр (ВИЧ, туберкулёз, гепатит), справка МВД. Вы одобряете каждого лично.",
-    step3Title: "Разрешение МВД и виза", step3Day: "Дни 25–38 · МВД + консульство", step3Desc: "Вы подаёте заявление в МВД на рабочее приглашение (15–30 рабочих дней). Мы готовим пакет документов. После выдачи — вклейка рабочей визы в консульстве РФ в Индии.",
-    step4Title: "Прилёт, учёт, гарантия", step4Day: "Дни 40–45 · старт работы", step4Desc: "Группа прилетает в РФ. Миграционный учёт в течение 7 дней. Жилье — работодатель. Зарплата 2 раза в месяц на банковский счёт (ст. 136 ТК РФ). Старт 90-дневной гарантии.",
+    step1Title: "Договор и 3 документа eMigrate", step1Day: "Дни 0–5 · совместно", step1Desc: '<ul class="checklist tight"><li>Sign bilateral agreement (EN/RU)</li><li>You register on eMigrate</li><li>3 documents: Demand Letter, POA, Specimen Contract</li></ul>',
+    step2Title: "Подбор и тестирование в Индии", step2Day: "Дни 5–25 · наша сторона", step2Desc: '<ul class="checklist tight"><li>Screen from 2,000+ candidates</li><li>Practical trade test (HD video)</li><li>Medical + police clearance</li><li>You approve each candidate personally</li></ul>',
+    step3Title: "Разрешение МВД и виза", step3Day: "Дни 25–38 · МВД + консульство", step3Desc: '<ul class="checklist tight"><li>You petition MVD (15–30 days)</li><li>We prepare the document pack</li><li>Work visa at Russian consulate in India</li></ul>',
+    step4Title: "Прилёт, учёт, гарантия", step4Day: "Дни 40–45 · старт работы", step4Desc: '<ul class="checklist tight"><li>Group arrives in Russia</li><li>Migration registration within 7 days</li><li>Wages twice monthly to bank (Art. 136)</li><li>90-day warranty starts</li></ul>',
     empListTitle: "Что нужно от вас — короткий список:", emp1: "Подписать договор", emp2: "Оформить 3 документа на eMigrate", emp3: "Подать заявление в МВД", emp4: "Предоставить жилье (по закону РФ)", emp5: "Зарплата 2 раза в месяц на банк", emp6: "Миграционный учёт в течение 7 дней", empHelp: "Мы помогаем на каждом этапе.",
     warrantyTitle: "90 дней гарантии — включая обратный билет", warrantySubtitle: "Единственное, что отличает нас от 34 агентств на саммите. Это в договоре — не на словах.",
-    warranty1Title: "Работник не справился", warranty1Desc: "В течение 90 дней — бесплатная замена. Без споров, без скрытых условий. Один раз на каждого работника.",
-    warranty2Title: "Медицинские проблемы", warranty2Desc: "После прилёта выявилось противопоказание — меняем за свой счёт.",
-    warranty3Title: "Обратный билет — за наш счёт", warranty3Desc: "В случае замены мы оплачиваем обратный авиабилет. Это в §7 договора — читайте, не верьте на словА.",
-    testBatchLabel: "Тестовая партия — начните с 5 человек:", testBatchDesc: "Докажите нас на 5 работниках — мы несём риск. Если всё работает — масштабируем до 50–500. Это снимает риск для обеих сторон.",
+    warranty1Title: "Работник не справился", warranty1Desc: '<ul class="checklist tight"><li>90 days — free replacement</li><li>No disputes, no hidden conditions</li><li>Once per worker</li></ul>',
+    warranty2Title: "Медицинские проблемы", warranty2Desc: '<ul class="checklist tight"><li>Contraindication after arrival</li><li>We replace at our cost</li></ul>',
+    warranty3Title: "Обратный билет — за наш счёт", warranty3Desc: '<ul class="checklist tight"><li>Return airfare — on us</li><li>Written in §7 of the agreement</li></ul>',
+    testBatchLabel: "Тестовая партия — начните с 5 человек:", testBatchDesc: '<ul class="checklist tight"><li>Start with 5 workers — we carry the risk</li><li>Works? Scale to 50–500</li></ul>',
     legalTitle: "Полное правовое соответствие", legalSubtitle: "Каждый шаг задокументирован. Никаких серых схем.",
-    legal1Title: "Индийская сторона", legal1Desc: 'Лицензия МИД Индии <strong>RA5501045</strong> (Закон об эмиграции 1983). Все заявки на eMigrate. Сбор с кандидата регулируется законом. Заявка выполняется за 45 дней или квота аннулируется.',
-    legal2Title: "Российская сторона", legal2Desc: "Соглашение о мобильности труда (дек 2025) — официальный механизм. Разрешение МВД 15–30 дней. Зарплата 2 раза в месяц на банк (ст. 136 ТК РФ). Оговорка о гражданском использовании — санкционно-безопасно.",
-    siacLabel: "Разрешение споров — SIAC:", siacDesc: " Арбитраж в Сингапуре, 1 арбитр, английский язык. Обязательно в обеих странах по Нью-Йоркской конвенции.",
-    salaryLabel: "Затрудняетесь с вилкой зарплат?", salaryDesc: " Мы поможем определить подходящий диапазон ЗП для каждой специальности и региона — и подберём кандидатов именно под этот бюджет. Это экономит вам значительные суммы без потери квалификации.",
-    transparentLabel: "Прозрачный и простой договор:", transparentDesc: ' Договор простой и прозрачный — 16 разделов, EN/RU, арбитраж SIAC. Откройте <a href="agreement.html" target="_blank" style="color: var(--gold); text-decoration: underline;">полный текст договора ↗</a> или посмотрите <a href="presentation.html" target="_blank" style="color: var(--gold); text-decoration: underline;">презентацию для саммита ↗</a>. Мы открыты к корректировкам под ваши стандарты.',
+    legal1Title: "Индийская сторона", legal1Desc: '<ul class="checklist tight"><li>MEA License <strong>RA5501045</strong> (Emigration Act 1983)</li><li>All demands on eMigrate</li><li>Candidate fee regulated by law</li></ul>',
+    legal2Title: "Российская сторона", legal2Desc: '<ul class="checklist tight"><li>Labour Mobility Agreement (Dec 2025)</li><li>MVD permit 15–30 days</li><li>Wages twice monthly to bank (Art. 136)</li><li>Civilian-use only — sanctions-safe</li></ul>',
+    siacLabel: "Разрешение споров — SIAC:", siacDesc: '<ul class="checklist gold tight"><li>SIAC arbitration, Singapore</li><li>1 arbitrator, English</li><li>Enforceable in both countries (NY Convention)</li></ul>',
+    salaryLabel: "Затрудняетесь с вилкой зарплат?", salaryDesc: '<ul class="checklist gold tight"><li>We help set a salary range per trade and region</li><li>Source candidates that fit your exact budget</li></ul>',
+    transparentLabel: "Прозрачный и простой договор:", transparentDesc: '<ul class="checklist gold tight"><li>Agreement: 16 sections, EN/RU, SIAC</li><li><a href="agreement.html" target="_blank" style="color: var(--gold); text-decoration: underline;">Full agreement text ↗</a></li><li><a href="presentation.html" target="_blank" style="color: var(--gold); text-decoration: underline;">Summit presentation ↗</a></li><li>Open to adjustments to fit your standards</li></ul>',
     contactTitle: "Оставить заявку", contactSubtitle: "Заполните форму — мы получим её мгновенно в Telegram и свяжемся в течение рабочего дня.",
     agent1Role: "Партнёр — Международный бизнес", agent2Role: "Управляющий партнёр",
     hqLabel: "Головной офис:", branchLabel: "Филиал:", sinceLabel: "С 1992 года · Гос. лицензия с 2019",
@@ -696,33 +699,33 @@ const I18N = {
     heroCta1: "Request workers (0 ₽)", heroCta2: "Agreement ↗", heroCta3: "Presentation ↗",
     stat1: "Fee paid by employer (you)", stat2: "Replacement warranty + return ticket", stat3: "Days from request to arrival", stat4: "Candidates in pool",
     whyTitle: "Why 0 ₽ for employers?", whySubtitle: "Direct answer to 'what's the catch?' — there isn't one.",
-    why1Title: "Strategic Russian entry", why1Desc: "We are expanding into Russia through the official Labour Mobility Agreement channel (Dec 2025). First contracts are 0 ₽ for the employer. If you have your own terms and conditions or contract standards — we adapt to them and work for mutual benefit.",
-    why2Title: "Indian law", why2Desc: "The fee is paid by the candidate in India — under the Emigration Act 1983, within limits set by the Indian MEA. Revenue is regulated by law, not the employer.",
-    why3Title: "Zero risk", why3Desc: "You sign no financial obligations to us. If a worker doesn't fit — return airfare is on us.",
-    why4Title: "Disciplined candidates", why4Desc: "Mature workers with strong work ethic: police clearance, 3-5 yrs in UAE/Saudi/Qatar, ready for strict on-site discipline.",
+    why1Title: "Strategic Russian entry", why1Desc: '<ul class="checklist tight"><li>Official channel — Labour Mobility Agreement (Dec 2025)</li><li>First contract — 0 ₽ for the employer</li><li>We adapt to your contract standards</li></ul>',
+    why2Title: "Indian law", why2Desc: '<ul class="checklist tight"><li>Fee paid by candidate in India (Emigration Act 1983)</li><li>Fee caps set by Indian MEA</li><li>Revenue regulated by law</li></ul>',
+    why3Title: "Zero risk", why3Desc: '<ul class="checklist tight"><li>No financial obligations to us</li><li>Doesn't fit — return airfare on us</li></ul>',
+    why4Title: "Disciplined candidates", why4Desc: '<ul class="checklist tight"><li>Police clearance — vetted workers</li><li>3–5 yrs experience UAE / Saudi / Qatar</li><li>Ready for strict on-site discipline</li></ul>',
     tradesTitle: "Who we supply", tradesSubtitle: "4 core industries. Full deployment cycle — 30–45 days.",
     trade1Title: "Construction", trade1Item1: "6G/TIG/MIG welders", trade1Item2: "Steel fixers, masons, scaffolders", trade1Item3: "Electricians, plumbers", trade1Item4: "JCB, excavator, crane operators",
     trade2Title: "Manufacturing", trade2Item1: "CNC operators (turning/milling)", trade2Item2: "Fitters, lathe operators", trade2Item3: "Maintenance technicians", trade2Item4: "Line assemblers",
     trade3Title: "Logistics & warehouse", trade3Item1: "Forklift drivers", trade3Item2: "Truck drivers (Cat C/E)", trade3Item3: "Pickers, loaders", trade3Item4: "Warehouse operators",
     trade4Title: "Hospitality & cleaning", trade4Item1: "Cooks, stewards, F&B", trade4Item2: "Housekeeping, cleaners", trade4Item3: "Rope access L1-3", trade4Item4: "Façade cleaners, FM managers",
-    gulfLabel: "Huge pool of Gulf-returned talent:", gulfDesc: " Thousands of experienced candidates who have completed 3-5 years in UAE, Saudi Arabia, Qatar — disciplined, English-speaking, adapted to strict work culture. We can quickly source hundreds of workers for Russian salary ranges.",
+    gulfLabel: "Huge pool of Gulf-returned talent:", gulfDesc: '<ul class="checklist gold tight"><li>Thousands of Gulf-returned experienced candidates</li><li>Disciplined, English-speaking</li><li>Quickly source hundreds for Russian salary levels</li></ul>',
     processTitle: "How it works — 4 steps", processSubtitle: "Transparent, lawful process. Realistic timelines.",
-    step1Title: "Agreement + 3 eMigrate documents", step1Day: "Days 0–5 · joint", step1Desc: "Sign bilateral agreement (EN/RU). You register on eMigrate and issue: Demand Letter, Power of Attorney, Specimen Contract. We guide every step — 2–3 days.",
-    step2Title: "Sourcing & testing in India", step2Day: "Days 5–25 · our side", step2Desc: "We screen from 2,000+ candidates. Practical trade test (HD video), medical (HIV, TB, hepatitis), police clearance. You approve each candidate personally.",
-    step3Title: "MVD work permit + visa", step3Day: "Days 25–38 · MVD + consulate", step3Desc: "You petition territorial MVD for work invitation (15–30 working days). We prepare the document pack. On issue — work visa stamped at Russian consulate in India.",
-    step4Title: "Arrival, registration, warranty", step4Day: "Days 40–45 · work starts", step4Desc: "Group arrives in Russia. Migration registration within 7 days. Housing — employer. Wages twice monthly to bank account (Labour Code Art. 136). 90-day warranty starts.",
+    step1Title: "Agreement + 3 eMigrate documents", step1Day: "Days 0–5 · joint", step1Desc: '<ul class="checklist tight"><li>Sign bilateral agreement (EN/RU)</li><li>You register on eMigrate</li><li>3 documents: Demand Letter, POA, Specimen Contract</li></ul>',
+    step2Title: "Sourcing & testing in India", step2Day: "Days 5–25 · our side", step2Desc: '<ul class="checklist tight"><li>Screen from 2,000+ candidates</li><li>Practical trade test (HD video)</li><li>Medical + police clearance</li><li>You approve each candidate personally</li></ul>',
+    step3Title: "MVD work permit + visa", step3Day: "Days 25–38 · MVD + consulate", step3Desc: '<ul class="checklist tight"><li>You petition MVD (15–30 days)</li><li>We prepare the document pack</li><li>Work visa at Russian consulate in India</li></ul>',
+    step4Title: "Arrival, registration, warranty", step4Day: "Days 40–45 · work starts", step4Desc: '<ul class="checklist tight"><li>Group arrives in Russia</li><li>Migration registration within 7 days</li><li>Wages twice monthly to bank (Art. 136)</li><li>90-day warranty starts</li></ul>',
     empListTitle: "What we need from you — short list:", emp1: "Sign the agreement", emp2: "Issue 3 eMigrate documents", emp3: "File MVD petition", emp4: "Provide housing (Russian law)", emp5: "Pay wages twice monthly to bank", emp6: "Migration registration within 7 days", empHelp: "We help at every step.",
     warrantyTitle: "90-day warranty — incl. return ticket", warrantySubtitle: "The one thing that distinguishes us from 34 agencies at the summit. It's in the contract — not on words.",
-    warranty1Title: "Worker underperforms", warranty1Desc: "Within 90 days — free replacement. No disputes, no hidden conditions. Once per worker.",
-    warranty2Title: "Medical issues", warranty2Desc: "A contraindication surfaces after arrival — we replace at our cost.",
-    warranty3Title: "Return ticket — on us", warranty3Desc: "On replacement we pay the return airfare. This is in §7 of the agreement — read it, don't take our word.",
-    testBatchLabel: "Test-batch — start with 5 workers:", testBatchDesc: "Prove us on 5 workers — we carry the risk. If it works — scale to 50–500. This removes risk for both sides.",
+    warranty1Title: "Worker underperforms", warranty1Desc: '<ul class="checklist tight"><li>90 days — free replacement</li><li>No disputes, no hidden conditions</li><li>Once per worker</li></ul>',
+    warranty2Title: "Medical issues", warranty2Desc: '<ul class="checklist tight"><li>Contraindication after arrival</li><li>We replace at our cost</li></ul>',
+    warranty3Title: "Return ticket — on us", warranty3Desc: '<ul class="checklist tight"><li>Return airfare — on us</li><li>Written in §7 of the agreement</li></ul>',
+    testBatchLabel: "Test-batch — start with 5 workers:", testBatchDesc: '<ul class="checklist tight"><li>Start with 5 workers — we carry the risk</li><li>Works? Scale to 50–500</li></ul>',
     legalTitle: "Full legal compliance", legalSubtitle: "Every step documented. No grey schemes.",
-    legal1Title: "India side", legal1Desc: 'MEA License <strong>RA5501045</strong> (Emigration Act 1983). All demands on eMigrate. Candidate fee is law-regulated. Demand must be filled in 45 days or quota lapses.',
-    legal2Title: "Russia side", legal2Desc: "Labour Mobility Agreement (Dec 2025) — official mechanism. MVD permit 15–30 days. Wages twice monthly to bank (Labour Code Art. 136). Civilian-use-only clause — sanctions-safe.",
-    siacLabel: "Dispute resolution — SIAC:", siacDesc: " Arbitration in Singapore, 1 arbitrator, English. Enforceable in both countries under the New York Convention.",
-    salaryLabel: "Struggling to set a salary range?", salaryDesc: " We help you determine an appropriate salary range for each trade and region — and source candidates that fit exactly that budget. This saves you a significant amount without losing quality.",
-    transparentLabel: "Simple, transparent agreement:", transparentDesc: ' Our agreement is simple and transparent — 16 sections, EN/RU, SIAC arbitration. Open the <a href="agreement.html" target="_blank" style="color: var(--gold); text-decoration: underline;">full agreement text ↗</a> or watch the <a href="presentation.html" target="_blank" style="color: var(--gold); text-decoration: underline;">summit presentation ↗</a>. We are open to adjustments to fit your standards.',
+    legal1Title: "India side", legal1Desc: '<ul class="checklist tight"><li>MEA License <strong>RA5501045</strong> (Emigration Act 1983)</li><li>All demands on eMigrate</li><li>Candidate fee regulated by law</li></ul>',
+    legal2Title: "Russia side", legal2Desc: '<ul class="checklist tight"><li>Labour Mobility Agreement (Dec 2025)</li><li>MVD permit 15–30 days</li><li>Wages twice monthly to bank (Art. 136)</li><li>Civilian-use only — sanctions-safe</li></ul>',
+    siacLabel: "Dispute resolution — SIAC:", siacDesc: '<ul class="checklist gold tight"><li>SIAC arbitration, Singapore</li><li>1 arbitrator, English</li><li>Enforceable in both countries (NY Convention)</li></ul>',
+    salaryLabel: "Struggling to set a salary range?", salaryDesc: '<ul class="checklist gold tight"><li>We help set a salary range per trade and region</li><li>Source candidates that fit your exact budget</li></ul>',
+    transparentLabel: "Simple, transparent agreement:", transparentDesc: '<ul class="checklist gold tight"><li>Agreement: 16 sections, EN/RU, SIAC</li><li><a href="agreement.html" target="_blank" style="color: var(--gold); text-decoration: underline;">Full agreement text ↗</a></li><li><a href="presentation.html" target="_blank" style="color: var(--gold); text-decoration: underline;">Summit presentation ↗</a></li><li>Open to adjustments to fit your standards</li></ul>',
     contactTitle: "Submit a request", contactSubtitle: "Fill the form — we receive it instantly on Telegram and respond within one business day.",
     agent1Role: "Partner — International Business", agent2Role: "Managing Partner",
     hqLabel: "Head Office:", branchLabel: "Branch:", sinceLabel: "Since 1992 · Govt. license since 2019",
