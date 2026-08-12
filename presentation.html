@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Hanman Travels — ITB '26 Walkthrough · St. Petersburg</title>
+<!-- Russia-safe: Google Fonts is blocked/throttled in Russia — use system font stacks only -->
+<style>
+  @font-face { font-family:'Manrope'; src:local('Manrope'),local('Segoe UI'),local('Arial'); }
+  @font-face { font-family:'Inter'; src:local('Inter'),local('Segoe UI'),local('Arial'); }
+  @font-face { font-family:'JetBrains Mono'; src:local('JetBrains Mono'),local('Menlo'),local('Consolas'),local('monospace'); }
+</style>
+<style>
+  :root {
+    --bg: #0a0f1a;
+    --bg-elev: #141f33;
+    --line: #2a3d5c;
+    --text: #e8eef7;
+    --muted: #8496b0;
+    --gold: #e6b34d;
+    --gold-dark: #b8860b;
+    --cyan: #4dd6e6;
+    --green: #34d399;
+    --red: #f87171;
+    --blue: #60a5fa;
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-lg: 20px;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  [data-theme="light"] {
+    --bg: #f5f7fb;
+    --bg-elev: #ffffff;
+    --line: #e2e8f0;
+    --text: #0f172a;
+    --muted: #475569;
+    --gold: #b8860b;
+    --gold-dark: #92400e;
+    --cyan: #0e7490;
+    --green: #047857;
+    --red: #dc2626;
+    --blue: #2563eb;
+    --shadow: 0 4px 14px rgba(15,23,42,.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .3s ease, color .3s ease;
+  }
+  h1, h2, h3, h4 { font-family: 'Manrope', system-ui, sans-serif; line-height: 1.15; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  /* ===== TOP BAR ===== */
+  .top {
+    position: fixed; top: 0; left: 0; right: 0; height: 56px;
+    display: flex; align-items: center; gap: 14px;
+    padding: 0 20px;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    z-index: 30;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .logo {
+    width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 18px;
+    color: #0a0f1a;
+  }
+  .brand-name { font-weight: 800; font-size: 14px; letter-spacing: .8px; line-height: 1.1; }
+  .brand-sub { font-size: 10px; color: var(--muted); margin-top: 1px; }
+  .brand-badge {
+    background: color-mix(in srgb, var(--gold) 16%, transparent);
+    color: var(--gold);
+    border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+    padding: 3px 9px; border-radius: 99px; font-size: 10px; font-weight: 700;
+    letter-spacing: .6px; white-space: nowrap;
+  }
+  .dots { display: flex; gap: 6px; align-items: center; margin: 0 auto; }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--line);
+    cursor: pointer; transition: all .2s ease; border: 0; padding: 0;
+  }
+  .dot.done { background: color-mix(in srgb, var(--green) 60%, transparent); }
+  .dot.active {
+    background: var(--gold); width: 22px; border-radius: 99px;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 25%, transparent);
+  }
+  .controls { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+  .ctrl {
+    background: transparent; border: 1px solid var(--line);
+    color: var(--text); padding: 7px 10px; border-radius: var(--r-sm);
+    cursor: pointer; font-size: 12px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all .15s ease; font-family: inherit;
+  }
+  .ctrl:hover { background: var(--bg-elev); border-color: var(--gold); }
+  .ctrl svg { width: 14px; height: 14px; }
+
+  /* ===== DECK ===== */
+  .deck {
+    position: fixed; top: 56px; left: 0; right: 0; bottom: 56px;
+    overflow: hidden;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    padding: 32px clamp(16px, 5vw, 80px);
+    display: flex; flex-direction: column;
+    opacity: 0; visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity .35s ease, transform .35s ease, visibility .35s;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .slide.active { opacity: 1; visibility: visible; transform: translateY(0); }
+  .slide-inner { max-width: 1100px; width: 100%; margin: auto; }
+
+  .eyebrow {
+    display: flex; align-items: baseline; gap: 14px;
+    margin-bottom: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 600;
+    color: var(--muted); letter-spacing: 1px;
+  }
+  .eyebrow .n { color: var(--gold); }
+  .eyebrow .ru { color: var(--cyan); }
+
+  .title { font-size: clamp(26px, 4vw, 44px); font-weight: 800; }
+  .title-ru { font-size: clamp(16px, 2vw, 22px); color: var(--cyan); margin-top: 6px; font-weight: 600; }
+  .lead { font-size: clamp(15px, 1.4vw, 18px); color: var(--muted); margin-top: 14px; line-height: 1.6; max-width: 800px; }
+
+  /* ===== CARDS / GRID ===== */
+  .grid { display: grid; gap: 18px; margin-top: 26px; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .card {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .card .ico { width: 36px; height: 36px; border-radius: 10px;
+    background: color-mix(in srgb, var(--gold) 14%, transparent);
+    display: flex; align-items: center; justify-content: center; color: var(--gold);
+  }
+  .card .ico svg { width: 20px; height: 20px; }
+  .card h3 { font-size: 17px; font-weight: 800; }
+  .card .ru { color: var(--cyan); font-size: 13px; font-weight: 600; }
+  .card p { color: var(--muted); font-size: 14px; line-height: 1.5; }
+  .card.featured { border-color: color-mix(in srgb, var(--gold) 50%, var(--line)); }
+
+  /* LIST */
+  .lst { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+  .lst li { display: flex; gap: 10px; padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--bg-elev) 50%, transparent); border: 1px solid var(--line); }
+  .lst li .marker { color: var(--gold); font-weight: 800; font-family: 'JetBrains Mono', monospace; min-width: 18px; }
+  .lst li strong { color: var(--text); font-weight: 700; }
+  .lst li .sub { color: var(--muted); font-size: 13px; display: block; margin-top: 2px; }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px; }
+  .stat {
+    background: var(--bg-elev); border: 1px solid var(--line);
+    border-radius: var(--r-md); padding: 18px 16px; text-align: center;
+  }
+  .stat .num { font-family: 'JetBrains Mono', monospace; font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: var(--gold); }
+  .stat .lab { color: var(--muted); font-size: 12px; margin-top: 4px; line-height: 1.4; }
+
+  /* STEPPER (slide 9) */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 26px; position: relative; }
+  .steps::before {
+    content: ""; position: absolute; top: 22px; left: 5%; right: 5%; height: 2px;
+    background: var(--line); z-index: 0;
+  }
+  .step { position: relative; z-index: 1; text-align: center; padding: 0 8px; }
+  .step .circle {
+    width: 44px; height: 44px; margin: 0 auto; border-radius: 50%;
+    background: var(--bg-elev); border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  }
+  .step h4 { font-size: 13px; margin-top: 12px; }
+  .step .ru { color: var(--cyan); font-size: 12px; margin-top: 2px; }
+  .step .days { color: var(--green); font-family: 'JetBrains Mono', monospace; font-size: 11px; margin-top: 4px; font-weight: 700; }
+  .step p { color: var(--muted); font-size: 12px; line-height: 1.5; margin-top: 6px; }
+
+  /* TIMELINE table (slide 4/8) */
+  .tbl { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 16px; }
+  .tbl th, .tbl td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .tbl th { color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+  .tbl tr:last-child td { border-bottom: 0; }
+  .tbl .ru { color: var(--cyan); display: block; font-size: 11px; margin-top: 2px; }
+
+  /* CALLOUT */
+  .callout {
+    background: color-mix(in srgb, var(--green) 10%, transparent);
+    border-left: 3px solid var(--green);
+    padding: 14px 18px; border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    margin-top: 16px;
+  }
+  .callout.gold { background: color-mix(in srgb, var(--gold) 10%, transparent); border-color: var(--gold); }
+  .callout.gold strong { color: var(--gold); }
+  .callout strong { color: var(--green); }
+  .callout .ru { color: var(--cyan); display: block; font-size: 13px; margin-top: 4px; }
+
+  /* TWO-COL SPLIT */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 24px; }
+  .panel { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-md); padding: 22px; }
+  .panel h3 { font-size: 16px; display: flex; align-items: center; gap: 8px; }
+  .panel .head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+  .panel .flag { font-size: 18px; line-height: 1; }
+
+  /* ===== BOTTOM BAR ===== */
+  .bot {
+    position: fixed; bottom: 0; left: 0; right: 0; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px; background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--line); z-index: 30; gap: 12px;
+  }
+  .navbtn {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #0a0f1a; border: 0; padding: 10px 18px; border-radius: var(--r-sm);
+    cursor: pointer; font-weight: 800; font-size: 13px;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .12s ease, opacity .2s ease; font-family: inherit;
+  }
+  .navbtn:disabled { opacity: .35; cursor: not-allowed; }
+  .navbtn:not(:disabled):hover { transform: translateY(-1px); }
+  .navbtn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .progress { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: var(--muted); text-align: center; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .progress .of { color: var(--gold); }
+
+  /* HERO (slide 1) — full-bleed */
+  .hero {
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+    min-height: 100%;
+  }
+  .hero .pill {
+    display: inline-block; padding: 5px 14px; border-radius: 99px;
+    background: color-mix(in srgb, var(--cyan) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cyan) 30%, transparent);
+    color: var(--cyan); font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .hero h1 { font-size: clamp(28px, 5vw, 56px); font-weight: 800; }
+  .hero .ru { font-size: clamp(16px, 2.2vw, 24px); color: var(--cyan); font-family: 'Manrope', sans-serif; font-weight: 600; }
+  .hero .stats { max-width: 720px; }
+
+  /* QR */
+  .qr {
+    background: #fff; padding: 10px; border-radius: var(--r-sm);
+    display: inline-block; width: 120px; height: 120px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .qr img { width: 100%; height: 100%; }
+
+  /* CTA buttons inside slides */
+  .cta { display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #0a0f1a; padding: 12px 22px; border-radius: var(--r-sm);
+    text-decoration: none; font-weight: 800; font-size: 14px;
+  }
+  .cta.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .cta-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .steps::before { left: 12%; right: 12%; }
+  }
+  @media (max-width: 768px) {
+    .grid-2, .grid-3, .grid-4, .split { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .steps::before { display: none; }
+    .stats { grid-template-columns: 1fr; }
+    .brand-sub, .brand-badge { display: none; }
+    .dots { gap: 4px; }
+    .dot { width: 5px; height: 5px; }
+    .dot.active { width: 14px; }
+    .ctrl span { display: none; }
+    .ctrl { padding: 7px 8px; }
+    .progress .lbl { display: none; }
+  }
+  @media (max-width: 480px) {
+    .top, .bot { padding: 0 12px; gap: 8px; }
+    .controls { gap: 3px; }
+    .brand-name { font-size: 12px; }
+    .navbtn { padding: 9px 12px; font-size: 12px; gap: 4px; }
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body { height: auto; overflow: visible; background: #fff !important; color: #000 !important; }
+    [data-theme="dark"] body, body[data-theme="dark"] { color: #000; }
+    .top, .bot { display: none !important; }
+    .deck { position: static; overflow: visible; }
+    .slide { position: relative !important; opacity: 1 !important; visibility: visible !important; transform: none !important; padding: 24px 32px; page-break-after: always; overflow-y: visible; }
+    .slide-inner { max-width: none; }
+    :root { --bg: #fff; --bg-elev: #f8fafc; --line: #cbd5e1; --text: #0f172a; --muted: #475569; --gold: #b8860b; --cyan: #0e7490; --green: #047857; --blue: #2563eb; --shadow: none; }
+    .hero h1 { color: #0f172a !important; }
+  }
+</style>
+</head>
+<body data-theme="dark">
+
+<!-- TOP BAR -->
+<div class="top">
+  <div class="brand">
+    <div class="logo">H</div>
+    <div style="min-width:0">
+      <div class="brand-name">HANMAN TRAVELS</div>
+      <div class="brand-sub">ITB '26 · St. Petersburg</div>
+    </div>
+    <span class="brand-badge mono">RA5501045</span>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="controls">
+    <button class="ctrl" id="themeBtn" title="Toggle theme (T)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+      <span>Theme</span>
+    </button>
+    <button class="ctrl" id="fullBtn" title="Fullscreen (F)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <span>Fullscreen</span>
+    </button>
+    <button class="ctrl" id="printBtn" title="Print (⌘P)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span>Print</span>
+    </button>
+  </div>
+</div>
+
+<!-- DECK -->
+<div class="deck" id="deck">
+
+<!-- SLIDE 1 — HERO / COVER -->
+<section class="slide" id="s1">
+  <div class="slide-inner">
+    <div class="hero">
+      <span class="pill">ITB '26 · 12–13 AUG 2026 · GRAND HOTEL EMERALD · ST. PETERSBURG</span>
+      <h1>Your Indian Manpower Partner</h1>
+      <div class="ru">Ваш надёжный индийский кадровый партнёр</div>
+      <p class="lead" style="max-width:680px;">Family-run overseas recruitment agency licensed by the Government of India under the Emigration Act 1983. Specialised in placing skilled, trade-tested Indian workers with Russian enterprises.</p>
+      <p style="color: var(--cyan); font-weight: 600; max-width: 680px;">Семейное агентство с 1992 года. Лицензия Министерства иностранных дел Индии RA5501045.</p>
+      <div class="stats" style="max-width: 760px;">
+        <div class="stat"><div class="num">0&nbsp;₽</div><div class="lab">Employer recruitment fee<br>Бесплатно для работодателя</div></div>
+        <div class="stat"><div class="num">90 days</div><div class="lab">Free replacement incl. airfare<br>Замена + обратный билет</div></div>
+        <div class="stat"><div class="num">30–45</div><div class="lab">Days end-to-end deployment<br>Дней от заявки до прибытия</div></div>
+      </div>
+      <p style="margin-top: 14px; color: var(--muted); font-size: 12px; font-family: 'JetBrains Mono', monospace;">RA5501045 · Serving industry since 1992 · Licensed 2019</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 — WHY WE'RE HERE / COMPLIANCE-FIRST -->
+<section class="slide" id="s2">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">02 / 14</span><span>POSITIONING</span><span class="ru">· ПОЗИЦИОНИРОВАНИЕ</span></div>
+    <h2 class="title">We are new to Russia — on purpose.</h2>
+    <div class="title-ru">Мы новые в России — намеренно.</div>
+    <p class="lead">We waited for the official bilateral channel before deploying a single worker. That means: full compliance, clear documentation, no shortcut deals. We are the path of <strong style="color: var(--gold); documented risk</strong>, not the path of least resistance.</p>
+    <div class="split">
+      <div class="panel">
+        <div class="head"><h3>🇮🇳 India – Russia framework</h3></div>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>Labour Mobility Agreement · Dec 2025</strong><span class="sub">Bilateral government framework — official channel.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>ITB '26 — first operational event</strong><span class="sub">SPb + Leningrad CCI + Consulate General of India, SPb.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>eMigrate mandatory</strong><span class="sub">Every Demand Letter, POA and worker cleared by Indian govt portal.</span></div></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="head"><h3>Why that matters to you</h3></div>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>No shadow intermediaries</strong><span class="sub">One licensed RA, one signed agreement, one audit trail.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Sanctions-safe by design</strong><span class="sub">Civilian-use-only clause in our agreement §7.3 — no military or conflict-zone deployment.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Your first batch becomes our reference</strong><span class="sub">That is exactly why we offer a test-batch of 5 workers (Slide 7) — you prove us, then scale.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 — INDUSTRIES WE SERVE -->
+<section class="slide" id="s3">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">03 / 14</span><span>INDUSTRIES</span><span class="ru">· ОТРАСЛИ</span></div>
+    <h2 class="title">Four sectors. One recruitment partner.</h2>
+    <div class="title-ru">Четыре отрасли · Один кадровый партнёр</div>
+    <div class="grid grid-4">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h2v0M9 13h2v0M9 17h2v0M13 9h2v0M13 13h2v0M13 17h2v0"/></svg></div>
+        <h3>Construction</h3>
+        <div class="ru">Строительство</div>
+        <p>Welders 6G/TIG, masons, steel fixers, scaffolders, electricians, plumbers, plant operators.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        <h3>Manufacturing</h3>
+        <div class="ru">Производство</div>
+        <p>CNC operators, fitters, lathe and milling operators, line assemblers, mech technicians.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2.5 2.5 0 1 1 5 0M15.5 21a2.5 2.5 0 1 1 5 0"/></svg></div>
+        <h3>Logistics &amp; Warehousing</h3>
+        <div class="ru">Логистика и склад</div>
+        <p>Forklift drivers, heavy truck drivers (Cat C/E), warehouse loaders, pickers, packers.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 7h2M9 11h2M13 7h2M13 11h2M9 21v-4a2 2 0 0 1 4 0v4"/></svg></div>
+        <h3>Hospitality &amp; Cleaning</h3>
+        <div class="ru">Гостиничный бизнес и клининг</div>
+        <p>Cooks, kitchen stewards, F&amp;B, housekeeping; rope-access L1-L3 façade &amp; industrial cleaning.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top: 22px; font-size: 13px;">Slide 4 lists the full trades matrix by sector.</p>
+  </div>
+</section>
+
+<!-- SLIDE 4 — TRADES MATRIX -->
+<section class="slide" id="s4">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">04 / 14</span><span>TRADES WE DEPLOY</span><span class="ru">· СПЕЦИАЛЬНОСТИ</span></div>
+    <h2 class="title">The full trades matrix.</h2>
+    <div class="title-ru">Полный перечень специальностей</div>
+    <table class="tbl">
+      <thead>
+        <tr><th>Sector / Отрасль</th><th>Trades / Специальности</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Construction</strong><span class="ru">Строительство</span></td><td>Welders (6G/SMAW/TIG/MIG), steel fixers, masons, plasterers, scaffolders, shuttering carpenters, electricians, plumbers, pipe fitters, HVAC techs, sand blaster, painter, plant operators (JCB, excavator, crane, forklift)<span class="ru">Сварщики, арматурщики, каменщики, электрики, операторы спецтехники</span></td></tr>
+        <tr><td><strong>Manufacturing</strong><span class="ru">Производство</span></td><td>CNC operators (turning/milling), fitters, lathe operators, mech maintenance technicians, line assemblers, fabricators<span class="ru">Операторы ЧПУ, слесари, механики, сборщики</span></td></tr>
+        <tr><td><strong>Logistics</strong><span class="ru">Логистика</span></td><td>Forklift drivers, heavy truck drivers (Cat C/E), light vehicle drivers, warehouse loaders, pickers, packers, inventory handlers<span class="ru">Водители погрузчиков и грузовиков, комплектовщики</span></td></tr>
+        <tr><td><strong>Hospitality &amp; Cleaning</strong><span class="ru">Гостиничный и клининг</span></td><td>Cooks, commis, kitchen stewards, F&amp;B attendants, housekeeping, room attendants, bell boys, general cleaners, rope-access L1/L2/L3, façade glass cleaners, FM managers<span class="ru">Повара, стюарды, хаускепинг, промышленный клининг, промальп L1-3</span></td></tr>
+        <tr><td><strong>Agriculture &amp; Food</strong><span class="ru">Сельское хозяйство</span></td><td>Tractor drivers, harvest workers, greenhouse workers, food-processing packers, dairy helpers<span class="ru">Трактористы, работники теплиц, фасовщики</span></td></tr>
+        <tr><td><strong>Pipeline of 5,000+ workers</strong><span class="ru">База 5 000+ кандидатов</span></td><td>Pan-India sourcing hubs across Telangana, Andhra Pradesh, Kerala, Tamil Nadu, Punjab, UP — incl. experienced Gulf-returned workers (UAE/Saudi/Qatar 3–5 yrs).<span class="ru">Региональные хабы по всей Индии + опыт работы в странах Персидского залива</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SLIDE 5 — 0 RUBLE COMMERCIAL MODEL -->
+<section class="slide" id="s5">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">05 / 14</span><span>COMMERCIAL MODEL</span><span class="ru">· КОММЕРЧЕСКАЯ МОДЕЛЬ</span></div>
+    <h2 class="title">0 ₽ recruitment fee for you.</h2>
+    <div class="title-ru">0 рублей — подбор для работодателя бесплатен</div>
+    <p class="lead">You pay nothing to us. Our service fee is regulated by the Indian Emigration Act 1983 and paid by the candidate in India — receipted, capped at ₹20,000 or 45 days' wages, whichever is lower. Not a marketing gimmick; it is the law.</p>
+    <div class="split">
+      <div class="panel">
+        <h3 style="margin-bottom: 14px;">How the money flows</h3>
+        <ul class="lst">
+          <li><span class="marker">1</span><div><strong>Candidate pays RA fee in India</strong><span class="sub">Capped, receipted, regulated by MEA.</span></div></li>
+          <li><span class="marker">2</span><div><strong>Employer covers statutory costs</strong><span class="sub">MVD work permit, visa, one-way flight, DMS insurance, housing.</span></div></li>
+          <li><span class="marker">3</span><div><strong>Hanman receives 0 ₽ from you</strong><span class="sub">Income from candidates only — full audit trail.</span></div></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 style="margin-bottom: 14px;">Why this works for Russia</h3>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>Reduces employer upfront cost</strong><span class="sub">You fund only what the law already requires of you.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>No "agency fee leakage"</strong><span class="sub">Russian compliance audits will see clean invoicing only.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Demonstrably compliant</strong><span class="sub">Same model for our Poland, Serbia, Romania and GCC deployments.</span></div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout gold"><strong>Strategic Russian market entry:</strong> we waive anything else for the first Russian partners — because your reference is what builds our Russia practice.<span class="ru">Стратегический выход на рынок России: первые клиенты становятся нашими рекомендателями.</span></div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — 90-DAY AIRFARE WARRANTY -->
+<section class="slide" id="s6">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">06 / 14</span><span>WARRANTY</span><span class="ru">· ГАРАНТИЯ ЗАМЕНЫ</span></div>
+    <h2 class="title">90-day replacement, including return airfare — in writing.</h2>
+    <div class="title-ru">90 дней замены + обратный авиабилет — в договоре</div>
+    <p class="lead">If a worker leaves or is found unsuitable within 90 days of arrival, we replace them — and we cover the return airfare. Written into our agreement §7. None of the 34 other agencies at this summit puts the airfare in the contract.</p>
+    <div class="split">
+      <div class="panel">
+        <h3>What it covers (Section 7)</h3>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>Performance / skill mismatch</strong><span class="sub">If trade test result is below the standard employer expects.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Medical issue emerging post-deployment</strong><span class="sub">Including post-arrival failure of DMS examination.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Return airfare — paid by us</strong><span class="sub">Either Moscow-India-Moscow replacement flight, or repatriation.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>One replacement per worker</strong><span class="sub">Standard under warranty protection.</span></div></li>
+        </ul>
+      </div>
+      <div class="panel" style="background: color-mix(in srgb, var(--green) 10%, transparent); border-color: color-mix(in srgb, var(--green) 35%, var(--line));">
+        <h3 style="color: var(--green);">Risk elimination, by design</h3>
+        <p style="color: var(--text); font-size: 15px; line-height: 1.6; margin-top: 10px;">You only keep paying the salary of workers who perform and follow your workplace discipline. If they do not, we replace them at our cost — not your risk.</p>
+        <div class="callout" style="border-color: var(--green); background: color-mix(in srgb, var(--green) 18%, transparent); margin-top: 14px;">
+          <strong style="color: var(--green);">100% Risk Elimination</strong><span class="ru">Вы платите зарплату только тем, кто доказал эффективность.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — TEST-BATCH OFFER -->
+<section class="slide" id="s7">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">07 / 14</span><span>RISK-REVERSAL</span><span class="ru">· ТЕСТОВАЯ ПАРТИЯ</span></div>
+    <h2 class="title">Start with 5 workers. Prove us. Then scale.</h2>
+    <div class="title-ru">Начните с 5 человек. Докажите нас. Потом масштабируйте.</div>
+    <p class="lead">Russian B2B buyers commit slowly. So we make the first step small — and we own the risk. Three tiers, clear upgrade path.</p>
+    <div class="grid grid-3">
+      <div class="card featured">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Tier 1 — Test batch</h3>
+        <div class="ru">Тестовая партия</div>
+        <p style="font-size: 14px; line-height: 1.6;"><strong style="color: var(--gold);">5 workers</strong>, deployed in 30–45 days. Employer covers statutory costs (MVD, visa, flight, DMS). We cover replacement + airfare if anyone fails.</p>
+        <p style="font-size: 12px; color: var(--muted);">Our risk · Your evaluation</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><polyline points="7 14 12 9 16 13 21 7"/></svg></div>
+        <h3>Tier 2 — Prove batch</h3>
+        <div class="ru">Подтверждение</div>
+        <p style="font-size: 14px; line-height: 1.6;"><strong style="color: var(--gold);">5–20 workers</strong>, sourced from what we learned about your site in Tier 1. Same 90-day warranty per worker.</p>
+        <p style="font-size: 12px; color: var(--muted);">Joint review · Optimised pipeline</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>Tier 3 — Scale</h3>
+        <div class="ru">Масштабирование</div>
+        <p style="font-size: 14px; line-height: 1.6;"><strong style="color: var(--gold);">50–500 workers</strong>. Move to annual framework partnership with volume rollover, preferred-supplier status, quarterly joint reviews.</p>
+        <p style="font-size: 12px; color: var(--muted);">Framework agreement · SIAC arbitration</p>
+      </div>
+    </div>
+    <div class="callout"><strong>The logic:</strong> 5 workers is small enough to say "yes" today, big enough to test quality. Once they arrive and perform, you gain confidence to scale. The trial risk is on us.<span class="ru">Риск тестовой партии — на нас.</span></div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — 4-STAGE VERIFICATION -->
+<section class="slide" id="s8">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">08 / 14</span><span>QUALITY CONTROL</span><span class="ru">· КОНТРОЛЬ КАЧЕСТВА</span></div>
+    <h2 class="title">Four-stage candidate verification.</h2>
+    <div class="title-ru">Четыре этапа проверки кандидатов</div>
+    <p class="lead">Every worker is screened four ways before we even submit them to your approval. You receive the full evidence pack before issuing the work permit petition.</p>
+    <div class="steps" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="step">
+        <div class="circle">01</div>
+        <h4>Trade test</h4>
+        <div class="ru">Тест навыка</div>
+        <p class="days">At certified centres</p>
+        <p>Welders, masons, mechanics, CNC operators undergo practical skill tests in a certified test centre.</p>
+      </div>
+      <div class="step">
+        <div class="circle">02</div>
+        <h4>Video proof</h4>
+        <div class="ru">Видео-отчёт</div>
+        <p class="days">HD or live</p>
+        <p>HD recording of candidates performing the actual task — or join a live video session with us.</p>
+      </div>
+      <div class="step">
+        <div class="circle">03</div>
+        <h4>Medical</h4>
+        <div class="ru">Медосмотр</div>
+        <p class="days">HIV · TB · hepatitis</p>
+        <p>Full medical panel in India including infectious disease and physical stamina screening.</p>
+      </div>
+      <div class="step">
+        <div class="circle">04</div>
+        <h4>PCC</h4>
+        <div class="ru">Справка МВД</div>
+        <p class="days">Police background</p>
+        <p>Clean criminal-record clearance by Indian police authorities; no history of any offence.</p>
+      </div>
+    </div>
+    <div class="callout gold" style="margin-top: 28px;"><strong>Orientation included:</strong> pre-departure briefing — basic Russian workplace vocabulary, climate adaptation, site safety and your written house rules.<span class="ru">Предвыездной инструктаж — базовый русский язык, климат, безопасность.</span></div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — END-TO-END TIMELINE -->
+<section class="slide" id="s9">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">09 / 14</span><span>PROCESS</span><span class="ru">· ВЕСЬ ПРОЦЕСС</span></div>
+    <h2 class="title">30–45 days, end-to-end.</h2>
+    <div class="title-ru">30–45 дней — от заявки до прибытия</div>
+    <p class="lead">Here is what happens, day by day, when you sign the agreement. Best-case timeline when eMigrate and MVD petitions run in parallel with our sourcing.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="circle">1</div>
+        <h4>Demand &amp; agreement</h4>
+        <div class="ru">Заявка и договор</div>
+        <p class="days">Day 0–10</p>
+        <p>Sign Service Agreement. Employer registers on eMigrate. Issue Demand Letter, POA, specimen employment contracts (bilingual EN/RU).</p>
+      </div>
+      <div class="step">
+        <div class="circle">2</div>
+        <h4>Source &amp; trade test</h4>
+        <div class="ru">Поиск и тестирование</div>
+        <p class="days">Day 5–25</p>
+        <p>Pan-India sourcing, 4-stage verification (Slide 8). Submit video evidence pack for your approval.</p>
+      </div>
+      <div class="step">
+        <div class="circle">3</div>
+        <h4>MVD permit &amp; visa</h4>
+        <div class="ru">Разрешение МВД + виза</div>
+        <p class="days">Day 25–38</p>
+        <p>Employer petitions territorial MVD for work invitation. Worker applies at Russian Consulate (India) for work visa.</p>
+      </div>
+      <div class="step">
+        <div class="circle">4</div>
+        <h4>Deploy &amp; warranty</h4>
+        <div class="ru">Прибытие + гарантия</div>
+        <p class="days">Day 40–45</p>
+        <p>Flight to Russia. Migration registration within 7 days. 90-day warranty starts. We monitor wage slips monthly.</p>
+      </div>
+    </div>
+    <div class="callout"><strong>First-batch realistically:</strong> 45–55 days for first-time Russian employers (eMigrate + MVD onboarding). Subsequent batches: 30–45 days.<span class="ru">Первая партия — 45–55 дней. Последующие — 30–45.</span></div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — WHAT EMPLOYER MUST DO -->
+<section class="slide" id="s10">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">10 / 14</span><span>YOUR ROLE</span><span class="ru">· ВАША РОЛЬ</span></div>
+    <h2 class="title">What we need from you — short, legislative list.</h2>
+    <div class="title-ru">Что нужно от вас — короткий список по закону</div>
+    <div class="split">
+      <div class="panel">
+        <h3 style="margin-bottom: 12px;">3 official documents · issued ≤ 5 days</h3>
+        <ul class="lst">
+          <li><span class="marker">1</span><div><strong>eMigrate Demand Letter</strong><span class="sub">Indicating trades, quantities, salary, working conditions, housing.</span></div></li>
+          <li><span class="marker">2</span><div><strong>Power of Attorney</strong><span class="sub">eMigrate system-generated, in Hanman Travels' favour.</span></div></li>
+          <li><span class="marker">3</span><div><strong>Specimen Employment Contracts</strong><span class="sub">Bilingual EN/RU; we provide the template, your counsel reviews.</span></div></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 style="margin-bottom: 12px;">Statutory employer duties · Russian law</h3>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>Housing</strong><span class="sub">Russian labour law — employer provides it; written rules EN+RU on arrival.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>On-time bank wages</strong><span class="sub">Twice monthly, bank transfer (Labour Code Art. 136; cash to foreign workers = violation).</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Migration registration</strong><span class="sub">Within 7 working days of arrival — employer/hotel files.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Named HR contact</strong><span class="sub">48-hour response norm; named decision-maker for joint reviews.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — WHAT WE DO -->
+<section class="slide" id="s11">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">11 / 14</span><span>OUR ROLE</span><span class="ru">· НАША РОЛЬ</span></div>
+    <h2 class="title">What Hanman Travels does — end to end.</h2>
+    <div class="title-ru">Что делает Hanman Travels — весь цикл</div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Sourcing &amp; screening</h3>
+        <div class="ru">Поиск и отбор</div>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>Pan-India pipeline</strong><span class="sub">10,000+ active profiles; 14–21 days to source 100–500.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Gulf-returned experienced pool</strong><span class="sub">Workers with 3–5 yrs UAE/Saudi/Qatar — disciplined, English+Arabic.</span></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Verification &amp; PDOT</h3>
+        <div class="ru">Проверка и инструктаж</div>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>4-stage verification</strong><span class="sub">Trade test · video · medical · PCC — full evidence pack to you.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Pre-Departure Orientation (PDOT)</strong><span class="sub">Basic Russian workplace vocabulary, climate, cultural norms.</span></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>eMigrate &amp; MVD coordination</h3>
+        <div class="ru">Координация eMigrate + МВД</div>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>Guide your eMigrate registration</strong><span class="sub">Step-by-step; we submit worker docs for POE clearance.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Advise on MVD work permit petition</strong><span class="sub">Prepare worker docs; coordinate visa stamping at Russian Consulate.</span></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Deployment &amp; post-arrival</h3>
+        <div class="ru">Отправка и поддержка</div>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>Flight coordination</strong><span class="sub">Worker departs with full document pack + arrival protocol.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>90-day warranty + monthly wage monitoring</strong><span class="sub">Free replacement incl. airfare; bank-slip spot-checks for 6 months.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — LEGAL COMPLIANCE -->
+<section class="slide" id="s12">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">12 / 14</span><span>LEGAL COMPLIANCE</span><span class="ru">· ЮРИДИЧЕСКАЯ БАЗА</span></div>
+    <h2 class="title">Compliance on both sides — by design.</h2>
+    <div class="title-ru">Соответствие закону обеих стран</div>
+    <div class="split">
+      <div class="panel">
+        <div class="head"><h3>🇮🇳 India side</h3></div>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>Licensed RA · RA5501045</strong><span class="sub">Issued by Protector General of Emigrants under Emigration Act 1983.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>eMigrate mandatory</strong><span class="sub">Every Demand Letter / POA / worker cleared on Indian govt portal.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Service fee capped by law</strong><span class="sub">≤ ₹20,000 or 45 days' wages per worker, whichever lower.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Demand fulfilled in 45 days</strong><span class="sub">Or eMigrate quota lapses — we hit that clock.</span></div></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="head"><h3>🇷🇺 Russia side</h3></div>
+        <ul class="lst">
+          <li><span class="marker">▸</span><div><strong>India-Russia LMA · Dec 2025</strong><span class="sub">Bilateral Labour Mobility Agreement — official framework.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>MVD work permit petition</strong><span class="sub">15–30 working days standard; HQS route if salary ≥ ~RUB 1M/yr.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Labour Code Art. 136 / 236 / 15.25</strong><span class="sub">Wages twice monthly bank transfer; delay compensation mandatory.</span></div></li>
+          <li><span class="marker">▸</span><div><strong>Civilian-use-only clause · §7.3</strong><span class="sub">Sanctions-safe; no military, no conflict-zone deployment.</span></div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout gold"><strong>Dispute resolution:</strong> SIAC arbitration, Singapore seat, 1 arbitrator, English. Enforceable in both India and Russia (NY Convention).<span class="ru">Арбитраж SIAC (Сингапур) — принудительно в обеих странах по Нью-Йоркской конвенции.</span></div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — THE AGREEMENT -->
+<section class="slide" id="s13">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">13 / 14</span><span>THE AGREEMENT</span><span class="ru">· ДОГОВОР</span></div>
+    <h2 class="title">Bilingual EN / RU — 16 sections, ready to sign.</h2>
+    <div class="title-ru">Двуязычный договор EN / RU — 16 разделов</div>
+    <p class="lead">Not a brochure promise. A real, editable, printable Service Agreement. Toggle English and Russian on the same page; sign at the booth, or online.</p>
+    <div class="split">
+      <div class="panel">
+        <h3>What is inside</h3>
+        <ul class="lst">
+          <li><span class="marker">§1</span><div><strong>Parties &amp; licence</strong><span class="sub">RA5501045, Emigration Act 1983.</span></div></li>
+          <li><span class="marker">§3</span><div><strong>Scope &amp; demand</strong><span class="sub">Trades, quantities, timeline, milestones.</span></div></li>
+          <li><span class="marker">§5</span><div><strong>0 ₽ commercial model</strong><span class="sub">Candidate-funded, regulated by MEA.</span></div></li>
+          <li><span class="marker">§7</span><div><strong>90-day free replacement + airfare</strong><span class="sub">In writing — what makes us different from the other 34.</span></div></li>
+          <li><span class="marker">§7.3</span><div><strong>Civilian-use-only clause</strong><span class="sub">Sanctions-safe.</span></div></li>
+          <li><span class="marker">§15</span><div><strong>SIAC arbitration</strong><span class="sub">Singapore seat, 1 arbitrator, English.</span></div></li>
+        </ul>
+      </div>
+      <div class="panel" style="text-align: center; align-items: center; justify-content: center; gap: 14px;">
+        <h3>Open the full agreement</h3>
+        <p class="ru" style="text-align: center;">Откройте полный договор</p>
+        <div class="qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=agreement.html" alt="QR to agreement.html">
+        </div>
+        <p style="color: var(--muted); font-size: 12px;">Scan with phone camera · opens the bilingual live agreement</p>
+        <a class="cta" href="agreement.html" target="_blank" rel="noopener">Open agreement.html ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14 — CTA -->
+<section class="slide" id="s14">
+  <div class="slide-inner">
+    <div class="eyebrow"><span class="n">14 / 14</span><span>START NOW</span><span class="ru">· НАЧИНАЕМ</span></div>
+    <h2 class="title">Start with a test-batch of 5 workers. Prove us. Then scale.</h2>
+    <div class="title-ru">Начните с тестовой партии — докажите нас — масштабируйте</div>
+    <p class="lead">Three ways to begin today, at the booth:</p>
+    <div class="grid grid-3">
+      <div class="card featured" style="text-align: center;">
+        <div class="ico" style="margin: 0 auto;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Fill the wizard</h3>
+        <div class="ru">Заполнить заявку</div>
+        <p>3-minute bilingual form on your phone. Generates a tracking code instantly — we prepare the proposal right at the booth.</p>
+        <div class="qr" style="margin: 12px auto;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=wizard.html" alt="QR to wizard.html">
+        </div>
+        <a class="cta" href="wizard.html" target="_blank" rel="noopener">Open wizard ↗</a>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div class="ico" style="margin: 0 auto; background: color-mix(in srgb, var(--green) 14%, transparent); color: var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <h3>WhatsApp / Telegram</h3>
+        <div class="ru">Связаться напрямую</div>
+        <p>Direct line to our delegation leader in St. Petersburg. Reply is near-instant.</p>
+        <p style="margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--gold);">WhatsApp: +91 94901 94000</p>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--cyan);">Telegram: @siddesh_v</p>
+        <a class="cta" href="https://wa.me/919490194000" target="_blank" rel="noopener" style="margin-top: 14px;">WhatsApp ↗</a>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div class="ico" style="margin: 0 auto; background: color-mix(in srgb, var(--blue) 14%, transparent); color: var(--blue);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Meet at the booth</h3>
+        <div class="ru">На стенде</div>
+        <p>Atrium Hall, 3rd floor · table marked "Hanman Travels" · 09:30 daily Aug 12–13.</p>
+        <p style="margin-top: 14px;">Ask for <strong style="color: var(--gold);">Ravi Kumar</strong> or <strong style="color: var(--gold);">Siddeshwar V</strong></p>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); margin-top: 6px;">hanmantravels@gmail.com</p>
+      </div>
+    </div>
+    <div class="callout"><strong>Hanman Travels</strong> · MEA RA5501045 · Family-run since 1992 · Government-licensed 2019 · ITB '26 St. Petersburg<span class="ru">Семейное агентство с 1992 года · Лицензия МИД Индии RA5501045</span></div>
+  </div>
+</section>
+
+</div>
+
+<!-- BOTTOM BAR -->
+<div class="bot">
+  <button class="navbtn ghost" id="prevBtn" onclick="go(-1)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    <span>Prev</span>
+  </button>
+  <div class="progress" id="progress"><span class="lbl">SLIDE </span><span class="of">01</span> / <span id="total">14</span> — <span id="title">Cover</span></div>
+  <button class="navbtn" id="nextBtn" onclick="go(1)">
+    <span>Next</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let current = 0;
+
+  // titles for bottom bar
+  const titles = ['Cover','Why we\'re here','Industries we serve','Trades matrix','0 ₽ model','90-day warranty','Test-batch offer','4-stage verification','End-to-end timeline','Your role','Our role','Legal compliance','The agreement','Start now'];
+
+  // build dots
+  const dotsEl = document.getElementById('dots');
+  dotsEl.innerHTML = Array.from(slides).map((_, i) => `<button class="dot${i === 0 ? ' active' : ''}" data-i="${i}" aria-label="Slide ${i+1}"></button>`).join('');
+  dotsEl.addEventListener('click', (e) => {
+    const t = e.target.closest('.dot');
+    if (t) jump(parseInt(t.dataset.i, 10));
+  });
+
+  document.getElementById('total').textContent = String(total).padStart(2, '0');
+
+  function update() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    Array.from(dotsEl.children).forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+      d.classList.toggle('done', i < current);
+    });
+    const prev = document.getElementById('prevBtn');
+    const next = document.getElementById('nextBtn');
+    prev.disabled = current === 0;
+    next.disabled = current === total - 1;
+    next.querySelector('span').textContent = current === total - 1 ? 'Restart' : 'Next';
+    document.querySelector('.progress .of').textContent = String(current + 1).padStart(2, '0');
+    document.getElementById('title').textContent = titles[current] || '';
+    if (location.hash !== '#' + (current + 1)) {
+      history.replaceState(null, '', '#' + (current + 1));
+    }
+    // scroll slide back to top on transition
+    slides[current].scrollTop = 0;
+  }
+
+  function go(dir) { jump(current + dir); }
+  function jump(n) {
+    n = Math.max(0, Math.min(total - 1, n));
+    current = n; update();
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => go(-1));
+  document.getElementById('nextBtn').addEventListener('click', () => go(1));
+
+  // keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key.toLowerCase() === 'n') { e.preventDefault(); go(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key.toLowerCase() === 'p') { e.preventDefault(); go(-1); }
+    else if (e.key.toLowerCase() === 't') toggleTheme();
+    else if (e.key.toLowerCase() === 'f') toggleFullscreen();
+    else if (e.key.toLowerCase() === 'o') toggleOverview();
+    else if (e.key === 'Home') { e.preventDefault(); jump(0); }
+    else if (e.key === 'End') { e.preventDefault(); jump(total - 1); }
+  });
+
+  // touch swipe — but only if slide content isn't being scrolled vertically
+  let touchX = 0, touchY = 0, swipeActive = false;
+  document.addEventListener('touchstart', (e) => {
+    const t = e.changedTouches[0];
+    touchX = t.screenX; touchY = t.screenY; swipeActive = true;
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (!swipeActive) return; swipeActive = false;
+    const t = e.changedTouches[0];
+    const dx = t.screenX - touchX, dy = t.screenY - touchY;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 2) {
+      if (dx < 0) go(1); else go(-1);
+    }
+  }, { passive: true });
+
+  // hash route
+  function readHash() {
+    const h = parseInt(location.hash.replace('#', ''), 10);
+    if (!isNaN(h) && h >= 1 && h <= total) jump(h - 1);
+    else update();
+  }
+  window.addEventListener('hashchange', readHash);
+  readHash();
+
+  // controls
+  function toggleTheme() {
+    const cur = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.body.dataset.theme = cur;
+    try { localStorage.setItem('hanman-deck-theme', cur); } catch (e) {}
+  }
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+    else if (document.exitFullscreen) document.exitFullscreen();
+  }
+  let overview = false;
+  function toggleOverview() {
+    overview = !overview;
+    const deck = document.getElementById('deck');
+    if (overview) {
+      deck.style.overflowY = 'auto';
+      deck.style.display = 'block';
+      slides.forEach((s) => {
+        s.style.position = 'relative';
+        s.style.opacity = '1';
+        s.style.visibility = 'visible';
+        s.style.transform = 'none';
+        s.style.minHeight = '320px';
+        s.style.borderBottom = '1px solid var(--line)';
+        s.classList.add('active');
+      });
+    } else {
+      deck.style.overflowY = '';
+      deck.style.display = '';
+      slides.forEach((s) => {
+        s.style.position = '';
+        s.style.opacity = '';
+        s.style.visibility = '';
+        s.style.transform = '';
+        s.style.minHeight = '';
+        s.style.borderBottom = '';
+      });
+      update();
+    }
+  }
+
+  document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+  document.getElementById('fullBtn').addEventListener('click', toggleFullscreen);
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+  // restore theme
+  try {
+    const saved = localStorage.getItem('hanman-deck-theme');
+    if (saved === 'light' || saved === 'dark') document.body.dataset.theme = saved;
+  } catch (e) {}
+
+  // expose for inline onclick handlers
+  window.go = go; window.jump = jump;
+})();
+</script>
+</body>
+</html>
